@@ -82,10 +82,6 @@ add the custom tag <h1 class="display-1"> WELCOME TO ESPARK</h1>
 * project/tslint.json 
 - * linting and coading standard 
 
-* project/package.json
-
-* project/package-lock.json
-
 * project/src/main.ts 
 - * booting the angular js  application its a main file 
 ```
@@ -101,6 +97,33 @@ add the custom tag <h1 class="display-1"> WELCOME TO ESPARK</h1>
  here all the boot strap of the module and application is tested 
 ```
 
+* project/package.json
+```
+{
+  "name":"xxx",
+  "version":xxx,
+  "script":{
+  	// npm scripts commands for build and piplelines 
+  	// we can customized the script and cmd for execution
+  },
+  "dependency":{
+  	// required modules and lib required for exceution 
+  },
+  "devvDependency":{
+  	// dev dependency for application development 
+  }
+
+}
+```
+
+* project/package-lock.json
+```
+{
+	// its required for the production modes 
+	// where to fetch the dependency and subdependency files and realated inter dependecy 
+	// without which application won't work in prod mode 
+}
+```
 ---
 
 
