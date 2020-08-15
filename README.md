@@ -33,6 +33,11 @@ $ select the type of css => SCCS
 * [basic-document](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/DOCUMENT/README.md)
 
 
+# ANGULARJS SAMPLES 
+
+* [applications](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/README.md) 
+
+
 
 
 
