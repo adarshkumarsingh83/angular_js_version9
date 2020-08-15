@@ -66,14 +66,10 @@ add the custom tag <h1 class="display-1"> WELCOME TO ESPARK</h1>
 * project/src/polyfills.ts 
 - * this will help for backward compatablity if client browser is outdates ES6 funtionality enabled 
 
-* project/src/main.ts 
-- * booting the angular js  application its a main file 
-
 * project/src/style.css
 - * global style sheet for the project it shoudl containe common and generic styles 
 
-* project/src/test.ts 
-- * test script for the booting process 
+
 
 * project/angular.json
 - * contains the  setttings and configurations for angular project 
@@ -90,6 +86,21 @@ add the custom tag <h1 class="display-1"> WELCOME TO ESPARK</h1>
 * project/package.json
 
 * project/package-lock.json
+
+* project/src/main.ts 
+- * booting the angular js  application its a main file 
+```
+ its first file which angular will search to start the application 
+ it contains the app module as the starting module 
+ bootstrap module will start the application which is first module which init the appliation 
+ we can write our own custom module and load it by usign bootstrap module .
+```
+
+* project/src/test.ts 
+- * test script for the booting process 
+```
+ here all the boot strap of the module and application is tested 
+```
 
 ---
 
