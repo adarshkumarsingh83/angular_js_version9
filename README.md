@@ -15,7 +15,6 @@
 ```
 $ want routing configuration in prject y/n
 $ select the type of css => SCCS 
-$ 
 ```
 ### To Execute the Angular project
 * $ ng serve 
