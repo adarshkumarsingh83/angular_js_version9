@@ -48,7 +48,7 @@ project/src/app/app.component.ts
 * import the module where the component exist in the module-name.module.ts file with import statement if the component is from differnt module 
 * if the component is from different module then in @NgModule(xxx, import:[ComponentName],xxxx) also has to be mentioned.
 * take the selector name and add into the module-name.compoent.html with tag 
-* '<selector-name></selector-name>'
+* <'selector-name'></'selector-name'>
 
 
 
