@@ -5,15 +5,15 @@
 * ng --version 
 
 ### To Generate Angular project 
-* ng new <application-name>
+* ng new <'application-name'>
 
 
 ### To Generate Component/Modules/Service/Router/Directive/Pipes/Decorator
-* ng generate component <component-name> or ng g c <component-name>
-* ng generate module <module-name> or ng g m <module-name>
-* ng generate service <service-name> or ng g s <service-name>
-* ng generate pipe <pipe-name> or ng g p <pipe-name>
-* ng generate decorator <decorator-name> 
+* ng generate component <'component-name'> or ng g c <'component-name'>
+* ng generate module <'module-name> or ng g m <'module-name'>
+* ng generate service <'service-name> or ng g s <'service-name>
+* ng generate pipe <'pipe-name> or ng g p <'pipe-name>
+* ng generate decorator <'decorator-name'> 
 
 ### To Execute the Unit Test 
 * unit test are executed using karma f/w and writtin in jasmin lang.
@@ -27,7 +27,7 @@
 * default port is 4200
 * AOD is by default is enabled for prod env 
 * ng serve 
-* ng serve --port=<portnumber>
+* ng serve --port=<'portnumber>
 
 ### To Update the Angular Cli and angular code to thee latest version from older.
 * ng update 
