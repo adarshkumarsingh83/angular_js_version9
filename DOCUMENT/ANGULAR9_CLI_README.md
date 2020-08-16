@@ -8,11 +8,12 @@
 * ng new <application-name>
 
 
-### To Generate Component/Modules/Service/Router/Directive/Pipes 
+### To Generate Component/Modules/Service/Router/Directive/Pipes/Decorator
 * ng generate component <component-name> or ng g c <component-name>
 * ng generate module <module-name> or ng g m <module-name>
 * ng generate service <service-name> or ng g s <service-name>
 * ng generate pipe <pipe-name> or ng g p <pipe-name>
+* ng generate decorator <decorator-name> 
 
 ### To Execute the Unit Test 
 * unit test are executed using karma f/w and writtin in jasmin lang.

@@ -131,7 +131,7 @@ add the custom tag <h1 class="display-1"> WELCOME TO ESPARK</h1>
 
 ## [ANGULAR-MODULE-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_MODULES_README.md)
 
-
+## [ANGULAR-DECORATOR-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_DECORATOR_README.md)
 
 
 
