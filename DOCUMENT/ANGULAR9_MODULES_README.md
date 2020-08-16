@@ -18,7 +18,7 @@ bootstrap -> which component is first to load
 ```
 
 ### To Generate Module 
-* ng g m <ModuleName>
+* ng g m <'ModuleName'>
 ```
 this will create a dir with module-name and the module name has 
 to be imported into the app.module 
