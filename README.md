@@ -4,7 +4,7 @@
 * $ node -v 
 
 ### To install Angular Cli 
-* $ npm i @agnular/cli
+* $ npm install -g @angular/cli
 
 ### To Check Angular Version 
 * $ ng --version 
