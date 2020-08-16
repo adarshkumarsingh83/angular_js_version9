@@ -11,7 +11,7 @@
 
 # Basic Application Development 
 ### To Create Angular Project 
-* ng new <project-name>
+* ng new <'project-name'>
 ```
 $ want routing configuration in prject y/n
 $ select the type of css => SCCS 
