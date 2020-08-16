@@ -41,14 +41,14 @@ project/src/app/app.component.ts
 * get inside the module where we want to generate the component
 * or if we generate at the project root level then it will be crated in app.module 
 * parent module will be updated with the entry of the compoents 
-* ng g c '<component-name>''
+* ng g c <'component-name'>
 
 
 ### Nested Compoent 
 * import the module where the component exist in the module-name.module.ts file with import statement if the component is from differnt module 
 * if the component is from different module then in @NgModule(xxx, import:[ComponentName],xxxx) also has to be mentioned.
 * take the selector name and add into the module-name.compoent.html with tag 
-* '<selector-name></selector-name>''
+* '<selector-name></selector-name>'
 
 
 
