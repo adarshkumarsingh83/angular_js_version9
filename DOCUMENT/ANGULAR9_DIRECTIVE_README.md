@@ -14,3 +14,7 @@
 * its passed with the elements 
 * ngClass 
 * ngStyle
+
+
+### Generate a custom Directive 
+* ng generate directive <'directive-name'>
