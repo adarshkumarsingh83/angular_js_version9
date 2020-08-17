@@ -187,7 +187,7 @@ export class AppComponent {
   clickEmail='';
   displayEmail(){
   	console.log(this.email);
-     clickEmail=this.email;
+     this.clickEmail=this.email;
   }
 }
 
