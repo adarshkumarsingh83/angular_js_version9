@@ -32,6 +32,8 @@ $ select the type of css => SCCS
 
 * [basic-document](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/DOCUMENT/README.md)
 
+* [BASIC_APPLICATION_DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_BASICAPPLICATION_README.md)
+
 
 # ANGULARJS SAMPLES 
 
