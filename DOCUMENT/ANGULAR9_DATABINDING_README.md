@@ -27,7 +27,7 @@
 	* integer, string, arrays object and other can be bind 
 	* one way data flow in this process 
 * Example 
-* project//src/app/app.component.ts
+* project/src/app/app.component.ts
 ```
 import { Component } from '@angular/core';
 
@@ -60,7 +60,7 @@ export class AppComponent {
 	* [property]="expression"
 
 * Example 
-* project//src/app/app.component.ts
+* project/src/app/app.component.ts
 ```
 import { Component } from '@angular/core';
 
@@ -96,7 +96,7 @@ export class AppComponent {
 	* [attr.attribute_name]="'expression'"
 
 * Example 	
-* project//src/app/app.component.ts
+* project/src/app/app.component.ts
 ```
 import { Component } from '@angular/core';
 
@@ -136,7 +136,7 @@ export class AppComponent {
 
 ```
 
-* project//src/app/app.component.ts
+* project/src/app/app.component.ts
 ```
 import { Component } from '@angular/core';
 
@@ -154,3 +154,6 @@ export class AppComponent {
 }
 
 ```
+---
+
+## Two Way Databinding 
