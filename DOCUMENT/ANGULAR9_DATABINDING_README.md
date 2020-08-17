@@ -59,4 +59,67 @@ export class AppComponent {
 * Property Binding 
 	* [property]="expression"
 
-	
+* Example 
+* project//src/app/app.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'espark-basic-application';
+  colorVal="red";
+  paraText="hi how r u";
+  placeholderValue="Enter the Input Value";
+}
+
+```
+
+* project/src/app.component.html
+```
+<div>
+	<div [ngStyle]="{color:colorVal}">
+	    <h1>welcome to espark</h1>
+	</div>
+	<p [innerHTML]='paraText'></p>
+	<input [placeholder]="placeholderValue">
+</div>
+
+```
+
+---
+
+* Attrivute Binding
+	* [attr.attribute_name]="'expression'"
+
+* Example 	
+* project//src/app/app.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'espark-basic-application';
+  hrefVal="http://espark.com";
+  esparkLInk="http://esparkinnovation.com";
+  esparkProps="adarsh-radha";
+}
+
+```
+
+* project/src/app.component.html
+```
+<div>
+	<a [href]="hrefVal" [attr.esparkLink]='esparkLInk' [attr.esparkProps]='esparkProps'>Espark</a>
+</div>
+
+```
+
+
