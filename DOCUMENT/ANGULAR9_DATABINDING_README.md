@@ -122,4 +122,35 @@ export class AppComponent {
 
 ```
 
+---
 
+* Event Bindinng 
+	* <button (event_name)="function()"> xxxx </button>
+* Example 
+
+* project/src/app.component.html
+```
+<div>
+	<button (click) = "displayData("adarsh kumar");" > Click Me</button>
+</div>
+
+```
+
+* project//src/app/app.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'espark-basic-application';
+  displayData(name){
+     alert("welcome to espark "+name);
+     console.log("welcome to espark "+name);
+  }
+}
+
+```
