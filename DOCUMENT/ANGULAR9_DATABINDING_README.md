@@ -157,3 +157,38 @@ export class AppComponent {
 ---
 
 ## Two Way Databinding 
+* it allow to bind events of elements from view  to component and vice versa 
+* bidirectional data flow 
+	* [(ngModel)] is used for data binding and 
+	* <input [(ngModel)]='data' />
+
+* Example 
+* project/src/app.component.html
+```
+<div>
+    <input  [(ngModel)]='email'/>
+    {{email}}
+    <button (click) = "displayEmail();"> Show Email</button>
+    {{clickEmail}}
+</div>
+```
+* project/src/app/app.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'espark-basic-application';
+  email='';
+  clickEmail='';
+  displayEmail(){
+  	console.log(this.email);
+     clickEmail=this.email;
+  }
+}
+
+```
