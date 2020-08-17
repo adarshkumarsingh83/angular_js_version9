@@ -2,7 +2,7 @@
 ---
 
 ### One Way Databinding 
-* Component To view 
+* Component To View 
 	* Interpolation 
 	* Property Binding 
 	* Style Binding 
