@@ -68,4 +68,59 @@ export class AppModule { }
 
 ---
 
-## 
+## Routing Modules 
+> module to hold all the routing configuration into one single module 
+* We can generate app routing module 
+	* ng generate module <'app-routing'> --flat-module=app 
+
+* project/src/app/app.routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes =[
+     { path: '' ,redirectTo: 'rnroll' , pathMach: 'full' }
+     { path: '**' ,redirectTo: 'rnroll' , pathMach: 'full' }
+]
+
+@NgModule(
+
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+	)
+export class AppRoutingModule{
+
+
+}
+```
+* project/src/app/app.module.ts
+```
+import { AppRoutingModule } from './app/app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { LocationStrategy, MashLocationStrategy } from '@angular/common';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
+---
+
+
+
+
+
+
