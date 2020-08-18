@@ -3,6 +3,7 @@
 *  @angular/router package for router 
 * Router array contains all routes in application 
 * Router has states 
+* Router is singleton per appliation. 
 * handle routes 
 	* routes to component 
 	* getting query param 
