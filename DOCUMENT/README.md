@@ -46,6 +46,8 @@ add the custom tag <h1 class="display-1"> WELCOME TO ESPARK</h1>
 
 ## [CLI-CMD-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_CLI_README.md)
 
+## [ANGULAR-BASIC_APPLICATION-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_BASICAPPLICATION_README.md)
+
 ## [ANGULAR-DIRECTORY_STRUCTURE-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_DIRECTORY_STRUCTURE_README.md)
 
 ## [ANGULAR-MODULE-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_MODULES_README.md)
@@ -55,8 +57,6 @@ add the custom tag <h1 class="display-1"> WELCOME TO ESPARK</h1>
 ## [ANGULAR-COMPONENT-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_COMPONENT_README.md)
 
 ## [ANGULAR-DIRECTIVE-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_DIRECTIVE_README.md)
-
-## [ANGULAR-BASIC_APPLICATION-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_BASICAPPLICATION_README.md)
 
 ## [ANGULAR-DATABINDING-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_DATABINDING_README.md)
 
