@@ -10,6 +10,8 @@
 	* Uppercase
 	* Currency 
 	* Date
+	* Percentage
+	* JSON
 
 	### Paramerrized Pipes 
 	* take one or more param 
