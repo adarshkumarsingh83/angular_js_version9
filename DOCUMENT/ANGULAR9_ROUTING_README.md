@@ -84,7 +84,6 @@ const routes: Routes =[
 ]
 
 @NgModule(
-
       imports: [RouterModule.forRoot(routes)],
       exports: [RouterModule]
 	)
@@ -118,6 +117,18 @@ export class AppModule { }
 ```
 
 ---
+
+## Router 
+> it lets define where the output should be displayed. 
+> it can be difined in app module or in indivisual module 
+
+* /src/app/app.component.html
+```
+ <router-outlet> </router-outlet>
+
+ NOTE: output of component will be loaded into this <router-outlet> </router-outlet> 
+ based on the routes mentioned into the router routs arrays 
+```
 
 
 
