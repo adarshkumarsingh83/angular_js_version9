@@ -46,6 +46,8 @@
      <h1>{{ person.salary | currency:'USD':'code' }}</h1>
      <h1>{{ person.salary | currency:'INR' }}</h1>
      <h1>{{ person.salary | currency:'INR':'code' }}</h1>
+     <h1>{{ person.salary | currency:'INR':'INR':'3.0-0' }}</h1>
+     <h1>{{ person.salary | currency:'INR':'INR':'3.1-1' }}</h1>
 
 
      <h1>{{ person | JSON }}</h1>
@@ -85,13 +87,15 @@ export class AppComponent {
 		* currency digit variation 
 	* date 
 		* short
+		* medium
 		* long 
 		* full 
-		* medium
 		* shortDate
+		* fullDate
 		* mediumDate
 		* shortTime
 		* fullTime
 		* longTime 
+
 
 
