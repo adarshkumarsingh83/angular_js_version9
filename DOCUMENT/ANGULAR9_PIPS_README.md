@@ -54,7 +54,7 @@
 </div>
 ```
 
-* project//src/app/app.component.ts
+* project/src/app/app.component.ts
 ```
 import { Component } from '@angular/core';
 
@@ -113,7 +113,7 @@ export class AppComponent {
 </div>
 ```
 
-* project//src/app/app.component.ts
+* project/src/app/app.component.ts
 ```
 import { Component } from '@angular/core';
 
@@ -138,7 +138,60 @@ export class AppComponent {
 ---
 
 ## Custtom Pipe 
-	* 
-	 
+	* ng generate pipe <'pipe-name'> 
+	* pipe will be added to module if generated via cli otherise add it manually 
+	* import Pipe and PipeTransform from @angular/core 
+	* its declared with @pipe and provide the selector name 
+
+* Example 
+* $ ng generate pipe hightlight
+
+* project/src/app/highlightpip.ts
+```
+import {Pipe,PipeTransform} from '@angular/core';
+
+@Pipe(
+      {
+      	name:'hightlight'
+      }
+	)
+export class HighlightPipe implements PipeTransform{
+
+	transform(value: string, city: string): string{
+         return 'Cityname:'+city;
+	}
+}
+```
+
+* project/src/app/app.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'espark-basic-application';
+  
+  person={
+	  firstName="adarsh";
+	  lastName="kumar";	
+	  city="dallas";
+  }
+  
+}
+
+```
+
+* project/src/app.component.html
+```
+<div>
+    <h1>{{ person.firstName }}</h1>
+     <h1>{{ person.lastName }}</h1>
+     <h1>{{ person.city | hightlight: person.city }}</h1>
+</div>
+```
 
 ---
