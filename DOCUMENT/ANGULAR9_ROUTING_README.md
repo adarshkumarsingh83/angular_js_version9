@@ -61,3 +61,11 @@ export class AppModule { }
 ## Base HREF 
 > base href is "/" for root dir 
 * Its present in project/src/index.html as <base href="/"> 
+* Building code in defualt dir 
+	* ng build // to build the code in root dir
+* Setting the differnt dir for build
+	* ng build --base-href"/espark/" // now it will build the code in espark dir 
+
+---
+
+## 
