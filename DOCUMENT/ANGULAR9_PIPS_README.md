@@ -194,4 +194,60 @@ export class AppComponent {
 </div>
 ```
 
+
+* Example 
+* $ ng generate pipe hightlight
+
+* project/src/app/highlightpip.ts
+```
+import {Pipe,PipeTransform} from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser';
+
+@Pipe(
+      {
+      	name:'hightlight'
+      }
+	)
+export class HighlightPipe implements PipeTransform{
+
+	constructor(private sanitizeer: DomSanitizer){
+
+	}
+
+	transform(value: string, city: string): string{
+         return this.sanitizeer.bypassSecurityTrustHtml('<div style="backgroud-color:yellow">'+city+'<div>');
+	}
+}
+```
+
+* project/src/app.component.html
+```
+<div>
+    <h1>{{ person.firstName }}</h1>
+     <h1>{{ person.lastName }}</h1>
+     <div [innerHTML]="person.city | highlight:person.city"></div> 
+</div>
+```
+
+* project/src/app/app.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'espark-basic-application';
+  
+  person={
+	  firstName="adarsh";
+	  lastName="kumar";	
+	  city="dallas";
+  }
+  
+}
+
+```
 ---
