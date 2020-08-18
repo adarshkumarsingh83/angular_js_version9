@@ -5,22 +5,22 @@
 
 ## Type of Pipes 
 
-	### Built in Pipes 
-	* Lowercase 
-	* Uppercase
-	* Currency 
-	* Date
-	* Percentage
-	* JSON
+	*  Built in Pipes 
+		* Lowercase 
+		* Uppercase
+		* Currency 
+		* Date
+		* Percentage
+		* JSON
 
-	### Paramerrized Pipes 
-	* take one or more param 
+	* Paramerrized Pipes 
+		* take one or more param 
 
-	### Chaining Pipes 
-	* conect muliple pips for data input 
+	* Chaining Pipes 
+		* conect muliple pips for data input 
 
-	### Custom Pipes 
-	* custom pipe for data formatting 
+	* Custom Pipes 
+		* custom pipe for data formatting 
 
 ---
 
