@@ -15,6 +15,49 @@
 	* handling 404 routes 
 ---
 
+## Routing Strategy
+* PathLocationStrategy 
+	* its default strategy 
+	* /home
+	* /search 
+---
 
+* HashLocationStrategy 
+	* /#/home
+	* /#/search 
 
+* while application creation option for the routing option 
+* ng new <'project-name'>
+```
+$ want routing configuration in prject y/n => y 
+$ select the type of css => SCCS 
+```
+* project/src/app/app.module.ts
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { LocationStrategy, MashLocationStrategy } from '@angular/common';
 
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [
+    { provide: LocationStrategy, useClass: MashLocationStrategy} // adding hashrouting strategy 
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+* now the application will show has url http://localhost:4200/#/
+* $ ng serve
+
+---
+
+## Base HREF 
+> base href is "/" for root dir 
+* Its present in project/src/index.html as <base href="/"> 
