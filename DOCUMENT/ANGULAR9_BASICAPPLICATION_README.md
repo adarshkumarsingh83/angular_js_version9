@@ -3,10 +3,26 @@
 ---
 
 * $ ng new espark-basic-application
-* $ cd espark-basic-application/
-* $ ng serve
-* $ crt + c
-* $ npm i bootstrap --save
+
+```
+$ want routing configuration in prject y/n
+$ select the type of css => SCCS 
+```
+
+* To Install the bootstrap to angularjs 
+	* $ npm i bootstrap --save
+
+* To Start the application 
+	* $ cd espark-basic-application/
+	* $ ng serve
+	* $ ng serve --port=<4300>
+
+* To access the application 
+	* http://localhost:420
+
+* To Stop Server
+	* $ crt + c
+
 ---
 
 * project/src/app/app.component.scss
