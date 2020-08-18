@@ -158,7 +158,7 @@ import {Pipe,PipeTransform} from '@angular/core';
 export class HighlightPipe implements PipeTransform{
 
 	transform(value: string, city: string): string{
-         return 'Cityname:'+city;
+         return 'City Name : '+city;
 	}
 }
 ```
