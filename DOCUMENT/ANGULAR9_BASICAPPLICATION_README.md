@@ -39,7 +39,7 @@ $ select the type of css => SCCS
 ```
 
 
-* project//src/app/app.component.ts
+* project/src/app/app.component.ts
 ```
 import { Component } from '@angular/core';
 
