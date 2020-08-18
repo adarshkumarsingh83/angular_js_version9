@@ -119,7 +119,7 @@ export class AppModule { }
 ---
 
 ## Router 
-> it lets define where the output should be displayed. 
+> it lets define where the output should be displayed. \
 > it can be difined in app module or in indivisual module 
 
 * /src/app/app.component.html
