@@ -141,6 +141,8 @@ add the custom tag <h1 class="display-1"> WELCOME TO ESPARK</h1>
 
 ## [ANGULAR-DATABINDING-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_DATABINDING_README.md)
 
+## [ANGULAR-PIPES-DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_PIPS_README.md)
+
 
 
 
