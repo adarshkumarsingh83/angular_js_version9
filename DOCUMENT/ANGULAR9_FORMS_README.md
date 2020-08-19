@@ -402,5 +402,209 @@ export class FormComponent implements OnInit{
 
   }
 }
+```
 
+---
+
+### Validaton on Reactive Form 
+* Highlight the erros 
+ ```
+  input.ng-invalid.ng-touched{
+  	background-color:red
+  }	
+
+  this.myForm = formbuilder.group({
+  		emailField: [", Validators.requried],
+        pwdField: [", Validators.minLength(5),
+        			   Validators.maxLength(20),
+        			   Validators.parttern('^[a-zA-Z]+$'),
+                      Validators.requried],
+        termField: new FormControl() 
+  	})
+ ``` 
+* Disabling the submit button 
+	* [disabled]="!formName.valid"
+* Show Hidden inline error msg 
+	* <span *ngIf="myForm.get('name').hasErros('required')"> plese ener name</span>
+
+### Example Highlight the erros 
+* project/src/app/form/form.component.scss
+```
+ input.ng-touched.ng-invalid{
+ 	border:ipx solid red;
+ }
+```
+* project/src/app/form/form.component.ts
+
+```
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+
+@Component({
+  selector: 'app-form-view'
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class FormComponent implements OnInit{
+  
+  myForm: FromGroup; //same form name as tempate form name 
+  constructor(private formBulder: FormBulder){
+  	this.myForm = formbuilder.group({
+  		emailField: ['', Validators.requried],
+        pwdField: ['', Validators.requried],
+        termField: ['', Validators.requriedTrue]
+  	})
+  }
+
+  postData(){
+  	 console.log(this.myForm);
+  	 console.log(this.myForm.value);
+  	 console.log(this.myForm.value.emailField);
+  	 console.log(this.myForm.value.pwdField);
+  	 console.log(this.myForm.value.termField);
+  }
+
+  ngOnInit():void{
+
+  }
+}
+```
+
+### Example Disabling the submit button 
+
+* project/src/app/form/form.component.html
+```
+<div>
+    <h1>ESPARK ANGULARJS REACTIVE FORM COMPONENT</h1>
+    <form  [formGroup]="myForm" (ngSubmit)="postData()">
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="emailField">
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pwdField">
+	  </div>
+	  <div class="form-group form-check">
+	    <input type="checkbox" class="form-check-input" id="termCheck1" formControlName="termField">
+	    <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
+	  </div>
+	  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+   </form>
+</div>
+```
+
+* project/src/app/form/form.component.scss
+```
+ input.ng-touched.ng-invalid{
+ 	border:ipx solid red;
+ }
+```
+* project/src/app/form/form.component.ts
+
+```
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+
+@Component({
+  selector: 'app-form-view'
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class FormComponent implements OnInit{
+  
+  myForm: FromGroup; //same form name as tempate form name 
+  constructor(private formBulder: FormBulder){
+  	this.myForm = formbuilder.group({
+  		emailField: ['', Validators.requried],
+        pwdField: ['', Validators.requried],
+        termField: ['', Validators.requriedTrue]
+  	})
+  }
+
+  postData(){
+  	 console.log(this.myForm);
+  	 console.log(this.myForm.value);
+  	 console.log(this.myForm.value.emailField);
+  	 console.log(this.myForm.value.pwdField);
+  	 console.log(this.myForm.value.termField);
+  }
+
+  ngOnInit():void{
+
+  }
+}
+```
+
+### Example Custom Field level Validation 
+
+* project/src/app/form/form.component.html
+```
+<div>
+    <h1>ESPARK ANGULARJS REACTIVE FORM COMPONENT</h1>
+    <form  [formGroup]="myForm" (ngSubmit)="postData()">
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="emailField">
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	    <span *ngIf="myForm.get('emailField').touched && myForm.get('emailField').haserror('required')"> Enter the Email </span>
+	    <span *ngIf="myForm.get('emailField').touched && myForm.get('emailField').haserror('email')"> Enter Valid Email </span>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pwdField">
+	    <span *ngIf="myForm.get('pwdField').touched && myForm.get('pwdField').haserror('required')"> Enter the Password </span>
+	     <span *ngIf="myForm.get('pwdField').touched && myForm.get('pwdField').haserror('minLength')"> Enter min 5 char Password </span>
+         <span *ngIf="myForm.get('pwdField').touched && myForm.get('pwdField').haserror('maxLength')"> Enter max 30 char Password </span>
+	  </div>
+	  <div class="form-group form-check">
+	    <input type="checkbox" class="form-check-input" id="termCheck1" formControlName="termField">
+	    <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
+	  </div>
+	  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+   </form>
+</div>
+```
+
+* project/src/app/form/form.component.scss
+```
+ input.ng-touched.ng-invalid{
+ 	border:ipx solid red;
+ }
+```
+* project/src/app/form/form.component.ts
+
+```
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+
+@Component({
+  selector: 'app-form-view'
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class FormComponent implements OnInit{
+  
+  myForm: FromGroup; //same form name as tempate form name 
+  constructor(private formBulder: FormBulder){
+  	this.myForm = formbuilder.group({
+  		emailField: ['', [Validators.requried,Validators.email]],
+        pwdField: ['', [Validators.requried,Validators.minLength(5),Validators.minLength(30)]],
+        termField: ['', Validators.requriedTrue]
+  	})
+  }
+
+  postData(){
+  	 console.log(this.myForm);
+  	 console.log(this.myForm.value);
+  	 console.log(this.myForm.value.emailField);
+  	 console.log(this.myForm.value.pwdField);
+  	 console.log(this.myForm.value.termField);
+  }
+
+  ngOnInit():void{
+
+  }
+}
 ```
