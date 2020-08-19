@@ -1,4 +1,4 @@
-# Angular Routingg 
+# Angular Routing 
 > its a technique to mange the path and routs for application 
 *  @angular/router package for router 
 * Router array contains all routes in application 
