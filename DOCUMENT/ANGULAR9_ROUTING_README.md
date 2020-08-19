@@ -235,7 +235,8 @@ import { Wish } from './wish/wish.component';
 
 const routes: Routes =[
      { path: 'wish/:message' ,component: WishComponent },
-     { path: 'espark/:message' ,component: WishComponent }
+     { path: 'espark/:message' ,component: WishComponent },
+     { path: 'espark/:message/:name' ,component: WishComponent }
 ]
 
 @NgModule(
@@ -252,7 +253,8 @@ export class AppRoutingModule{
 ```
 <div>
     <h1>ESPARK ANGULARJS WISH COMPONENT</h1>
-      {{ queryParamValue }}
+      {{ queryMessageParamValue }}
+      {{ queryNameParamValue }}
 </div>
 
 ```
@@ -268,12 +270,13 @@ import { Component } from '@angular/core';
 export class WishComponent {
   title = 'wish';
 
-  queryParamValue = '';
+  queryMessageParamValue = '';
+  queryNameParamValue='';
   constructor(private activatedRoutes: ActivatedRoute){
      
      this.activatedRoutes.params.subscribe(data => {
-
-     	 this.queryParamValue = data.message;
+     	 this.queryMessageParamValue = data.message;
+     	 this.queryNameParamValue = data.name;
      	})
   }
 }
@@ -281,9 +284,71 @@ export class WishComponent {
 ```
 
 * url now for the 
-	* http://localhost:4200/wish/welcome to espark
-	* http://localhost:4200/espark/welcome to espark
+	* http://localhost:4200/wish/welcome to espark/adarsh
+	* http://localhost:4200/espark/welcome to espark/adarsh
 
+---
 
+## Query Parm in Routes 
+> key value pair in the routes or url
+> http://espark.com/show?name=adarsh&messge=welcome
 
+ * project/src/app/app.routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { Wish } from './wish/wish.component';
+
+const routes: Routes =[
+     { path: 'espark' ,component: WishComponent }
+]
+
+@NgModule(
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+	)
+export class AppRoutingModule{
+
+}
+
+```
+
+* project/src/app/wish/wish.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-wish-view'
+  templateUrl: './wish.component.html',
+  styleUrls: ['./wish.component.scss']
+})
+export class WishComponent {
+  
+  title = 'wish';
+
+  messageValue = '';
+  nameValue='';
+  constructor(private activatedRoutes: ActivatedRoute){
+     
+     this.activatedRoutes.queryParams.subscribe(data => {
+     	 this.messageValue = data.message;
+     	 this.nameValue = data.name;
+     	})
+  }
+}
+
+```
+
+* project/src/app/wish/wish.component.html
+```
+<div>
+    <h1>ESPARK ANGULARJS WISH COMPONENT</h1>
+      {{ messageValue }}
+      {{ nameValue }}
+</div>
+
+```
+
+* To Hit the routes 
+	* http://espark.com/show?name=adarsh&messge=welcome
 
