@@ -50,7 +50,7 @@
 		* formGroup and formcConroll will be used 
 		* regular expression pattern of error handling 
 		* for dynamic form and advance vallidations 
-		
+
 
 ## Form Validation in Template Form 
 * Angular state information 
@@ -67,6 +67,8 @@
 * import form module 
 * To Generate a form 
 	* ng g c form 
+
+* Import the FormModule in app.modules
 * project/src/app/app.module.ts
 ```
 import { BrowserModule } from '@angular/platform-browser';
@@ -90,7 +92,7 @@ import { FormsModule } from '@angular/forms';
 export class AppModule { }
 ```
 
-* add the routes 
+* Add the routes with form compoent
 * project/src/app/app.routing.module.ts
 ```
 import { NgModule } from '@angular/core';
@@ -112,6 +114,9 @@ export class AppRoutingModule{
 }
 ```
 
+* Add the html5  & bootstrap form into the form.comonent.html 
+* #signInForm="ngForm" (ngSubmit)="savaData(signInForm)" add into the form 
+* name="emailField" ngModel for fields in form 
 * project/src/app/form/form.component.html
 * copy forom http://getbootstrap.com simple form 
 ```
@@ -136,9 +141,11 @@ export class AppRoutingModule{
 </div>
 
 ```
+
+* Add the submit method into the form.component.ts for handlign request
 * project/src/app/form/form.component.ts
 ```
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-form-view'
@@ -154,6 +161,10 @@ export class FormComponent implements OnInit{
 		console.log(signInForm.value.passwordField);
 		console.log(signInForm.value.termsField);
 	}
+
+	ngOnInit():void{
+  	
+    }
  
 }
 
@@ -217,6 +228,7 @@ export class FormComponent implements OnInit{
 
 ### Example Disabling the submit button 
 
+* 
 * project/src/app/form/form.component.html
 * copy forom http://getbootstrap.com simple form 
 ```
@@ -276,4 +288,106 @@ NOTE: template binding #emailField="ngModel" , #passwordField="ngModel" ,  #term
 ---
 
 ## Reactive Form 
+* import the ReactiveFormMOdule in the app.module.ts 
+* crate a from in app.component.html 
+* FormGroup for form directive 
+* formControllGroup for fields in form 
+* To Generate a form component
+	* ng g component form
 
+* add the routes with component
+* project/src/app/app.routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { FormComponent } from './form/form.component';
+
+const routes: Routes =[
+     { path: '' ,redirectTo: 'rnroll' , pathMach: 'full' },
+     { path: 'form' , component: FormComponent},
+     { path: '**' ,redirectTo: 'rnroll' , pathMach: 'full' }
+]
+
+@NgModule(
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+	)
+export class AppRoutingModule{
+
+}
+```	
+* import the reactive app module 
+* project/src/app/app.module.ts
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+
+}
+```
+
+* create a form in the html 
+* assigne a form group to the form  [formGroup]="myForm"
+* project/src/app/form/form.component.html
+```
+<div>
+    <h1>ESPARK ANGULARJS REACTIVE FORM COMPONENT</h1>
+    <form  [formGroup]="myForm">
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1">
+	  </div>
+	  <div class="form-group form-check">
+	    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+	    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
+</div>
+
+```
+
+* project/src/app/form/form.component.ts
+
+```
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+
+@Component({
+  selector: 'app-form-view'
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class FormComponent implements OnInit{
+  
+  myForm:FromGroup; //same form name as tempate form name 
+  constructor(){
+  }
+
+  ngOnInit():void{
+
+  }
+}
+
+```
