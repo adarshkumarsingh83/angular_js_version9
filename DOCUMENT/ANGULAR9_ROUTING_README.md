@@ -545,4 +545,34 @@ export class MessageComponent {
 
 ---
 
-## 
+## Lazy Loading 
+> by default NgModule is earger loading which loads every things as soon as app started \
+> loadChildren is solution for this problem 
+* ng generate module <'module-name'> --route <'route-name'> --module <'parent-module-name'>
+	* Ex:  ng generate module esparkwish --route wish --module app.module
+
+* project/src/app/app.routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { InvalidComponent } from './invalid/invlaid.component';
+
+const routes: Routes =[
+   { path: 'wish', loadChildren: () => import('./wish/wish.module').then(m => m.WishModule) }
+]
+
+@NgModule(
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+	)
+export class AppRoutingModule{
+
+}
+```
+* it will generate the WishRoutingModule in project/src/app/wish/wish.routing.module.ts
+* it will generate the WishComponent.ts in side in the project/src/app/wish/wish.component.ts
+* it will generate the wish view page project/src/app/wish/wish.component.html
+
+* Url for 
+	* http://localhost:4200/wish
+
