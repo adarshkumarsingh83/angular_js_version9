@@ -149,4 +149,12 @@ export class FormComponent implements OnInit{
 }
 
 ```
+* Template Form 
+	* input type="text"
+	* input type="radio"
+	* input type="checkbox"
+	* input type="email"
+	* Textarea 
+	* Selectt Drop Down 
 
+---
