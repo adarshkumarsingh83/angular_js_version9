@@ -134,7 +134,7 @@ export class AppRoutingModule{
 	  </div>
 	  <div class="form-group form-check">
 	    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField" ngModel>
-	    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	   <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
 	  </div>
 	  <button type="submit" class="btn btn-primary">Submit</button>
    </form>
@@ -209,7 +209,7 @@ export class FormComponent implements OnInit{
 	  </div>
 	  <div class="form-group form-check">
 	    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField" ngModel required>
-	    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	    <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
 	  </div>
 	  <button type="submit" class="btn btn-primary">Submit</button>
    </form>
@@ -249,7 +249,7 @@ export class FormComponent implements OnInit{
 	  <div class="form-group form-check">
 	   <span *ngIf="termsField.touched && !termsField.valie"> plese select  termsField</span>
 	    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField"  ngModel required>
-	    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	   <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
 	  </div>
 	  <button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid" >Submit</button>
    </form>
@@ -276,7 +276,7 @@ export class FormComponent implements OnInit{
 	  </div>
 	  <div class="form-group form-check">
 	    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField" ngModel required #termsField="ngModel">
-	    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	   <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
 	  </div>
 	  <button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid" >Submit</button>
    </form>
@@ -348,19 +348,19 @@ export class AppModule {
 ```
 <div>
     <h1>ESPARK ANGULARJS REACTIVE FORM COMPONENT</h1>
-    <form  [formGroup]="myForm">
+    <form  [formGroup]="myForm" (ngSubmit)="postData()">
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="emailField">
 	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 	  </div>
 	  <div class="form-group">
 	    <label for="exampleInputPassword1">Password</label>
-	    <input type="password" class="form-control" id="exampleInputPassword1">
+	    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pwdField">
 	  </div>
 	  <div class="form-group form-check">
-	    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-	    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	    <input type="checkbox" class="form-check-input" id="termCheck1" formControlName="termField">
+	    <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
 	  </div>
 	  <button type="submit" class="btn btn-primary">Submit</button>
    </form>
@@ -381,8 +381,20 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 })
 export class FormComponent implements OnInit{
   
-  myForm:FromGroup; //same form name as tempate form name 
-  constructor(){
+  myForm: FromGroup; //same form name as tempate form name 
+  constructor(private formBulder: FormBulder){
+  	this.myForm = formbuilder.group({
+  		emailField: new FormControl(),
+        pwdField: new FormControl(),
+        termField: new FormControl() 
+  	})
+  }
+
+  postData(){
+  	 console.log(this.myForm);
+  	 console.log(this.myForm.conrols.emailField);
+  	 console.log(this.myForm.conrols.pwdField);
+  	 console.log(this.myForm.conrols.termField);
   }
 
   ngOnInit():void{
