@@ -539,5 +539,10 @@ export class MessageComponent {
 }
 
 ```
+* URL to hit 
+	* http://espark.com/espark/message 
+	* http://espark.com/espark/wish  
 
+---
 
+## 
