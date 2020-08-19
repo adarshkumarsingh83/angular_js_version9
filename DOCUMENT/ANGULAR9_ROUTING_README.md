@@ -89,7 +89,6 @@ const routes: Routes =[
 	)
 export class AppRoutingModule{
 
-
 }
 ```
 * project/src/app/app.module.ts
@@ -351,4 +350,108 @@ export class WishComponent {
 
 * To Hit the routes 
 	* http://espark.com/show?name=adarsh&messge=welcome
+
+---
+
+## Redirecting Routes 
+> when ever is path is empty its pointing to home path \
+> then we have to provide pathMatch: 'full' its a default path \
+> { path:'' , redirectTo: 'home' ,"pathMatch: 'full" }
+
+* project/src/app/app.routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes =[
+     { path: '' ,redirectTo: 'home' , pathMach: 'full' }
+]
+
+@NgModule(
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+	)
+export class AppRoutingModule{
+
+}
+```
+
+* project/src/app/home/home.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-home-view'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
+})
+export class HomeComponent {
+  
+  title = 'home';
+
+  messageValue = 'WELCOME TO ESPARK HOME';
+}
+```
+
+* project/src/app/home/home.component.html
+```
+<div>
+    <h1>ESPARK ANGULARJS HOME COMPONENT</h1>
+      {{ messageValue }}
+</div>
+
+```
+* url to hit this 
+	* http://localhost:4200/
+
+---
+
+## Wildcard Routing 
+> when no url is match whtn only this will executed \
+> { paht: '**' }
+
+
+
+* project/src/app/app.routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { InvalidComponent } from './invalid/invlaid.component';
+
+const routes: Routes =[
+     { path: '' ,redirectTo: 'home' , pathMach: 'full' }
+     { path: '**' ,component: InvalidComponent }
+]
+
+@NgModule(
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+	)
+export class AppRoutingModule{
+
+}
+```
+* project/src/app/invalid/invalid.component.html
+```
+<div>
+    <h1>ESPARK INVALID REQUESTED URL</h1>
+</div>
+
+```
+
+* project/src/app/invalid/invalid.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-invalid-view'
+  templateUrl: './invalid.component.html',
+  styleUrls: ['./invalid.component.scss']
+})
+export class InvalidComponent {
+  
+  title = 'InvalidComponent';
+
+}
+```
 
