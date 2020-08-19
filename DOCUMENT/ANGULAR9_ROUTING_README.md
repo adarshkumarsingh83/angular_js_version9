@@ -646,5 +646,8 @@ export class AdminGuard implements CanActivate{
 
 }
 ```
+* Url for this 
+	* http://localhost:4200/admin
+
 
 
