@@ -461,17 +461,83 @@ export class InvalidComponent {
 ---
 
 ## Child Routes 
+
 >  child path or routes for the application views 
 ```
-   { 
-     path: 'espark' , children:[
+    { 
+     path: 'espark', children:[
  						{ path: 'message', component: MessageComponent},
  						{ path: 'wish' , component: WishComponent }
 					]
 	}
+
 	http://espark.com/espark/message  -> MessageComponent
 	http://espark.com/espark/wish  -> WishComponent
 ```
 
+* project/src/app/app.routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { InvalidComponent } from './invalid/invlaid.component';
+
+const routes: Routes =[
+     { path: 'espark', children:[
+ 						{ path: 'message', component: MessageComponent},
+ 						{ path: 'wish' , component: WishComponent }
+					]}
+	  ]
+
+@NgModule(
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+	)
+export class AppRoutingModule{
+
+}
+```
+* project/src/app/wish/wish.component.html
+```
+<div>
+    <h1>ESPARK ANGULARJS WISH COMPONENT</h1>
+</div>
+
+```
+* project/src/app/wish/wish.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-wish-view'
+  templateUrl: './wish.component.html',
+  styleUrls: ['./wish.component.scss']
+})
+export class WishComponent {
+  title = 'wish';
+}
+
+```
+
+* project/src/app/message/message.component.html
+```
+<div>
+    <h1>ESPARK ANGULARJS MESSAGE COMPONENT</h1>
+</div>
+
+```
+* project/src/app/message/message.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-message-view'
+  templateUrl: './message.component.html',
+  styleUrls: ['./message.component.scss']
+})
+export class MessageComponent {
+  title = 'message';
+}
+
+```
 
 
