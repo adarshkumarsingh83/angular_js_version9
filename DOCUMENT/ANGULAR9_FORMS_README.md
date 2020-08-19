@@ -56,6 +56,8 @@
 ### Template Form 
 	
 * import form module 
+* To Generate a form 
+	* ng g c form 
 * project/src/app/app.module.ts
 ```
 import { BrowserModule } from '@angular/platform-browser';
@@ -105,7 +107,7 @@ export class AppRoutingModule{
 * copy forom http://getbootstrap.com simple form 
 ```
 <div>
-    <h1>ESPARK ANGULARJS WISH COMPONENT</h1>
+    <h1>ESPARK ANGULARJS FORM COMPONENT</h1>
     <form #signInForm="ngForm" (ngSubmit)="savaData(signInForm)" >
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">Email address</label>
