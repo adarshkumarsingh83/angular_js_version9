@@ -151,7 +151,7 @@ export class AppModule { }
 import { Component } from '@angular/core';
 
 @Component({
-  xxx
+  selector: 'app-wish-view'
   templateUrl: './wish.component.html',
   styleUrls: ['./wish.component.scss']
 })
@@ -208,7 +208,81 @@ export class AppModule { }
 	* http://localhost:4200/wish
 	* http://localhost:4200/espark
 
+* project/src/app.component.html
+```
+<div>
+<ul>
+    <li><a href='wish'> wish </a> </li>
+    <li><a href='espark'> espark</a></li>
+ <ul>   
+</div>
 
+```
+* url to access 
+	* http://localhost:4200 
+
+
+--- 
+
+## Paramertised Routes 
+> routes which can take param with the urls 
+
+* project/src/app/app.routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { Wish } from './wish/wish.component';
+
+const routes: Routes =[
+     { path: 'wish/:message' ,component: WishComponent },
+     { path: 'espark/:message' ,component: WishComponent }
+]
+
+@NgModule(
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+	)
+export class AppRoutingModule{
+
+}
+
+```
+
+* project/src/app/wish/wish.component.html
+```
+<div>
+    <h1>ESPARK ANGULARJS WISH COMPONENT</h1>
+      {{ queryParamValue }}
+</div>
+
+```
+* project/src/app/wish/wish.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-wish-view'
+  templateUrl: './wish.component.html',
+  styleUrls: ['./wish.component.scss']
+})
+export class WishComponent {
+  title = 'wish';
+
+  queryParamValue = '';
+  constructor(private activatedRoutes: ActivatedRoute){
+     
+     this.activatedRoutes.params.subscribe(data => {
+
+     	 this.queryParamValue = data.message;
+     	})
+  }
+}
+
+```
+
+* url now for the 
+	* http://localhost:4200/wish/welcome to espark
+	* http://localhost:4200/espark/welcome to espark
 
 
 
