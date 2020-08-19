@@ -583,4 +583,68 @@ export class AppRoutingModule{
 >  authentication and auth navigation is allowed 
 >  routes guard resolved to true or false 
 
+* ng generate guard <'guard-name'>
+* inject the guard in module under provider 
+* Type of Routes Guard 
+	* CanActivate => can visit ?
+	* CanActtivateChild => can visit child ?
+	* CanDeactivate => can exit a route ?
+	* Resolve => route date retrival before route activate
+	* CanLoad => can route to a module that laxy loaded ?
+
+* To Generate Admin Home Component 
+	* ng g component admin-home 
+* To Generate Admin Guard 
+	* ng generate guard admin 
+		* CanActivate is slected 
+	* project/src/app/admin.guard.ts
+	* project/src/app/admin.guard.spec.ts
+
+
+* project/src/app/app.routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { InvalidComponent } from './invalid/invlaid.component';
+import { AdminGuard } from './admin.guard';
+
+const routes: Routes =[
+   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]}
+]
+
+@NgModule(
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+	)
+export class AppRoutingModule{
+
+}
+```
+
+* project/src/app/admin.guard.ts
+```
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable(
+      {
+      	providedIn: 'root'
+      }
+	)
+export class AdminGuard implements CanActivate{
+ 
+  canActivate(
+      next: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot
+  	): boolean{
+        
+  		 // service call for valdiation authorization and authentication to the backend 
+
+  		return true;
+  	}
+
+}
+```
+
 
