@@ -271,4 +271,5 @@ export class FormComponent implements OnInit{
    </form>
 </div>
 
+NOTE: template binding #emailField="ngModel" , #passwordField="ngModel" ,  #termsField="ngModel"
 ```
