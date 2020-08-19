@@ -36,3 +36,22 @@
 
 ```
 
+---
+
+## Form in Angular 
+* Type of Form 
+	* Template Form 
+		* import FormsModule
+		* valdiation and form are defined in template file. 
+	* Reactive Form 
+		* import ReactiveFormsModule 
+		* form element and validation are handle in component 
+		* formGroup and formcConroll will be used 
+		* regular expression pattern of error handling 
+
+
+
+
+
+
+
