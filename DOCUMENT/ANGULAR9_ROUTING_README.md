@@ -454,4 +454,24 @@ export class InvalidComponent {
 
 }
 ```
+* url for this 
+	* http://localhost:4200/zyzkjjaldja
+
+
+---
+
+## Child Routes 
+>  child path or routes for the application views 
+```
+   { 
+     path: 'espark' , children:[
+ 						{ path: 'message', component: MessageComponent},
+ 						{ path: 'wish' , component: WishComponent }
+					]
+	}
+	http://espark.com/espark/message  -> MessageComponent
+	http://espark.com/espark/wish  -> WishComponent
+```
+
+
 
