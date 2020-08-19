@@ -392,7 +392,7 @@ export class FormComponent implements OnInit{
 
   postData(){
   	 console.log(this.myForm);
-  	  console.log(this.myForm.value);
+  	 console.log(this.myForm.value);
   	 console.log(this.myForm.value.emailField);
   	 console.log(this.myForm.value.pwdField);
   	 console.log(this.myForm.value.termField);
