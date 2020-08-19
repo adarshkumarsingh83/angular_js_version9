@@ -43,11 +43,13 @@
 	* Template Form 
 		* import FormsModule
 		* valdiation and form are defined in template file. 
+		* good for static and fixed elements
 	* Reactive Form 
 		* import ReactiveFormsModule 
 		* form element and validation are handle in component 
 		* formGroup and formcConroll will be used 
 		* regular expression pattern of error handling 
+		* for dynamic form and advance vallidations 
 
 
 
