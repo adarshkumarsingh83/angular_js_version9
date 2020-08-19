@@ -130,6 +130,84 @@ export class AppModule { }
  based on the routes mentioned into the router routs arrays 
 ```
 
+---
+
+## Rout configuration 
+* Path 
+* component 
+* redirectTo
+* children 
+
+* ng g component wish 
+* project/src/app/wish/wish.component.html
+```
+<div>
+    <h1>ESPARK ANGULARJS WISH COMPONENT</h1>
+</div>
+
+```
+* project/src/app/wish/wish.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  xxx
+  templateUrl: './wish.component.html',
+  styleUrls: ['./wish.component.scss']
+})
+export class WishComponent {
+  title = 'wish';
+}
+
+```
+
+* project/src/app/app.routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { Wish } from './wish/wish.component';
+
+const routes: Routes =[
+     { path: 'wish' ,component: WishComponent },
+     { path: 'espark' ,component: WishComponent }
+]
+
+@NgModule(
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+	)
+export class AppRoutingModule{
+
+
+}
+```
+* project/src/app/app.module.ts
+```
+import { AppRoutingModule } from './app/app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { LocationStrategy, MashLocationStrategy } from '@angular/common';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+* url to access 
+	* http://localhost:4200/wish
+	* http://localhost:4200/espark
+
 
 
 
