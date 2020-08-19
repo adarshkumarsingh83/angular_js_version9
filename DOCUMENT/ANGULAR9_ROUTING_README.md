@@ -289,7 +289,7 @@ export class WishComponent {
 
 ---
 
-## Query Parm in Routes 
+## Query Param in Routes 
 > key value pair in the routes or url
 > http://espark.com/show?name=adarsh&messge=welcome
 
