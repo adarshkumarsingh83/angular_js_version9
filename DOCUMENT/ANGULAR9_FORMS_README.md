@@ -16,9 +16,9 @@
 			* npm i boostrap jquery propper --save 
 		* To specific version 
 			* npm i boostrap@x jquery@x propper@x --save 
-			
+
 * NOTE IMPORT THE PATH 
-* project/angular.json
+* project/angular.json tag where we have to add path for importing 
 	* projects->project-name->architect->build->option->style
 	* projects->project-name->architect->build->option->script
 	* projects->project-name->test->build->option->style
@@ -35,3 +35,4 @@
         ]
 
 ```
+
