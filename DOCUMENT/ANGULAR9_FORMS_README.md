@@ -158,3 +158,117 @@ export class FormComponent implements OnInit{
 	* Selectt Drop Down 
 
 ---
+
+## Form Validation in Template Form 
+* Angular state information 
+	* ng-touched 
+	* ng-untouched 
+	* ng-dirty
+	* ng-pristne
+	* ng-valid
+	* ng-invalid 
+
+
+* Highlight the erros 
+ ```
+  input.ng-invalid.ng-touched{
+  	background-color:red
+  }	
+ ``` 
+* Disabling the submit button 
+	* [disabled]="!formName.valid"
+* Show Hidden inline error msg 
+	* <span *ngIf="name.touched && !name.valie"> plese ener name</span>
+
+### Example of Highlight the erros 
+
+* project/src/app/form/form.component.html
+* copy forom http://getbootstrap.com simple form 
+```
+<div>
+    <h1>ESPARK ANGULARJS FORM COMPONENT</h1>
+    <form #signInForm="ngForm" (ngSubmit)="savaData(signInForm)" >
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailField" ngModel required>
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" name="passwordField" ngModel required>
+	  </div>
+	  <div class="form-group form-check">
+	    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField" ngModel required>
+	    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
+</div>
+
+```
+
+* project/src/app/form/form.component.scss
+```
+ input.ng-touched.ng-invalid{
+ 	border:ipx solid red;
+ }
+```
+
+
+
+### Example Disabling the submit button 
+
+* project/src/app/form/form.component.html
+* copy forom http://getbootstrap.com simple form 
+```
+<div>
+    <h1>ESPARK ANGULARJS FORM COMPONENT</h1>
+    <form #signInForm="ngForm" (ngSubmit)="savaData(signInForm)" >
+	  <div class="form-group">
+	   <span *ngIf="emailField.touched && !emailField.valie"> plese enter emailField</span>
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailField"  ngModel required>
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	  </div>
+	  <div class="form-group">
+	    <span *ngIf="passwordField.touched && !passwordField.valie"> plese enter passwordField</span>
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" name="passwordField"  ngModel required>
+	  </div>
+	  <div class="form-group form-check">
+	   <span *ngIf="termsField.touched && !termsField.valie"> plese select  termsField</span>
+	    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField"  ngModel required>
+	    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	  </div>
+	  <button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid" >Submit</button>
+   </form>
+</div>
+
+```
+
+### Example Show Hidden inline error msg 
+
+* project/src/app/form/form.component.html
+* copy forom http://getbootstrap.com simple form 
+```
+<div>
+    <h1>ESPARK ANGULARJS FORM COMPONENT</h1>
+    <form #signInForm="ngForm" (ngSubmit)="savaData(signInForm)" >
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailField" ngModel required #emailField="ngModel">
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" name="passwordField" ngModel required #passwordField="ngModel">
+	  </div>
+	  <div class="form-group form-check">
+	    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField" ngModel required #termsField="ngModel">
+	    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	  </div>
+	  <button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid" >Submit</button>
+   </form>
+</div>
+
+```
