@@ -576,3 +576,11 @@ export class AppRoutingModule{
 * Url for 
 	* http://localhost:4200/wish
 
+---
+
+## Routes Guard
+>  prevent free navigation on the routes only based on \
+>  authentication and auth navigation is allowed 
+>  routes guard resolved to true or false 
+
+
