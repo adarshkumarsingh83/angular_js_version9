@@ -50,10 +50,19 @@
 		* formGroup and formcConroll will be used 
 		* regular expression pattern of error handling 
 		* for dynamic form and advance vallidations 
+		
+
+## Form Validation in Template Form 
+* Angular state information 
+	* ng-touched 
+	* ng-untouched 
+	* ng-dirty
+	* ng-pristne
+	* ng-valid
+	* ng-invalid 
 
 
-
-### Template Form 
+## Template Form 
 	
 * import form module 
 * To Generate a form 
@@ -159,16 +168,6 @@ export class FormComponent implements OnInit{
 
 ---
 
-## Form Validation in Template Form 
-* Angular state information 
-	* ng-touched 
-	* ng-untouched 
-	* ng-dirty
-	* ng-pristne
-	* ng-valid
-	* ng-invalid 
-
-
 * Highlight the erros 
  ```
   input.ng-invalid.ng-touched{
@@ -273,3 +272,8 @@ export class FormComponent implements OnInit{
 
 NOTE: template binding #emailField="ngModel" , #passwordField="ngModel" ,  #termsField="ngModel"
 ```
+
+---
+
+## Reactive Form 
+
