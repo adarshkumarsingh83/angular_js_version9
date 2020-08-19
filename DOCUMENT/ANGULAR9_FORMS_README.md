@@ -392,9 +392,10 @@ export class FormComponent implements OnInit{
 
   postData(){
   	 console.log(this.myForm);
-  	 console.log(this.myForm.conrols.emailField);
-  	 console.log(this.myForm.conrols.pwdField);
-  	 console.log(this.myForm.conrols.termField);
+  	  console.log(this.myForm.value);
+  	 console.log(this.myForm.value.emailField);
+  	 console.log(this.myForm.value.pwdField);
+  	 console.log(this.myForm.value.termField);
   }
 
   ngOnInit():void{
