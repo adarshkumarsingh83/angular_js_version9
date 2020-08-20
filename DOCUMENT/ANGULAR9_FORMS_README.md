@@ -830,6 +830,8 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class FormComponent implements OnInit{
   
   myForm: FromGroup; //same form name as tempate form name 
+
+ 
   constructor(private formBulder: FormBulder){
   	this.myForm = formbuilder.group({
   		emailField: ['', Validators.requried],
@@ -1029,6 +1031,15 @@ export class FormComponent implements OnInit{
   }
 }
 ```
+
+
+### Form Status Changes 
+* FromControl, FormGroup and FormArray has statusChanges()
+	* Observable statusChanges()
+	* we need to Subscribe to Observable to read value changes 
+	* statusChanges is a property in AbstractControl
+	* statusChanges it will emit the event 
+
 
 
 
