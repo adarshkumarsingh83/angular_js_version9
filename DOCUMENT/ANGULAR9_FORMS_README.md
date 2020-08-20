@@ -608,3 +608,151 @@ export class FormComponent implements OnInit{
   }
 }
 ```
+---
+
+### From Group Get Value 
+
+* project/src/app/form/form.component.html
+```
+<div>
+    <h1>ESPARK ANGULARJS REACTIVE FORM COMPONENT</h1>
+    <form  [formGroup]="myForm" (ngSubmit)="postData()">
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="emailField">
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	     <span *ngIf="myForm.get('emailField').touched && myForm.get('emailField').haserror('required')"> Enter the Email </span>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pwdField">
+	    <span *ngIf="myForm.get('pwdField').touched && myForm.get('pwdField').haserror('required')"> Enter the Password </span>
+	  </div>
+	  <div class="form-group form-check">
+	    <input type="checkbox" class="form-check-input" id="termCheck1" formControlName="termField">
+	    <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
+	  </div>
+	  <button type="submit" class="btn btn-primary" >Submit</button>
+   </form>
+</div>
+```
+
+* project/src/app/form/form.component.ts
+
+```
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+
+@Component({
+  selector: 'app-form-view'
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class FormComponent implements OnInit{
+  
+  myForm: FromGroup; //same form name as tempate form name 
+  constructor(private formBulder: FormBulder){
+  	this.myForm = formbuilder.group({
+  		emailField: ['', Validators.requried],
+        pwdField: ['', Validators.requried],
+        termField: ['', Validators.requriedTrue]
+  	})
+  }
+
+  postData(){
+  	 console.log(this.myForm);
+  	 console.log(this.myForm.value);
+  	 console.log(this.myForm.value.emailField);
+  	 console.log(this.myForm.value.pwdField);
+  	 console.log(this.myForm.value.termField);
+
+
+  }
+
+  ngOnInit():void{
+
+  }
+}
+```
+
+### From Group Set Value 
+* Form Group setValue()
+	* set value for all the fields in the form 
+```
+
+  ngOnInit():void{
+     this.myForm.setValue(
+
+     	{
+          emailField: 'adarsh@kumar',
+          pwdField: 'xxxx'
+          term: false;
+      	}
+     );
+  }
+```
+* From Group pathValue()
+	* set value for partial fields in the form 
+```
+  ngOnInit():void{
+     this.myForm.patchValue(
+     	{
+          emailField: 'adarsh@kumar',
+          pwdField: 'xxxx'
+      	}
+     );
+  }
+```
+
+* project/src/app/form/form.component.ts
+
+```
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+
+@Component({
+  selector: 'app-form-view'
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class FormComponent implements OnInit{
+  
+  myForm: FromGroup; //same form name as tempate form name 
+  constructor(private formBulder: FormBulder){
+  	this.myForm = formbuilder.group({
+  		emailField: ['', Validators.requried],
+        pwdField: ['', Validators.requried],
+        termField: ['', Validators.requriedTrue]
+  	})
+  }
+
+  postData(){
+  	 console.log(this.myForm);
+  	 console.log(this.myForm.value);
+  	 console.log(this.myForm.value.emailField);
+  	 console.log(this.myForm.value.pwdField);
+  	 console.log(this.myForm.value.termField);
+  }
+
+
+  ngOnInit():void{
+     this.myForm.setValue(
+
+     	{
+          emailField: 'adarsh@kumar',
+          pwdField: 'xxxx'
+          term: false;
+      	}
+     );
+
+      // or 
+
+     this.myForm.patchValue(
+     	{
+          emailField: 'adarsh@kumar',
+          pwdField: 'xxxx'
+      	}
+     );
+  }
+}
+```
