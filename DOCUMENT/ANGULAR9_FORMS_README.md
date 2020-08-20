@@ -856,3 +856,26 @@ export class FormComponent implements OnInit{
 }
 ```
 
+---
+
+### Value Changes in Form Group 
+* FormControl FormGroup FormArray 
+	* Observable valueChnages()
+	* we need to Subscribe to Observable to read value changes 
+	* valueChanges is a property in AbstractControl
+	* valueChange it will emit the event 
+
+* Individual Form Control 
+```
+   this.formName.get('email').valueChanges.subscribe(data => {
+   	 Console.log(data);
+   	})
+```
+* Entrire Form Conrol 
+```
+  this.formName.valueChanges.subscribe(data => {
+  	  Console.log(data);
+  })
+
+```
+
