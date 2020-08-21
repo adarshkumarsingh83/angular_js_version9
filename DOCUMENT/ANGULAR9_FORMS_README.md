@@ -1315,12 +1315,13 @@ export class FormComponent implements OnInit{
 }
 ```
 
-## Add Dynamic Row to the FormArrays 
-* Dynamically adding rows to the form 
+## Add / Remove Dynamic Row to the FormArrays 
+* Dynamically adding/removing  rows to the form 
 * FormArray 
 	* From Group
 	* Form Control 
 
+### Aadding Row to the from 
 * project/src/app/form/form.component.html
 ```
 <div>
@@ -1337,6 +1338,7 @@ export class FormComponent implements OnInit{
 	    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pwdField">
 	    <span *ngIf="myForm.get('pwdField').touched && myForm.get('pwdField').haserror('required')"> Enter the Password </span>
 	  </div>
+
 	  <div class="form-group form-check">
 	    <input type="checkbox" class="form-check-input" id="termCheck1" formControlName="termField">
 	    <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
@@ -1436,6 +1438,31 @@ export class FormComponent implements OnInit{
 }
 
 
+```
+
+### Removing Row to the from 
+* using indexAt() we can point to the items we want to remove or hide or fredge 
+* in form.component.html 
+```
+  <div>
+    <label > items</lable>
+    <div formArrayName="itesm">
+       <div *ngFor" let items of myForm.conrols.items['conrols']; let i=index" [forGroupName]="i">
+         <a (click)="removeItem(i)">remove Row</a>
+          <input type"text"  formConrolName="itemId" id="task{{i}}" >
+          <input type"text"  formConrolName="itemName" id="task{{i}}" >
+          <input type"text"  formConrolName="itemDesc" id="task{{i}}" >
+          <input type="checkbox" formConrolName="iemDone"> 
+       </div>
+    </idv>
+  </div>
+```
+* form.component.ts 
+```
+ removeItem(index){
+ 	const arrayItem = this.items.length;
+ 	this.items.removeAt(index);
+ }
 ```
 
 
