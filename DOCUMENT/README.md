@@ -13,8 +13,13 @@
 ### To Create Angular Project 
 * ng new <'project-name'>
 ```
-$ want routing configuration in prject y/n
-$ select the type of css => SCCS 
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? 
+  CSS 
+❯ SCSS   [ https://sass-lang.com/documentation/syntax#scss                ] 
+  Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ] 
+  Less   [ http://lesscss.org                                             ] 
+  Stylus [ http://stylus-lang.com                                         ] 
 ```
 ### To Execute the Angular project
 * $ ng serve 
@@ -34,12 +39,18 @@ $ select the type of css => SCCS
 
 ### import the boot srap in angularjs application 
 * project/src/app/app.component.html which is starting point for the angular  
+* NOTE: clean the file and only leave the "<router-outlet></router-outlet>"
 ```
-clean the file and only leave the <router-outlet></project-name>router-outlet> tag 
-add the custom tag <h1 class="display-1"> WELCOME TO ESPARK</h1>
+<div>
+  <h1 class="display-1"> welcome to espark</h1>
+</div>
+<router-outlet></router-outlet>
 ```
-* @import '~bootstrap/dist/css/bootstrap.min.css'; has to be added into the  project/src/style.cass 
 
+*  project/src/style.cass  bootstrap has to be added into the 
+```
+   @import '~bootstrap/dist/css/bootstrap.min.css';
+```
 
 ---
 
