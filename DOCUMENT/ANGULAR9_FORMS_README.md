@@ -1221,6 +1221,99 @@ export class FormComponent implements OnInit{
 ```
 ---
 
+## Form Array (Dynamic Element Form )
+* for dynamic itesm which are render inot the form 
+* group mulitple conrtol and form into the group 
+* dynamically add or remove row into the form array via grom group 
+* FormArray  aggregte the value of hee child formControll into an array 
+* stat of FormArray is calculated by reducing the status of its child 
+* entire array will be invalid if any control is invalid 
+* Props and method of array 
+	* myArray.value
+	* myArray.status 
+	* myArray.length
+	* myArray.setValue(['name','lastName'])
+	* myArray.patchValue(['name','lastName'])
+	* myArray.reset(['name,'lastName'])
+	* myArray.clear()
+
+
+* project/src/app/form/form.component.ts
+```
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+
+@Component({
+  selector: 'app-form-view'
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class FormComponent implements OnInit{
+  
+  myForm: FromGroup; //same form name as tempate form name 
+  emailValue='';
+  pwdValue='';
+
+  constructor(private formBulder: FormBulder){
+  	this.myForm = formbuilder.group({
+  		emailField: ['', Validators.requried],
+        pwdField: ['', Validators.requried],
+        termField: ['', Validators.requriedTrue],
+        items: this.formBuilder.array([
+        	      this.formBuilder.group({
+        	      	     itemId: ['1'],
+        	      	     itemName: ['ABC'],
+        	      	     itemDesc: ['help'],
+        	      	     itemDone: ['',Validators.requiredTrue]
+        	      	}),
+        	      	this.formBuilder.group({
+        	      	     taskId: ['1'],
+        	      	     taskName: ['ABC'],
+        	      	     taskDesc: ['help'],
+        	      	     taskDone: ['',Validators.requiredTrue]
+        	      	})
+           
+        	])
+  	})
+  }
+
+  postData(){
+  	 console.log(this.myForm);
+  	 console.log(this.myForm.value);
+  	 console.log(this.myForm.value.emailField);
+  	 console.log(this.myForm.value.pwdField);
+  	 console.log(this.myForm.value.termField);
+  }
+
+
+  ngOnInit():void{ 
+  	this.myForm.statusChanges.subscribe(data =>{
+  		   Console.log(data);
+  		   this.emailValue = data.emailField;
+  		   this.pwdValue = data.pwdField;
+  	})
+
+    // get value from aray  
+  	Console.log(this.myForm.get('items').value.length);
+  	Console.log(this.myForm.get('items').value);
+  	const itemsValue = this.myForm.get('items').value;
+  	Console.log(itemsValue[0].itemId)
+  	Console.log(itemsValue[0].itemName)
+
+    //resetting the items 
+  	this.myForm.get('items').reset();
+
+  	// set a value for arrays
+  	this.myForm.get('items').setValue([{
+  		itemId: ['100'],
+  		itemName: ['espark'],
+  		itemDesc: ['sample'],
+  		itemDone: ['',Validators.requiredTrue]
+  		}]);
+  	
+  }
+}
+```
 
 
 
