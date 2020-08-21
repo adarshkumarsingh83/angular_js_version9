@@ -1,27 +1,42 @@
-# AngularComponent
+# Angular Component 
+> basic angularjs component example 
+---
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
+### To Create project 
+* $ ng new angular-component
 
-## Development server
+### To install bootsrap 
+* $ npm i bootstrap --save
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### To Create Basic Component inside the app module 
+* $ cd src/app/   
+* $ ng generate component wish
+```
+CREATE src/app/wish/wish.component.scss (0 bytes)
+CREATE src/app/wish/wish.component.html (19 bytes)
+CREATE src/app/wish/wish.component.spec.ts (614 bytes)
+CREATE src/app/wish/wish.component.ts (268 bytes)
+UPDATE src/app/app.module.ts (467 bytes)
+```
+* src/app/app-routing.module.ts
+* add the routes 
+```
+import { WishComponent } from './wish/wish.component';
 
-## Code scaffolding
+const routes: Routes = [
+  { path: 'wish' , component: WishComponent}
+];
+```
+* src/app/wish/wish.component.html
+```
+<div>
+    <h1 class="display-3">
+        ESPARK WISH COMPONENT
+    </h1>    
+</div>
+```
+### To execute 
+* $ ng serve
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### To hit the Wish Component 
+* http://localhost:4200/wish
