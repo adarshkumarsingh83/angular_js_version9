@@ -39,7 +39,7 @@
 
 ### import the boot srap in angularjs application 
 * project/src/app/app.component.html which is starting point for the angular  
-* NOTE: clean the file and only leave the '<router-outlet></router-outlet>''
+* NOTE: clean the file and only leave the <'router-outlet></'router-outlet>
 ```
 <div>
   <h1 class="display-1"> welcome to espark</h1>
