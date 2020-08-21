@@ -1219,6 +1219,7 @@ export class FormComponent implements OnInit{
   }
 }
 ```
+
 ---
 
 ## Form Array (Dynamic Element Form )
@@ -1441,10 +1442,6 @@ export class FormComponent implements OnInit{
 }
 ```
 
-
-
-
-
 ----
 
 ## Add / Remove Dynamic Row to the FormArrays 
@@ -1606,6 +1603,12 @@ export class FormComponent implements OnInit{
  	this.items.removeAt(index);
  }
 ```
+
+---
+
+
+	
+
 
 
 
