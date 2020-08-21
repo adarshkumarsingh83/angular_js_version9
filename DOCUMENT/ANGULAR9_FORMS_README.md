@@ -1062,7 +1062,7 @@ export class FormComponent implements OnInit{
    	})
 ```
 
-* Entrire Form Conrol 
+* Entire Form Conrol 
 ```
   this.formName.statusChanges.subscribe(data => {
   	  Console.log(data);
@@ -1147,7 +1147,7 @@ export class FormComponent implements OnInit{
 }
 ```
 
-## Example Entrire Form Conrol
+## Example Entire Form Conrol
 * project/src/app/form/form.component.html
 
 ```
@@ -1237,6 +1237,68 @@ export class FormComponent implements OnInit{
 	* myArray.reset(['name,'lastName'])
 	* myArray.clear()
 
+### Detils of Terminology 
+* Element in the form is FormConroll eg textboox checkbox button 
+* When mulitple formconroll is grouped in single unit its a FormGroup
+* From Array is collectons of FromGroups 
+
+
+### Simple For Array
+```
+
+<div fromArrayName="items">
+     <div *ngFor="let conrol of myForm.conrols.items['conrols'] let i=index;">
+         <input type="textt" [formConrolName]="i" id="itemId{{i}}"/>
+     </div>
+</div>
+
+ this.myFrom. = formBuilder.group({
+ 	   items: this.formbuilder.array([
+           new FromControl('xxx'),
+           new FormConrol('xxxx'),
+           new FormConrol('xxxx'),
+           new FormConrol('xxxx')
+ 	   	])
+ });
+```
+
+### Example Simple Form 
+
+* project/src/app/form/form.component.html
+
+```
+<div>
+    <h1>ESPARK ANGULARJS REACTIVE FORM COMPONENT</h1>
+    <form  [formGroup]="myForm" (ngSubmit)="postData()">
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="emailField">
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	     <span *ngIf="myForm.get('emailField').touched && myForm.get('emailField').haserror('required')"> Enter the Email </span>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pwdField">
+	    <span *ngIf="myForm.get('pwdField').touched && myForm.get('pwdField').haserror('required')"> Enter the Password </span>
+	  </div>
+	  <div class="form-group form-check">
+	    <input type="checkbox" class="form-check-input" id="termCheck1" formControlName="termField">
+	    <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
+	  </div>
+
+	<div fromArrayName="items">
+	     <div *ngFor="let conrol of myForm.conrols.items['conrols'] let i=index;">
+	         <input type="text" [formConrolName]="i" id="task{{i}}"/>
+	     </div>
+	</div>
+
+	  <button type="submit" class="btn btn-primary" >Submit</button>
+   </form>
+   <div>
+         {{ emailValue }} &nbsp; {{ pwdValue }}
+   </div>
+</div>
+```
 
 * project/src/app/form/form.component.ts
 ```
@@ -1259,20 +1321,103 @@ export class FormComponent implements OnInit{
   		emailField: ['', Validators.requried],
         pwdField: ['', Validators.requried],
         termField: ['', Validators.requriedTrue],
-        items: this.formBuilder.array([
-        	      this.formBuilder.group({
-        	      	     itemId: ['1'],
-        	      	     itemName: ['ABC'],
-        	      	     itemDesc: ['help'],
-        	      	     itemDone: ['',Validators.requiredTrue]
-        	      	}),
-        	      	this.formBuilder.group({
-        	      	     taskId: ['1'],
-        	      	     taskName: ['ABC'],
-        	      	     taskDesc: ['help'],
-        	      	     taskDone: ['',Validators.requiredTrue]
-        	      	})
-           
+        items: this.formbuilder.array([
+           new FromControl('xxx'),
+           new FormConrol('xxxx'),
+           new FormConrol('xxxx'),
+           new FormConrol('xxxx')
+ 	   	])
+  	})
+  }
+
+  postData(){
+  	 console.log(this.myForm);
+  	 console.log(this.myForm.value);
+  	 console.log(this.myForm.value.emailField);
+  	 console.log(this.myForm.value.pwdField);
+  	 console.log(this.myForm.value.termField);
+  }
+
+
+  ngOnInit():void{ 
+  	this.myForm.statusChanges.subscribe(data =>{
+  		   Console.log(data);
+  		   this.emailValue = data.emailField;
+  		   this.pwdValue = data.pwdField;
+  	})
+  }
+}
+```
+
+---
+
+### Example Complex Form 
+
+* project/src/app/form/form.component.html
+
+```
+<div>
+    <h1>ESPARK ANGULARJS REACTIVE FORM COMPONENT</h1>
+    <form  [formGroup]="myForm" (ngSubmit)="postData()">
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="emailField">
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	     <span *ngIf="myForm.get('emailField').touched && myForm.get('emailField').haserror('required')"> Enter the Email </span>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pwdField">
+	    <span *ngIf="myForm.get('pwdField').touched && myForm.get('pwdField').haserror('required')"> Enter the Password </span>
+	  </div>
+	  <div class="form-group form-check">
+	    <input type="checkbox" class="form-check-input" id="termCheck1" formControlName="termField">
+	    <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
+	  </div>
+
+	<div fromArrayName="items">
+	     <div *ngFor="let conrol of myForm.conrols.items['conrols'] let i=index;" [fromGroupName]="i">
+	         <input type="textt" formConrolName="itemId" id="task{{i}}"/>
+	          <input type="textt" formConrolName="itemName" id="task{{i}}"/>
+	           <input type="textt" formConrolName="itemDesc" id="task{{i}}"/>
+               <input type"checkbox" formControlName="itemDone">
+	     </div>
+	</div>
+
+	  <button type="submit" class="btn btn-primary" >Submit</button>
+   </form>
+   <div>
+         {{ emailValue }} &nbsp; {{ pwdValue }}
+   </div>
+</div>
+```
+
+* project/src/app/form/form.component.ts
+```
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+
+@Component({
+  selector: 'app-form-view'
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class FormComponent implements OnInit{
+  
+  myForm: FromGroup; //same form name as tempate form name 
+  emailValue='';
+  pwdValue='';
+
+  constructor(private formBulder: FormBulder){
+  	this.myForm = formbuilder.group({
+  		emailField: ['', Validators.requried],
+        pwdField: ['', Validators.requried],
+        termField: ['', Validators.requriedTrue],
+        items: this.formbuilder.array([
+                 itemId: [''],
+                 itemName: [''],
+                 itemDesc: [],
+                 itemDone:['',Validators.requriedTrue]
         	])
   	})
   }
@@ -1292,28 +1437,15 @@ export class FormComponent implements OnInit{
   		   this.emailValue = data.emailField;
   		   this.pwdValue = data.pwdField;
   	})
-
-    // get value from aray  
-  	Console.log(this.myForm.get('items').value.length);
-  	Console.log(this.myForm.get('items').value);
-  	const itemsValue = this.myForm.get('items').value;
-  	Console.log(itemsValue[0].itemId)
-  	Console.log(itemsValue[0].itemName)
-
-    //resetting the items 
-  	this.myForm.get('items').reset();
-
-  	// set a value for arrays
-  	this.myForm.get('items').setValue([{
-  		itemId: ['100'],
-  		itemName: ['espark'],
-  		itemDesc: ['sample'],
-  		itemDone: ['',Validators.requiredTrue]
-  		}]);
-  	
   }
 }
 ```
+
+
+
+
+
+----
 
 ## Add / Remove Dynamic Row to the FormArrays 
 * Dynamically adding/removing  rows to the form 
@@ -1343,6 +1475,16 @@ export class FormComponent implements OnInit{
 	    <input type="checkbox" class="form-check-input" id="termCheck1" formControlName="termField">
 	    <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
 	  </div>
+
+	  	<div fromArrayName="items">
+	     <div *ngFor="let conrol of myForm.conrols.items['conrols'] let i=index;" [fromGroupName]="i">
+	         <input type="textt" formConrolName="itemId" id="task{{i}}"/>
+	          <input type="textt" formConrolName="itemName" id="task{{i}}"/>
+	           <input type="textt" formConrolName="itemDesc" id="task{{i}}"/>
+               <input type"checkbox" formControlName="itemDone">
+	     </div>
+	   </div>
+
 	  <button type="submit" class="btn btn-primary" >Submit</button>
 	  <button type="button " class="btn btn-primary" (click)="addRowItem();">add row</button>
    </form>
