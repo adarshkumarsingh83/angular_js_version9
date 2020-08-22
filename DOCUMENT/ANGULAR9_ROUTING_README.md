@@ -133,7 +133,7 @@ export class AppModule { }
 
 ---
 
-## Rout configuration 
+## Route configuration 
 * Path 
 * component 
 * redirectTo
