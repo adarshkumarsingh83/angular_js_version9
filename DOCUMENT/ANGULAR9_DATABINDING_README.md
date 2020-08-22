@@ -2,7 +2,7 @@
 > Binding data from view to controller and to component class 
 ---
 
-## One Way Databinding 
+## One Way DataBinding 
 * Component To View Unidirection Binding 
 	* Interpolation 
 	* Property Binding 
@@ -12,7 +12,7 @@
 * View to Component 
 	* Event Binding Unidirection Binding 
 
-## Two Way Databinding 
+## Two Way DataBinding 
 * Component To Vew or View To Component Biidirection Binding 
 
 ----
