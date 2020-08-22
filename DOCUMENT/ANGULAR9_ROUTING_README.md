@@ -21,7 +21,7 @@
 	* /home
 	* /search 
 ---
-
+## [ANGULAR ROUTING HASHLOCATIONSTRATEGY EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-routes-hashlocationstrategy)
 * HashLocationStrategy 
 	* /#/home
 	* /#/search 
