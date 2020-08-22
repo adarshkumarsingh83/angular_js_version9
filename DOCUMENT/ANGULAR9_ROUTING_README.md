@@ -465,7 +465,7 @@ export class InvalidComponent {
 
 
 ---
-
+## [ANGULAR CHILDS ROUTES EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-routes-childroutes)
 ## Child Routes 
 
 >  child path or routes for the application views 
