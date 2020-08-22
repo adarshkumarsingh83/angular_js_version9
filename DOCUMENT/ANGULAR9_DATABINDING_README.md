@@ -55,7 +55,7 @@ export class AppComponent {
 ```
 
 ---
-
+### [ANGULAR PROPERTY BINDING EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-databinding-propertybinding)
 * Property Binding 
 	* [property]="expression"
 
