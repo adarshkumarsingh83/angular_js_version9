@@ -1,4 +1,4 @@
-# Angularjs Compoents
+# Angularjs Components
 > its a unit of the funtionality which is reusable accross application. 
 > it contains a granular level functionality 
 
