@@ -225,7 +225,7 @@ export class AppModule { }
 
 
 --- 
-
+## [ANGULAR PATHPARAM EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-routes-pathparam-routes)
 ## Paramertised Routes 
 > routes which can take param with the urls 
 
