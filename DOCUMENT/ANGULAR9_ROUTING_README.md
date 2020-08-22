@@ -263,6 +263,7 @@ export class AppRoutingModule{
 * project/src/app/wish/wish.component.ts
 ```
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-wish-view'
