@@ -124,6 +124,7 @@ export class AppComponent {
 
 ---
 
+### [ ANGULARJS EVENT BINDING EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-databinding-eventbinding)
 * Event Bindinng 
 	* <button (event_name)="function()"> xxxx </button>
 * Example 
