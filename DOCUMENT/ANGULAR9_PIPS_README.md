@@ -126,9 +126,10 @@ export class AppComponent {
   title = 'espark-basic-application';
   
   person={
-	  firstName="adarsh";
-	  lastName="kumar";	
-	  dob="09/13/1983";
+	  firstName:"adarsh",
+	  lastName:"kumar",
+	  dob:"09/13/1983",
+      salary:"1000.589",
   }
   
 }
@@ -137,7 +138,7 @@ export class AppComponent {
 
 ---
 
-## Custtom Pipe 
+## Custom Pipe 
 	* ng generate pipe <'pipe-name'> 
 	* pipe will be added to module if generated via cli otherise add it manually 
 	* import Pipe and PipeTransform from @angular/core 
