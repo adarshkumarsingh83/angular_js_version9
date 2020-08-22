@@ -1,0 +1,18 @@
+
+<div>
+  <h1> Two Way Databinding </h1>
+  <div>
+    <label> Enter the Email </label> &nbsp;
+    <input name='email' [(ngModel)]='email'/>
+  </div>
+  <div>
+    Direct Data Binding Result =>  {{email}}
+  </div>
+  
+  <button (click) = "displayEmail();"> Show Email</button>
+  <div>
+    Function call display result => {{clickEmail}}
+  </div>
+  
+</div>
+<router-outlet></router-outlet>
