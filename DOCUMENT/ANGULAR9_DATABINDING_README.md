@@ -166,6 +166,27 @@ export class AppComponent {
 	* <input [(ngModel)]='data' />
 
 * Example 
+* project/src/app/app.module.ts
+```
+
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [
+    xxx
+  ],
+  imports: [
+    FormsModule,
+    xxx,
+    xxx
+  ],
+  providers: [],
+  bootstrap: [xxx]
+})
+export class AppModule { }
+
+```
+
 * project/src/app.component.html
 ```
 <div>
