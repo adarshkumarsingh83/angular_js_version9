@@ -99,7 +99,7 @@ export class AppComponent {
 
 
 ---
-
+## [ANGULAR PIPES CHANIING EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-pipes-chaining)
 ## Pipe Chaining 
 	* using mulitple pipes in chain for data transformton 
 	* {{ dob | date | uppercase }}
