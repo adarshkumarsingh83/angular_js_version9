@@ -7,7 +7,7 @@
 
 ---
 
-## [ANGULAR CUSTOM MODULE EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-module)
+# [ANGULAR CUSTOM MODULE EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-module)
 
 * @NgModule()
 ```
