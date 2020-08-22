@@ -292,6 +292,7 @@ export class WishComponent {
 
 ---
 
+## [ANGULAR QUERYPARAM EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-routes-queryparam-routes)
 ## Query Param in Routes 
 > key value pair in the routes or url
 > http://espark.com/show?name=adarsh&messge=welcome
