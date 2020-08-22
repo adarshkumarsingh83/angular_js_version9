@@ -177,9 +177,11 @@ export class AppComponent {
   title = 'espark-basic-application';
   
   person={
-	  firstName="adarsh";
-	  lastName="kumar";	
-	  city="dallas";
+	  firstName:"adarsh",
+	  lastName:"kumar",
+	  dob:"09/13/1983",
+     salary:"1000.589",
+    city: "dallas",
   }
   
 }
@@ -199,34 +201,33 @@ export class AppComponent {
 * Example 
 * $ ng generate pipe hightlight
 
-* project/src/app/highlightpip.ts
+* project/src/app/highlightcolor.ts
 ```
-import {Pipe,PipeTransform} from '@angular/core';
-import { DomSanitizer} from '@angular/platform-browser';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser'
 
-@Pipe(
-      {
-      	name:'hightlight'
-      }
-	)
-export class HighlightPipe implements PipeTransform{
+@Pipe({
+  name: 'highlightcolor'
+})
+export class HighlightcolorPipe implements PipeTransform {
 
-	constructor(private sanitizeer: DomSanitizer){
+  constructor(private sanitizer : DomSanitizer){
 
-	}
+  }
 
-	transform(value: string, city: string): string{
-         return this.sanitizeer.bypassSecurityTrustHtml('<div style="backgroud-color:yellow">'+city+'<div>');
-	}
+  transform(value: string, city: string): any {
+    return  this.sanitizer.bypassSecurityTrustHtml(`<div style='background-color:yellow'>${city}</div>`);     
+  }
+
 }
 ```
 
 * project/src/app.component.html
 ```
 <div>
-    <h1>{{ person.firstName }}</h1>
-     <h1>{{ person.lastName }}</h1>
-     <div [innerHTML]="person.city | highlight:person.city"></div> 
+  <h3>{{ person.firstName }}</h3>
+   <h3>{{ person.lastName }}</h3>
+   <div [innerHTML]="person.city | highlightcolor: person.city"> </div>
 </div>
 ```
 
@@ -241,11 +242,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'espark-basic-application';
-  
+ 
   person={
-	  firstName="adarsh";
-	  lastName="kumar";	
-	  city="dallas";
+	  firstName:"adarsh",
+	  lastName:"kumar",
+	  dob:"09/13/1983",
+    salary:"1000.589",
+    city: "dallas",
   }
   
 }

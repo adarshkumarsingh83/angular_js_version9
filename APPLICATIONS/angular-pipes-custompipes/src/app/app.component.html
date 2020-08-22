@@ -1,0 +1,14 @@
+<div>
+  <h3>{{ person.firstName }}</h3>
+   <h3>{{ person.lastName }}</h3>
+   <h3>{{ person.city | highlight: person.city }}</h3>
+</div>
+
+<div>
+  <h3>{{ person.firstName }}</h3>
+   <h3>{{ person.lastName }}</h3>
+   <div [innerHTML]="person.city | highlightcolor: person.city"> </div>
+</div>
+
+
+<router-outlet></router-outlet>
