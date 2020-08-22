@@ -54,6 +54,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 export class AppModule { }
 ```
 * now the application will show has url http://localhost:4200/#/
+* now the application will show invalid url http://localhost:4200/#/ESPARK
 * $ ng serve
 
 ---
@@ -419,7 +420,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { InvalidComponent } from './invalid/invlaid.component';
 
 const routes: Routes =[
-     { path: '' ,redirectTo: 'home' , pathMach: 'full' }
+     { path: '' ,redirectTo: '' , pathMach: 'full' }
      { path: '**' ,component: InvalidComponent }
 ]
 
