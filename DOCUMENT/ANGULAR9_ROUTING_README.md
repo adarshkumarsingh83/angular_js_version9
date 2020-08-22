@@ -37,7 +37,7 @@ $ select the type of css => SCCS
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { LocationStrategy, MashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { LocationStrategy, MashLocationStrategy } from '@angular/common';
     BrowserModule
   ],
   providers: [
-    { provide: LocationStrategy, useClass: MashLocationStrategy} // adding hashrouting strategy 
+    { provide: LocationStrategy, useClass: HashLocationStrategy} // adding hashrouting strategy 
   ],
   bootstrap: [AppComponent]
 })
