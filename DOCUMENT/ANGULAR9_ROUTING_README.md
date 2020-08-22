@@ -69,6 +69,7 @@ export class AppModule { }
 
 ---
 
+## [ANGULAR ROUTING MODULE EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-routes-modules)
 ## Routing Modules 
 > module to hold all the routing configuration into one single module 
 * We can generate app routing module 
