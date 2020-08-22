@@ -132,14 +132,15 @@ export class AppModule { }
 ```
 
 ---
-
+## [ANGULAR ROUTES CONFIGURAION EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-routes-multi-componentroutes)
 ## Route configuration 
 * Path 
 * component 
 * redirectTo
 * children 
 
-* ng g component wish 
+* To Generate Wish Compoenet 
+  * ng g component wish 
 * project/src/app/wish/wish.component.html
 ```
 <div>
