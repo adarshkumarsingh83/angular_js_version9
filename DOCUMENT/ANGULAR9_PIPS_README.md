@@ -50,7 +50,7 @@
      <h1>{{ person.salary | currency:'INR':'INR':'3.1-1' }}</h1>
 
 
-     <h1>{{ person | JSON }}</h1>
+     <h1>{{ person | json }}</h1>
 </div>
 ```
 
@@ -67,10 +67,10 @@ export class AppComponent {
   title = 'espark-basic-application';
   
   person={
-	  firstName="adarsh";
-	  lastName="kumar";	
-	  dob="09/13/1983";
-	  salary="1000.589";
+	  firstName:"adarsh",
+	  lastName:"kumar",
+	  dob:"09/13/1983",
+      salary:"1000.589",
   }
   
 }

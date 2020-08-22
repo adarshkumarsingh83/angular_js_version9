@@ -1,0 +1,21 @@
+<div>
+  <h1> Angular built in pipe Example </h1>
+
+  <h3>lowercase pipe => {{ person.firstName | lowercase}}</h3>
+   <h3>uppercase pip => {{ person.lastName | uppercase}}</h3>
+   
+   <h3>date pipe => {{ person.dob | date }}</h3>
+   <h3>date pipe => {{ person.dob | date: 'MMM dd'}}</h3>
+   
+   <h3>currency pipe => {{ person.salary | currency }}</h3>
+   <h3>currency pipe => {{ person.salary | currency:'USD' }}</h3>
+   <h3>currency pipe => {{ person.salary | currency:'USD':'code' }}</h3>
+   <h3>currency pipe => {{ person.salary | currency:'INR' }}</h3>
+   <h3>currency pipe => {{ person.salary | currency:'INR':'code' }}</h3>
+   <h3>currency pipe => {{ person.salary | currency:'INR':'INR':'3.0-0' }}</h3>
+   <h3>currency pipe => {{ person.salary | currency:'INR':'INR':'3.1-1' }}</h3>
+
+
+   <h3>json  pipe => {{ person | json }}</h3>
+</div>
+<router-outlet></router-outlet>
