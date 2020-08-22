@@ -92,7 +92,7 @@ export class AppComponent {
 
 ---
 
-* Attrivute Binding
+* Attribute Binding
 	* [attr.attribute_name]="'expression'"
 
 * Example 	
