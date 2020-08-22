@@ -157,7 +157,9 @@ export class AppComponent {
 ```
 ---
 
+
 ## Two Way Databinding 
+### [ANGULARJS BIDIRECTIONAL DATABINDING EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-databinding-bidirectional)
 * it allow to bind events of elements from view  to component and vice versa 
 * bidirectional data flow 
 	* [(ngModel)] is used for data binding and 
