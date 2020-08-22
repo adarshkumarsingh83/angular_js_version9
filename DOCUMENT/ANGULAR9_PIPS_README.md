@@ -137,6 +137,7 @@ export class AppComponent {
 ```
 
 ---
+## [ANGULAR CUSTOM PIPES EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-pipes-custompipes)
 
 ## Custom Pipe 
 	* ng generate pipe <'pipe-name'> 
@@ -197,7 +198,9 @@ export class AppComponent {
 </div>
 ```
 
+---
 
+## [ANGULAR CUSTOM PIPES EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-pipes-custompipes)
 * Example 
 * $ ng generate pipe hightlight
 
