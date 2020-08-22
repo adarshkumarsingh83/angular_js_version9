@@ -1,27 +1,54 @@
 # EsparkBasicApplication
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
+### To Create new app 
+* $ ng new espark-basic-application
+```
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? 
+  CSS 
+❯ SCSS   [ https://sass-lang.com/documentation/syntax#scss                ] 
+  Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ] 
+  Less   [ http://lesscss.org                                             ] 
+  Stylus [ http://stylus-lang.com                                         ] 
+```
 
-## Development server
+* $ cd espark-basic-application/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### To Execute the Angular project
+* $ ng serve 
+* $ ng serve --port=<4300>
 
-## Code scaffolding
+### To access the application 
+* http://localhost:4200
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### To Stop Server 
+* crt + c
 
-## Build
+# Bootstrap in angularjs 
+### installation to angularjs 
+* $ npm i bootstrap --save
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### import the boot srap in angularjs application 
+* project/src/app/app.component.html which is starting point for the angular  
+* NOTE: clean the file and only leave the <'router-outlet></'router-outlet>
+```
+<div>
+  <h1 class="display-1"> welcome to espark</h1>
+</div>
+<router-outlet></router-outlet>
+```
 
-## Running unit tests
+*  project/src/style.cass  bootstrap has to be added into the 
+```
+   @import '~bootstrap/dist/css/bootstrap.min.css';
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### To Execute the Angular project
+* $ ng serve 
+* $ ng serve --port=<4300>
+	
+### To access the application 
+* http://localhost:4200
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### To Stop Server 
+* crt + c
