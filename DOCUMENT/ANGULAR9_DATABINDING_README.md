@@ -20,7 +20,7 @@
 ### Component To View Unidirection Binding 
 	
 ---
-
+### [ANGULAR INTERPOLATION DATA BINDING](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-databinding-interpolation)
 * Interpolation 
 	* bindign data from component to view 
 	* we use {{ xxx }}
