@@ -30,7 +30,7 @@
     
 ```
         "styles":[
-         	"scr/styles.scess",
+            "src/styles.scss",
          	"node_modules/bootstrap/dist/css/bootstrap.min.css"
         ],
         "scripts":[
