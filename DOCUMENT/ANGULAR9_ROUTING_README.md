@@ -551,7 +551,7 @@ export class MessageComponent {
 
 ---
 
-## [ANGULAR LAZY LOADIN MODULE EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-routes-lazyloading)
+## [ANGULAR LAZY LOADING MODULE EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-routes-lazyloading)
 ## Lazy Loading 
 > by default NgModule is earger loading which loads every things as soon as app started \
 > loadChildren is solution for this problem 
