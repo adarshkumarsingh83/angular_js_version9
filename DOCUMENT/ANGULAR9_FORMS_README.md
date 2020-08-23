@@ -9,6 +9,8 @@
 	* find link for Js 
 	* Copy link for CSS & JS in the project/src/index.html
 	* use bootstrap component into the applcation 
+
+
 * From Npm 
 	* Install bootstrap 
 		* npm i bootstrap@3 --save 
