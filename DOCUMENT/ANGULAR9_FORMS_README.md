@@ -10,16 +10,16 @@
 	* Copy link for CSS & JS in the project/src/index.html
 	* use bootstrap component into the applcation 
 
-
+### [ANGULAR BOOTSTRAP NPM EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-form-bootstrap-npm)
 * From Npm 
 	* Install bootstrap 
 		* npm i bootstrap@3 --save 
 		* import bootstrap style and script we have to do manually otherwise it will not work
 	* Install using npm in single command 
 		* latest version 
-			* npm i boostrap jquery propper --save 
+			* npm i bootstrap jquery propper --save 
 		* To specific version 
-			* npm i boostrap@x jquery@x propper@x --save 
+			* npm i bootstrap@x jquery@x propper@x --save 
 
 * NOTE IMPORT THE PATH 
 * project/angular.json tag where we have to add path for importing 
