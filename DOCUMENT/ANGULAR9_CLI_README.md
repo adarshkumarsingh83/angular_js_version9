@@ -7,6 +7,12 @@
 ### To Generate Angular project 
 * ng new <'application-name'>
 
+### To Generate Module 
+* $ ng generate module <'module-name'> --route <'route-name'> --module <'parent-module-name'>
+
+### To Generate the routs 
+* ng generate module <'module-name'> --flat-module=app
+
 
 ### To Generate Component/Modules/Service/Router/Directive/Pipes/Decorator
 * ng generate component <'component-name'> or ng g c <'component-name'>
