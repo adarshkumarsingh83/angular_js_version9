@@ -584,7 +584,7 @@ export class AppRoutingModule{
 	* http://localhost:4200/wish
 
 ---
-## [ANGULAR ROUTE GOURAD EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-routes-routeguard)
+## [ANGULAR ROUTE GUARD EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-routes-routeguard)
 ## Routes Guard
 >  prevent free navigation on the routes only based on \
 >  authentication and auth navigation is allowed 
