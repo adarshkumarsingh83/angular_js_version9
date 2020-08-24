@@ -330,8 +330,9 @@ export class AppRoutingModule{
 ```
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
 
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -340,24 +341,25 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule { }
 ```
 
 * create a form in the html 
 * assigne a form group to the form  [formGroup]="myForm"
 * project/src/app/form/form.component.html
 ```
-<div>
-    <h1>ESPARK ANGULARJS REACTIVE FORM COMPONENT</h1>
-    <form  [formGroup]="myForm" (ngSubmit)="postData()">
+<form  [formGroup]="myForm" (ngSubmit)="postData()">
+    <div class="form-group">
+	    <label for="exampleInputName">Name</label>
+	    <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" formControlName="nameField">
+	    <small id="nameHelp" class="form-text text-muted">We'll never share your Name with anyone else.</small>
+	  </div>
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">Email address</label>
 	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="emailField">
@@ -373,7 +375,9 @@ export class AppModule {
 	  </div>
 	  <button type="submit" class="btn btn-primary">Submit</button>
    </form>
-</div>
+   <h3 class="display-5">
+    {{data | json }}
+  </h3>
 
 ```
 
@@ -392,22 +396,26 @@ export class FormComponent implements OnInit{
   
   myForm: FromGroup; //same form name as tempate form name 
 
-
-  constructor(private formBulder: FormBulder){
-  	this.myForm = formbuilder.group({
-  		emailField: new FormControl(),
-        pwdField: new FormControl(),
-        termField: new FormControl() 
-  	})
+  constructor(private formBuilder: FormBuilder){
+    this.myForm = formBuilder.group({
+      nameField: new FormControl(),
+      emailField: new FormControl(),
+      pwdField: new FormControl(),
+      termField: new FormControl()
+    })
   }
-
+  
+  data;
   postData(){
-  	 console.log(this.myForm);
-  	 console.log(this.myForm.value);
-  	 console.log(this.myForm.value.emailField);
-  	 console.log(this.myForm.value.pwdField);
-  	 console.log(this.myForm.value.termField);
-  }
+    console.log(this.myForm);
+    console.log(this.myForm.value);
+    console.log(this.myForm.value.nameField);
+    console.log(this.myForm.value.emailField);
+    console.log(this.myForm.value.pwdField);
+    console.log(this.myForm.value.termField);
+    this.data = { "name": this.myForm.value.nameField,"email": this.myForm.value.emailField,"pwd": this.myForm.value.pwdField, "term": this.myForm.value.termField}
+    console.log(this.data);
+ }
 
   ngOnInit():void{
 
