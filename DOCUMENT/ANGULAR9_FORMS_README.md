@@ -232,10 +232,8 @@ input.ng-invalid.ng-touched{
 }
 ```
 
-
-## [ANGULAR FORM VALIDATION DISABLING SUBMIT BUTTON EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-form-validation-disablingformsubmit)
-
 ### Example Disabling the submit button 
+## [ANGULAR FORM VALIDATION DISABLING SUBMIT BUTTON EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-form-validation-disablingformsubmit)
 
 * 
 * project/src/app/form/form.component.html
