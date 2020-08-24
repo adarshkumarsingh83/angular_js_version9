@@ -264,6 +264,7 @@ input.ng-invalid.ng-touched{
 
 ```
 
+## [ANGULAR INLINE VALIDATION ERROS EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-form-validation-inlineerrors)
 ### Example Show Hidden inline error msg 
 
 * project/src/app/form/form.component.html
