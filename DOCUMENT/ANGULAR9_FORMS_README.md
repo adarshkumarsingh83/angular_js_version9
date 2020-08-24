@@ -186,9 +186,10 @@ export class FormComponent implements OnInit{
 
 * Highlight the erros 
  ```
-  input.ng-invalid.ng-touched{
-  	background-color:red
-  }	
+input.ng-invalid.ng-touched{
+    background-color: gold;
+    border: 1px solid red;
+}
  ``` 
 * Disabling the submit button 
 	* [disabled]="!formName.valid"
@@ -224,9 +225,10 @@ export class FormComponent implements OnInit{
 
 * project/src/app/form/form.component.scss
 ```
- input.ng-touched.ng-invalid{
- 	border:ipx solid red;
- }
+input.ng-invalid.ng-touched{
+    background-color: gold;
+    border: 1px solid red;
+}
 ```
 
 
