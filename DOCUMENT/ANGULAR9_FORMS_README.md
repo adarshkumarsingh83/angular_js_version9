@@ -312,7 +312,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormComponent } from './form/form.component';
 
 const routes: Routes =[
-     { path: '' ,redirectTo: 'rnroll' , pathMach: 'full' },
+     { path: '' ,redirectTo: '' , pathMach: 'full' },
      { path: 'form' , component: FormComponent},
      { path: '**' ,redirectTo: 'rnroll' , pathMach: 'full' }
 ]
@@ -428,69 +428,124 @@ export class FormComponent implements OnInit{
 ---
 
 ### Validaton on Reactive Form 
-* Highlight the erros 
- ```
-  input.ng-invalid.ng-touched{
-  	background-color:red
-  }	
 
-  this.myForm = formbuilder.group({
-  		emailField: [", Validators.requried],
-        pwdField: [", Validators.minLength(5),
-        			   Validators.maxLength(20),
-        			   Validators.parttern('^[a-zA-Z]+$'),
-                      Validators.requried],
-        termField: new FormControl() 
-  	})
+
+
+* Highlight the erros 
+	*  add the css for error highliht 
+		* src/app/form/form.component.scss
+	```
+	input.ng-invalid.ng-touched{
+	    background-color: gold;
+	    border: 1px solid red;
+	}
+	```
+	* Add the requestt and form valdiation code 
+		* src/app/form/form.component.ts
+ ```
+
+  constructor(private formBuilder: FormBuilder){
+    this.myForm = formBuilder.group({
+      nameField: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
+      emailField: ['', Validators.required],
+      pwdField: ['', Validators.required, Validators.minLength(5),Validators.maxLength(20)],
+      termField: new FormControl()
+    })
+  }
+
  ``` 
+
+---
+
 * Disabling the submit button 
 	* [disabled]="!formName.valid"
 * Show Hidden inline error msg 
 	* <span *ngIf="myForm.get('name').hasErros('required')"> plese ener name</span>
 
 ### Example Highlight the erros 
+
+* add the form template 
+	* src/app/form/form.component.html
+```
+<div class="container">
+    <div class="alert alert-primary" role="alert">
+      <h4 class="display-5">WELCOME TO REACTIVE FORM MODULE</h4>
+    </div>
+  
+    <form  [formGroup]="myForm" (ngSubmit)="postData()">
+      <div class="form-group">
+          <label for="exampleInputName">Name</label>
+          <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" formControlName="nameField">
+          <small id="nameHelp" class="form-text text-muted">We'll never share your Name with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="emailField">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pwdField">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="termCheck1" formControlName="termField">
+          <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+     </form>
+     <h3 class="display-5">
+      {{data | json }}
+    </h3>
+  </div>
+```
+
 * project/src/app/form/form.component.scss
 ```
- input.ng-touched.ng-invalid{
- 	border:ipx solid red;
- }
+input.ng-invalid.ng-touched{
+    background-color: gold;
+    border: 1px solid red;
+}
 ```
 * project/src/app/form/form.component.ts
 
 ```
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'; 
 
 @Component({
-  selector: 'app-form-view'
+  selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit{
+export class FormComponent implements OnInit {
+
+  myForm: FormGroup; //same form name as tempate form name
+
+  constructor(private formBuilder: FormBuilder){
+    this.myForm = formBuilder.group({
+      nameField: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
+      emailField: ['', Validators.required],
+      pwdField: ['', Validators.required, Validators.minLength(5),Validators.maxLength(20)],
+      termField: new FormControl()
+    })
+  }
   
-  myForm: FromGroup; //same form name as tempate form name 
-
-
-  constructor(private formBulder: FormBulder){
-  	this.myForm = formbuilder.group({
-  		emailField: ['', Validators.requried],
-        pwdField: ['', Validators.requried],
-        termField: ['', Validators.requriedTrue]
-  	})
-  }
-
+  data;
   postData(){
-  	 console.log(this.myForm);
-  	 console.log(this.myForm.value);
-  	 console.log(this.myForm.value.emailField);
-  	 console.log(this.myForm.value.pwdField);
-  	 console.log(this.myForm.value.termField);
-  }
+    console.log(this.myForm);
+    console.log(this.myForm.value);
+    console.log(this.myForm.value.nameField);
+    console.log(this.myForm.value.emailField);
+    console.log(this.myForm.value.pwdField);
+    console.log(this.myForm.value.termField);
+    this.data = { "name": this.myForm.value.nameField,"email": this.myForm.value.emailField,"pwd": this.myForm.value.pwdField, "term": this.myForm.value.termField}
+    console.log(this.data);
+ }
 
-  ngOnInit():void{
-
+  ngOnInit(): void {
   }
 }
+
 ```
 
 ### Example Disabling the submit button 
