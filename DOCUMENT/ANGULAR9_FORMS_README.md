@@ -527,7 +527,7 @@ export class FormComponent implements OnInit {
       nameField: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
       emailField: ['', Validators.required],
       pwdField: ['', Validators.required, Validators.minLength(5),Validators.maxLength(20)],
-      termField: new FormControl()
+      termField: ['', Validators.requiredTrue]
     })
   }
   
@@ -550,6 +550,7 @@ export class FormComponent implements OnInit {
 ```
 
 ### Example Disabling the submit button 
+### [ANGULARJS DISABLING FORM SUBMIT BUTTON EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-reactivefrom-validation-disablingsubmit)
 
 * project/src/app/form/form.component.html
 ```
