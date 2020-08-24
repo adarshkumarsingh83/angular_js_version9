@@ -275,12 +275,13 @@ input.ng-invalid.ng-touched{
     <form #signInForm="ngForm" (ngSubmit)="savaData(signInForm)" >
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">Email address</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailField" ngModel required #emailField="ngModel">
-	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailError" name="emailField" ngModel required #emailField="ngModel">
+	    <small id="emailError" class="form-text text-muted" *ngIf="emailField.touched && !emailField.valid">Ener the Email Field Value </small>
 	  </div>
 	  <div class="form-group">
 	    <label for="exampleInputPassword1">Password</label>
-	    <input type="password" class="form-control" id="exampleInputPassword1" name="passwordField" ngModel required #passwordField="ngModel">
+	    <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="pwdError" name="passwordField" ngModel required #passwordField="ngModel">
+ 		<small id="pwdError" class="form-text text-muted" *ngIf="passwordField.touched && !passwordField.valid">Ener the Pwd Field Value </small>
 	  </div>
 	  <div class="form-group form-check">
 	    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField" ngModel required #termsField="ngModel">
