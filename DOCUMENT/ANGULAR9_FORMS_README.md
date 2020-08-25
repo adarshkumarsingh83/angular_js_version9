@@ -1154,7 +1154,7 @@ export class FormComponent implements OnInit{
   })
 
 ```
-
+## [ANGULAR INDIVIDUAL ELEMENT FORM VALIDATION STATUS CHANGES EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-reactivefrom-statuschange-individual-elements)
 ## Example Individual Form Control
 * project/src/app/form/form.component.html
 
