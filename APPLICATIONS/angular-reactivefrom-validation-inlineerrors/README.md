@@ -12,6 +12,9 @@
   Stylus [ http://stylus-lang.com                                         ] 
 ```
 
+### To Install bootstrap and proper
+* $ npm i bootstrap jquery propper --save
+
 ### Import path
 * project/angular.json
     * projects->project-name->architect->build->option->style
@@ -84,7 +87,7 @@ UPDATE src/app/app.module.ts (646 bytes)
   </div>
 ```
 
-### Add the requestt and form valdiation code 
+### Add the request and form valdiation code 
 * src/app/form/form.component.ts
 ```
 import { Component, OnInit } from '@angular/core';
