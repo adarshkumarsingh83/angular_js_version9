@@ -1334,7 +1334,7 @@ export class FormComponent implements OnInit{
 
 <div fromArrayName="items">
      <div *ngFor="let conrol of myForm.conrols.items['conrols'] let i=index;">
-         <input type="textt" [formConrolName]="i" id="itemId{{i}}"/>
+         <input type="text" [formConrolName]="i" id="itemId{{i}}"/>
      </div>
 </div>
 
@@ -1348,6 +1348,7 @@ export class FormComponent implements OnInit{
  });
 ```
 
+### [ANGULAR SIMPLE FORM ARRAY EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-reactivefrom-array-simpleform)
 ### Example Simple Form 
 
 * project/src/app/form/form.component.html
@@ -1437,7 +1438,9 @@ export class FormComponent implements OnInit{
 
 ---
 
-### Example Complex Form 
+
+### [ANGULAR COMPLEX FORM ARRAY EXAMPLE ]()
+### Example Complex Form Array
 
 * project/src/app/form/form.component.html
 
