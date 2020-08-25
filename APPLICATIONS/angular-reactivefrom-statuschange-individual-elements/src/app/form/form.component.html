@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="alert alert-primary" role="alert">
+      <h4 class="display-5">WELCOME TO REACTIVE FORM MODULE</h4>
+    </div>
+  
+    <form  [formGroup]="myForm" (ngSubmit)="postData()">
+      <div class="form-group">
+          <label for="exampleInputName">Name</label>
+          <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" formControlName="nameField">
+          <small id="nameHelp" class="form-text text-muted">We'll never share your Name with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="emailField">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pwdField">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="termCheck1" formControlName="termField">
+          <label class="form-check-label" for="exampleCheck1">Term & Condition</label>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+           &nbsp;&nbsp;
+          <button type="button " class="btn btn-primary" (click)="resetForm();">Clear</button>
+       </div>
+     </form>
+     <h3 class="display-5">
+      {{data | json }}
+    </h3>
+    <div>
+        Name Validation Status => {{ nameValue }} &nbsp;&nbsp; Email Validation Status => {{ emailValue }} &nbsp;&nbsp; Password Validation Status => {{ pwdValue }}  &nbsp;&nbsp;
+    </div>
+  </div>
