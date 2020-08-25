@@ -619,6 +619,8 @@ export class FormComponent implements OnInit{
 }
 ```
 
+### [ANGULAR INLINE FIELDS VALIDATION ERRORS EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-reactivefrom-validation-inlineerrors)
+
 ### Example Custom Field level Validation 
 
 * project/src/app/form/form.component.html
