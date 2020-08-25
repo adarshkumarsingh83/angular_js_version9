@@ -976,6 +976,7 @@ export class FormComponent implements OnInit{
 
 ```
 
+### [ANGULAR INDIVISUAL ELEMENT FORM VALUE CHANGES EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-reactivefrom-valuechange-individual-elements)
 ### Example Individual Form Control 
 
 * project/src/app/form/form.component.html
