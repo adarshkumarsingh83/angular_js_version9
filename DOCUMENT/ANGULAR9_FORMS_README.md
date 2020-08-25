@@ -464,7 +464,7 @@ export class FormComponent implements OnInit{
 
 
 ### Example Highlight the erros 
-### [ANGULAR REACTIVVE FORM HIGHLIGHT ERROR EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-reactivefrom-validation-highlighterrors)
+### [ANGULAR REACTIVE FORM HIGHLIGHT ERROR EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-reactivefrom-validation-highlighterrors)
 * add the form template 
 	* src/app/form/form.component.html
 ```
