@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="alert alert-primary" role="alert">
+      <h4 class="display-5">WELCOME TO REACTIVE FORM MODULE</h4>
+    </div>
+  
+    <form  [formGroup]="myForm" (ngSubmit)="postData()">
+      <div class="form-group">
+          <label for="nameFieldInputLabel">Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="nameFieldInput" formControlName="nameField">
+            <span id="nameHelp" *ngIf="myForm.get('nameField').touched && myForm.get('nameField').hasError('required')" >Enter the Name Value</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="emailFieldInputLabel">Email address</label>
+            <div class="col-sm-10"> 
+              <input type="email" class="form-control" id="emailFieldInput" formControlName="emailField">
+              <span *ngIf="myForm.get('emailField').touched && myForm.get('emailField').hasError('required')" >Enter the Email Value </span>
+              <span *ngIf="myForm.get('emailField').touched && myForm.get('emailField').hasError('email')" >Enter the Valid Value </span>
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="pwdFieldInputLabel">Password</label>
+            <div class="col-sm-10"> 
+              <input type="password" class="form-control" id="pwdFieldInput" formControlName="pwdField">
+              <span *ngIf="myForm.get('pwdField').touched && myForm.get('pwdField').hasError('required')" >Enter the Password Value </span>
+              <span *ngIf="myForm.get('pwdField').touched && myForm.get('pwdField').hasError('minLength')">Enter the Password Min length </span>
+              <span *ngIf="myForm.get('pwdField').touched && myForm.get('pwdField').hasError('maxLength')">Enter the Password Max length </span>
+          </div>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="termFieldCheckbox" formControlName="termField">
+          <label class="form-check-label" for="termLabel">Term & Condition</label>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+     </form>
+     <h3 class="display-5">
+      {{data | json }}
+    </h3>
+  </div>

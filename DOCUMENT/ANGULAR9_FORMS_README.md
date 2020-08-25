@@ -672,6 +672,7 @@ export class FormComponent implements OnInit{
 
 
   constructor(private formBulder: FormBulder){
+  	 // FIELD_KEY: [INITIAL_VALUE, [LIST_OF_VALIDATORS]]
   	this.myForm = formbuilder.group({
   		emailField: ['', [Validators.requried,Validators.email]],
         pwdField: ['', [Validators.requried,Validators.minLength(5),Validators.minLength(30)]],

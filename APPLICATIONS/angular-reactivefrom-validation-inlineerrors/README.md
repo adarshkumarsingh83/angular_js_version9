@@ -1,7 +1,7 @@
-# AngularReactivefromValidationDisablingsubmit
+# AngularReactivefromValidationInlineerrors
 
-### Project Generation 
-* $ ng new angular-reactivefrom-validation-disablingsubmit
+### application generation 
+* $ ng new angular-reactivefrom-validation-inlineerrors
 ```
 ? Would you like to add Angular routing? Yes
 ? Which stylesheet format would you like to use? 
@@ -11,9 +11,6 @@
   Less   [ http://lesscss.org                                             ] 
   Stylus [ http://stylus-lang.com                                         ] 
 ```
-
-### To Install bootstrap and proper
-* $ npm i bootstrap jquery propper --save
 
 ### Import path
 * project/angular.json
@@ -28,36 +25,6 @@
         "node_modules/jquery/dist/jquery.min.js",
 		"node_modules/bootstrap/dist/js/bootstrap.min.js"
     ]
-```
-
-### Add ReactiveFormsModule in
-* project/src/app/app.module.ts
-```
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { InvalidUrlComponent } from './invalid-url/invalid-url.component';
-import { FormComponent } from './form/form.component';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    InvalidUrlComponent,
-    FormComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-
 ```
 
 ### Generate invalid url component
@@ -166,6 +133,37 @@ input.ng-invalid.ng-touched{
     border: 1px solid red;
 }
 ```
+
+### Add ReactiveFormsModule in
+* project/src/app/app.module.ts
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InvalidUrlComponent } from './invalid-url/invalid-url.component';
+import { FormComponent } from './form/form.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    InvalidUrlComponent,
+    FormComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
 
 ### To add the routing 
 * src/app/app.module.ts
