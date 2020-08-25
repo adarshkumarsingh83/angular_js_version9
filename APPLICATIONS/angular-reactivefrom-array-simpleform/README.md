@@ -11,46 +11,6 @@
   Less   [ http://lesscss.org                                             ] 
   Stylus [ http://stylus-lang.com                                         ] 
 ```
-### To Install bootstrap and proper
-* $ npm i bootstrap jquery propper --save
-
-### Import path
-* project/angular.json
-    * projects->project-name->architect->build->option->style
-    * projects->project-name->architect->build->option->script
-```
-"styles":[
-     	"src/styles.scss",
-     	"node_modules/bootstrap/dist/css/bootstrap.min.css"
-    ],
-    "scripts":[
-        "node_modules/jquery/dist/jquery.min.js",
-		"node_modules/bootstrap/dist/js/bootstrap.min.js"
-    ]
-```
-
-### Generate invalid url component
-* $ ng g component InvalidUrl
-```
-? Would you like to share anonymous usage data about this project with the Angular Team at
-Google under Google’s Privacy Policy at https://policies.google.com/privacy? For more
-details and how to change this setting, see http://angular.io/analytics. No
-CREATE src/app/invalid-url/invalid-url.component.scss (0 bytes)
-CREATE src/app/invalid-url/invalid-url.component.html (26 bytes)
-CREATE src/app/invalid-url/invalid-url.component.spec.ts (657 bytes)
-CREATE src/app/invalid-url/invalid-url.component.ts (295 bytes)
-UPDATE src/app/app.module.ts (572 bytes)
-```
-
-### Generate the form component
-* $ ng g component form
-```
-CREATE src/app/form/form.component.scss (0 bytes)
-CREATE src/app/form/form.component.html (19 bytes)
-CREATE src/app/form/form.component.spec.ts (614 bytes)
-CREATE src/app/form/form.component.ts (268 bytes)
-UPDATE src/app/app.module.ts (646 bytes)
-```
 
 ### To Install bootstrap and proper
 * $ npm i bootstrap jquery propper --save
