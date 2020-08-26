@@ -159,3 +159,67 @@ export class DataComponent implements OnInit {
 </div>
 
 ```
+
+
+### Directly Invoking Service into Component Template 
+
+* src/app/data.service.ts
+```
+import { Injectable } from '@angular/core';
+
+@Injectable({
+	providedIn: 'root'
+})
+export class DataService {
+
+	constructor(){
+	}
+
+	getData(){
+		const dataList = [
+            {id: 1, name: 'adarsh kumar'},
+            {id: 2 name: 'amit kumar'},
+            {id: 3, name: 'radha singh'}
+		]
+		return dataList;
+	}
+
+	directTemplateService(){
+		console.log('invoked from component template ');
+	}
+}
+
+```	
+
+
+* src/app/data/data.component.ts
+```
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './app/data.service';
+
+@Component({
+  selector: 'app-data',
+  templateUrl: './data.component.html',
+  styleUrls: ['./data.component.scss']
+})
+export class DataComponent implements OnInit {
+
+	dataList = [] ;
+
+  constructor(public dataService: DataService){
+  }
+  
+  ngOnInit(): void {   
+  	this.dataList = this.dataService.getData();
+  }
+
+}
+```
+
+* src/app/data/data.component.html
+```
+<div>
+   <button (click)="dataService.directTemplateService()">INVOKE DIRECT SERVICE METHOD FROM TEMPLATE</button>
+</div>
+
+```
