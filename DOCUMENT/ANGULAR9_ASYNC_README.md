@@ -86,3 +86,76 @@ export class ObservableComponent implements OnInit {
 * ability to add the functionality of component at run time 
 * services are injected to the components 
 * @Injectable is used to let component know about he dependency injection 
+
+
+### Services in Angular 
+* services are reusable shared functionality 
+* its a singleton 
+* can be used to share data b/w components
+* Generate a Service using cli 
+	* we can geneerate services in any dir 
+	* ng generate service  <'service-name'>
+* Importing Service into the service to make it injectable 
+	* import { Injectable } from '@angular/core';
+* providedIn: 'root' mean it can be injectable in any of the module thorughout projct 
+
+* src/app/data.service.ts
+```
+import { Injectable } from '@angular/core';
+
+@Injectable({
+	providedIn: 'root'
+})
+export class DataService {
+
+	constructor(){
+	}
+
+	getData(){
+		const dataList = [
+            {id: 1, name: 'adarsh kumar'},
+            {id: 2 name: 'amit kumar'},
+            {id: 3, name: 'radha singh'}
+		]
+		return dataList;
+	}
+}
+
+```	
+
+
+* src/app/data/data.component.ts
+```
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './app/data.service';
+
+@Component({
+  selector: 'app-data',
+  templateUrl: './data.component.html',
+  styleUrls: ['./data.component.scss']
+})
+export class DataComponent implements OnInit {
+
+	dataList = [] ;
+
+  constructor(private dataService: DataService){
+  }
+  
+  ngOnInit(): void {   
+  	this.dataList = this.dataService.getData();
+  }
+
+}
+```
+
+* src/app/data/data.component.html
+```
+<div>
+   <ul>
+     <li *ngFor="let data of dataList">
+         {{ data.id }} &nbsp; {{ data.name }}
+     </li>
+   </ul>
+</div>
+
+```
