@@ -279,6 +279,12 @@ export class DataComponent implements OnInit {
 
 ```
 
+### Steps for HttpClient 
+* Import HttpClientMOdule in app module 
+* import Httpclient in our service 
+* inject the Httpclient in constructor of service 
+* Implmenet get/post/put/delete method 
+
 
 ### HttpClient get()
 * To read data from server 
@@ -289,11 +295,6 @@ export class DataComponent implements OnInit {
 	* get('url',options:{headers:{},params:{}})
 * Observable is reuturn from get() 
 
-### Steps 
-* Import HttpClientMOdule in app module 
-* import Httpclient in our service 
-* inject the Httpclient in constructor of service 
-* Implmenet get method 
 
 ### Example HttpClient get()
 * project/src/app/app.module.ts
@@ -386,4 +387,5 @@ export class DataComponent implements OnInit {
 --- 
 
 
-
+### HttpClient poet()
+* 
