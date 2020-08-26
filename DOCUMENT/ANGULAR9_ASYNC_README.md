@@ -901,3 +901,58 @@ const param = new HttpParams({
  });
 this.httpClient.get('localhost://espark.com/data',{params: param});
 ```
+
+---
+
+### HttpClient Interceptor 
+* it intercept the req 
+* data transformation can be done for outgoing and incoming data in next.handle(transfomredReq)
+* To Generate Interceptor using cli 
+	* ng genrate interceptor <'interceptor-name
+
+### Example 
+* project/app/logging.interceptor.ts 
+```
+
+import { Injectable } from "@angular/core";
+import { HttpEvent, HttpInterceptor, HttpHandler,HttpRequest, HttpErrorResponse} from "@angular/common/http";
+import { Observable } from "rxjs";
+@Injectable()
+export class LogginInterceptor implements HttpInterceptor {
+
+ constructor(){}
+
+ intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+       console.log(request)
+       console.log(request.url)
+      return next.handle(request);	
+ }
+}
+```
+
+* project/src/app/app.module.ts
+
+```
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingInterceptor } from './app/logging.interceptor';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```

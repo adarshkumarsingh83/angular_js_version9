@@ -51,3 +51,6 @@
 	* ng generate service  <'service-name'>
 * Importing Service 
 	* import { Injectable } from '@angular/core';
+
+### To Generate Interceptor using cli 
+* ng genrate interceptor <'interceptor-name'>
