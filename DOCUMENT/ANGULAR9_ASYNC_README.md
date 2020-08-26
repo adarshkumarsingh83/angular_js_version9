@@ -225,7 +225,7 @@ export class DataComponent implements OnInit {
 
 ---
 
-### HTTPCLIENT 
+### HttpClient 
 * client for making http request response processing 
 * its avalable in @angular/common/http pkg.
 * HttpClientModule need to be imported in app.mdoule 
@@ -239,8 +239,13 @@ export class DataComponent implements OnInit {
 	* jsonp()
 	* options()
 	* patch()
+* provide Observable api
+* provide Http Headers in options 
+* provide typed request 
+* include response object 
+* provide req and res interceptor 
+* provide error handling 
 
 
 
 
-	
