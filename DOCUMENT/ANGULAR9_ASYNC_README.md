@@ -448,6 +448,7 @@ export class DataService {
    <h3> data form </h3>
     {{postMsg}}
     <div ng-if="!postMsg">Data Stored</div>
+    <div ng-if="postMsg">Data Not Stored</div>
     <div>
     <h1>ESPARK DATA FORM</h1>
     <form #signInForm="ngForm" (ngSubmit)="savaData(signInForm)" >
