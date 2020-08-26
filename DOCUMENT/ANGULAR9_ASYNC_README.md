@@ -398,7 +398,8 @@ export class DataComponent implements OnInit {
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app.component
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -406,6 +407,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [
@@ -502,6 +504,157 @@ export class DataComponent implements OnInit {
   	});
   }
 
+
+   savaData(){
+      this.data = { "id": this.myForm.value.idField,"name": this.myForm.value.nameField}
+      console.log(data);
+      this.dataService.postData(data).subscribe( data => {
+            this.postMsg = data;
+      });
+   }
+}
+```
+
+--- 
+
+### HttpClient put()
+* for updating resource on server 
+* header params responesType withCredentials etc can be passed 
+	* body 
+		* can be of any json type or etc 
+	* options 
+		* headers: type HttpHeader 
+		* Params: type HttpParams
+	* put('url',body,options:{headers:{},params:{}})
+* Observable is reuturn from put() 
+
+### Example HttpClient post()
+* project/src/app/app.module.ts
+```
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+
+
+* project/src/app/data.service.ts
+```
+import { Injectable } from '@angular/core';
+import { HttpClient , HttpHeaders, HttpParams } from '@angular/common/http';
+
+@Injectable({
+	providedIn: 'root'
+})
+export class DataService {
+
+	constructor(private httpClient: HttpClient){	
+	}
+
+	putData(id,data){
+		cosnt httpHeaders = new HttpHeaders();
+		httpHeaders.append('content-type','application/json');
+		return this.httpClinet.put('http://localhost:3000/data/'+id,data,{ headers: httpHeaders}); 
+	}
+
+	postData(data){
+		cosnt httpHeaders = new HttpHeaders();
+		httpHeaders.append('content-type','application/json');
+		return this.httpClinet.post('http://localhost:3000/data',data,{ headers: httpHeaders}); 
+	}
+
+	getData(){
+		cosnt httpHeaders = new HttpHeaders();
+		httpHeaders.append('content-type','application/json');
+		return this.httpClinet.get('http://localhost:3000/data',{ headers: httpHeaders});        
+	}
+}
+```
+
+* src/app/data/data.component.html
+```
+<div>
+   <h3> data form </h3>
+    {{postMsg}}
+    <div ng-if="!postMsg">Data Stored</div>
+    <div ng-if="postMsg">Data Not Stored</div>
+    <div>
+    <h1>ESPARK DATA FORM</h1>
+    <form #signInForm="ngForm" (ngSubmit)="savaData(signInForm)" >
+	  <div class="form-group">
+	    <label for="exampleInputId">User Id</label>
+	    <input type="text" class="form-control" id="exampleInputId" name="idField" ngModel>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputName">User Name</label>
+	    <input type="text" class="form-control" id="exampleInputName" name="idField" ngModel>
+	  </div>
+	  <button class="btn btn-primary">Create</button>
+	  <button class="btn btn-primary" (click)="putData(1);" >Update</button>
+   </form>
+  </div>
+
+  <h3> data list</h3>
+   <ul>
+     <li *ngFor="let data of dataList">
+         {{ data.id }} &nbsp; {{ data.name }}
+     </li>
+   </ul>
+</div>
+```
+
+* src/app/data/data.component.ts
+```
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './app/data.service';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+
+@Component({
+  selector: 'app-data',
+  templateUrl: './data.component.html',
+  styleUrls: ['./data.component.scss']
+})
+export class DataComponent implements OnInit {
+
+  data;
+  postMsg='';
+  putMsg='';
+  dataList = [] ;
+  myForm: FromGroup;
+
+  constructor(public dataService: DataService){
+  }
+  
+  ngOnInit(): void {   
+  	this.dataService.getData().subscribe( data => {
+  		 this.dataList = data;
+  	});
+  }
+
+   putData(id){
+      this.data = { "id": this.myForm.value.idField,"name": this.myForm.value.nameField}
+      console.log(data);
+      this.dataService.putData(id,data).subscribe( data => {
+            this.putMsg = data;
+      });
+   }
 
    savaData(){
       this.data = { "id": this.myForm.value.idField,"name": this.myForm.value.nameField}
