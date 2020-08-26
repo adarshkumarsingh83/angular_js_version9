@@ -247,5 +247,44 @@ export class DataComponent implements OnInit {
 * provide error handling 
 
 
+### To setup json mock server 
+* cli cmd for server installation 
+	* $ npm i -g json-server 
+* crate a json file for the mock server 
+	* src/assets/data.json 
+```
+{
+	"data": [
+    {'id': 1, 'name': 'adarsh kumar'},
+    {'id': 2  'name': 'amit kumar'},
+    {'id': 3, 'name': 'radha singh'}
+   ],
+   "employees":[
+      {'empId':1,'email':'adarsh@kumar'},
+      {'empId':2,'email':'amit@kumar'},
+      {'empId':3,'email':'radha@singh'}
+   ]
+}
+
+
+```
+* To start the json server with mock json file 
+	* cd src/assets
+	* json-server --watch ./data.json
+	* To stop server press s + enter 
+
+```
+  http://localhost:3000/
+  http://localhost:3000/data
+  http://localhost:3000/employees
+
+```
+
+
+### 
+
+
+
+
 
 
