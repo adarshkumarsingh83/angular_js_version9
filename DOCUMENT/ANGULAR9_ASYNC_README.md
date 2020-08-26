@@ -17,3 +17,69 @@
 	* Http
 	* routing 
 	* Event Handling 
+
+### Example 
+* src/app/observable/observable.component.ts
+```
+import { Component, OnInit } from '@angular/core';
+import { Obseravable } from 'rxjs';
+
+@Component({
+  selector: 'app-observable',
+  templateUrl: './observable.component.html',
+  styleUrls: ['./observable.component.scss']
+})
+export class ObservableComponent implements OnInit {
+
+  status = any;
+  statusObservable : Obseravable<any>
+  constructor(){
+  }
+  
+  ngOnInit(): void {   
+  
+    this.statusObservable =  new Obseravable(
+          obseravable =>{
+          	   setTimeout(()=>{
+                    observable.next('started downloading');
+          	   }, 20000);
+
+          	    setTimeout(()=>{
+                    observable.next('processing downloading');
+          	   }, 40000);
+
+          	    setTimeout(()=>{
+                    observable.next('processing completed');
+          	   }, 60000);
+
+          	   // for error case senerio 
+          	    setTimeout(()=>{
+                    observable.error();
+                    this.status = "error "
+          	   }, 80000);
+
+          	   setTimeout(()=>{
+                    observable.complette();
+          	   }, 80000);
+          }
+     	);
+
+     	this.statusObservable.subscribe(val => {
+     		  this.status = val;
+     	});
+
+     	this.statusObservable.subscribe(val => {
+     		  console.log(val);
+     	});
+  }
+}
+```
+
+### 
+
+* src/app/observable/observable.component.html
+```
+  <h3> {{ status }} </h3>
+```
+
+
