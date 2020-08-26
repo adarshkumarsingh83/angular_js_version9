@@ -191,7 +191,6 @@ export class DataService {
 
 ```	
 
-
 * src/app/data/data.component.ts
 ```
 import { Component, OnInit } from '@angular/core';
@@ -223,3 +222,25 @@ export class DataComponent implements OnInit {
 </div>
 
 ```
+
+---
+
+### HTTPCLIENT 
+* client for making http request response processing 
+* its avalable in @angular/common/http pkg.
+* HttpClientModule need to be imported in app.mdoule 
+* HttpClient provide headers and interceptors also 
+* HttpClient methods 
+	* get()
+	* put()
+	* post()
+	* delete() 
+	* head()
+	* jsonp()
+	* options()
+	* patch()
+
+
+
+
+	
