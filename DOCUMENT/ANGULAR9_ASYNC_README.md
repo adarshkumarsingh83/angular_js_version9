@@ -280,10 +280,108 @@ export class DataComponent implements OnInit {
 ```
 
 
-### 
+### HttpClient get()
+* To read data from server 
+* header params responesType withCredentials etc can be passed 
+	* options 
+		* headers: type HttpHeader 
+		* Params: type HttpParams
+	* get('url',options:{headers:{},params:{}})
+* Observable is reuturn from get() 
 
+### Steps 
+* Import HttpClientMOdule in app module 
+* import Httpclient in our service 
+* inject the Httpclient in constructor of service 
+* Implmenet get method 
 
+### Example HttpClient get()
+* project/src/app/app.module.ts
+```
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
 
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
+* project/src/app/data.service.ts
+```
+import { Injectable } from '@angular/core';
+import { HttpClient , HttpHeaders, HttpParams } from '@angular/common/http';
+
+@Injectable({
+	providedIn: 'root'
+})
+export class DataService {
+
+	constructor(private httpClient: HttpClient){
+	
+	}
+
+	getData(){
+		return this.httpClinet.get("http://localhost:3000/data");        
+	}
+
+	directTemplateService(){
+		console.log('invoked from component template ');
+	}
+}
+```
+
+* src/app/data/data.component.ts
+```
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './app/data.service';
+
+@Component({
+  selector: 'app-data',
+  templateUrl: './data.component.html',
+  styleUrls: ['./data.component.scss']
+})
+export class DataComponent implements OnInit {
+
+	dataList = [] ;
+
+  constructor(public dataService: DataService){
+  }
+  
+  ngOnInit(): void {   
+  	this.dataService.getData().subscribe( data => {
+  		 this.dataList = data;
+  	});
+  }
+
+}
+```
+
+* src/app/data/data.component.html
+```
+<div>
+   <ul>
+     <li *ngFor="let data of dataList">
+         {{ data.id }} &nbsp; {{ data.name }}
+     </li>
+   </ul>
+</div>
+
+```
+
+--- 
 
 
 
