@@ -334,7 +334,9 @@ export class DataService {
 	}
 
 	getData(){
-		return this.httpClinet.get("http://localhost:3000/data");        
+		cosnt httpHeaders = new HttpHeaders();
+		httpHeaders.append('content-type','application/json');
+		return this.httpClinet.get('http://localhost:3000/data',{ headers: httpHeaders});        
 	}
 
 	directTemplateService(){
