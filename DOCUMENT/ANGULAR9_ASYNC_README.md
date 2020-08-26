@@ -908,7 +908,7 @@ this.httpClient.get('localhost://espark.com/data',{params: param});
 * it intercept the req 
 * data transformation can be done for outgoing and incoming data in next.handle(transfomredReq)
 * To Generate Interceptor using cli 
-	* ng genrate interceptor <'interceptor-name
+	* ng genrate interceptor <'interceptor-name'>
 
 ### Example 
 * project/app/logging.interceptor.ts 
