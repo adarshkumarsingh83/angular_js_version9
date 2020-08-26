@@ -75,11 +75,14 @@ export class ObservableComponent implements OnInit {
 }
 ```
 
-### 
-
 * src/app/observable/observable.component.html
 ```
   <h3> {{ status }} </h3>
 ```
 
+--- 
 
+### Dependency Injection 
+* ability to add the functionality of component at run time 
+* services are injected to the components 
+* @Injectable is used to let component know about he dependency injection 
