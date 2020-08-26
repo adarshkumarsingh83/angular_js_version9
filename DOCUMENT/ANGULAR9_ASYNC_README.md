@@ -285,7 +285,6 @@ export class DataComponent implements OnInit {
 * inject the Httpclient in constructor of service 
 * Implmenet get/post/put/delete method 
 
-
 ### HttpClient get()
 * To read data from server 
 * header params responesType withCredentials etc can be passed 
@@ -330,18 +329,13 @@ import { HttpClient , HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class DataService {
 
-	constructor(private httpClient: HttpClient){
-	
+	constructor(private httpClient: HttpClient){	
 	}
 
 	getData(){
 		cosnt httpHeaders = new HttpHeaders();
 		httpHeaders.append('content-type','application/json');
 		return this.httpClinet.get('http://localhost:3000/data',{ headers: httpHeaders});        
-	}
-
-	directTemplateService(){
-		console.log('invoked from component template ');
 	}
 }
 ```
@@ -387,5 +381,132 @@ export class DataComponent implements OnInit {
 --- 
 
 
-### HttpClient poet()
-* 
+### HttpClient post()
+* for creating resource on server 
+* header params responesType withCredentials etc can be passed 
+	* body 
+		* can be of any json type or etc 
+	* options 
+		* headers: type HttpHeader 
+		* Params: type HttpParams
+	* post('url',body,options:{headers:{},params:{}})
+* Observable is reuturn from post() 
+
+### Example HttpClient post()
+* project/src/app/app.module.ts
+```
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+* project/src/app/data.service.ts
+```
+import { Injectable } from '@angular/core';
+import { HttpClient , HttpHeaders, HttpParams } from '@angular/common/http';
+
+@Injectable({
+	providedIn: 'root'
+})
+export class DataService {
+
+	constructor(private httpClient: HttpClient){	
+	}
+
+	postData(data){
+		cosnt httpHeaders = new HttpHeaders();
+		httpHeaders.append('content-type','application/json');
+		return this.httpClinet.post('http://localhost:3000/data',data,{ headers: httpHeaders}); 
+	}
+
+	getData(){
+		cosnt httpHeaders = new HttpHeaders();
+		httpHeaders.append('content-type','application/json');
+		return this.httpClinet.get('http://localhost:3000/data',{ headers: httpHeaders});        
+	}
+}
+```
+
+* src/app/data/data.component.html
+```
+<div>
+   <h3> data form </h3>
+    {{postMsg}}
+    <div>
+    <h1>ESPARK DATA FORM</h1>
+    <form #signInForm="ngForm" (ngSubmit)="savaData(signInForm)" >
+	  <div class="form-group">
+	    <label for="exampleInputId">User Id</label>
+	    <input type="text" class="form-control" id="exampleInputId" name="idField" ngModel>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputName">User Name</label>
+	    <input type="text" class="form-control" id="exampleInputName" name="idField" ngModel>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
+  </div>
+
+  <h3> data list</h3>
+   <ul>
+     <li *ngFor="let data of dataList">
+         {{ data.id }} &nbsp; {{ data.name }}
+     </li>
+   </ul>
+</div>
+
+```
+
+
+* src/app/data/data.component.ts
+```
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './app/data.service';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
+
+@Component({
+  selector: 'app-data',
+  templateUrl: './data.component.html',
+  styleUrls: ['./data.component.scss']
+})
+export class DataComponent implements OnInit {
+
+  data;
+  postMsg='';
+  dataList = [] ;
+  myForm: FromGroup;
+
+  constructor(public dataService: DataService){
+  }
+  
+  ngOnInit(): void {   
+  	this.dataService.getData().subscribe( data => {
+  		 this.dataList = data;
+  	});
+  }
+
+
+   savaData(){
+      this.data = { "id": this.myForm.value.idField,"name": this.myForm.value.nameField}
+      console.log(data);
+      this.dataService.postData(data).subscribe( data => {
+            this.postMsg = data;
+      });
+   }
+}
+```
