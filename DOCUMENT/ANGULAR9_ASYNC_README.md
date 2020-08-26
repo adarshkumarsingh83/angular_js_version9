@@ -822,3 +822,82 @@ export class DataComponent implements OnInit {
    }
 }
 ```
+
+---
+
+### HttpClient headers
+* Headers are immutable 
+* can be passed with 
+	* get 
+	* post 
+	* put 
+	* delete 
+* common headers 
+	* Content-Type
+	* Authorization
+* HttpHeader contains methods are below 
+	* Append
+	* Has
+	* Get
+	* Keys 
+	* getAll
+	* Set 
+	* delete 
+
+### Example 
+```
+const httpHeaders = new HttpHeaders();
+
+httpHeaders = httpHeaders.append('Content-Type','application/json');
+
+httpHeaders.append('Authorization','xxxxxxxxx');
+
+httpHeaders.set('x-content-id','xxxxxxxx');
+
+httpHeaders.has('x-content-id','');
+
+httpHeaders.keys() // return keys of headers 
+
+
+this.httpClient.get('localhost://espark.com/data',{headers: httpHeaders});
+
+```	
+
+---
+
+### HttpClient param 
+* Params are immutable 
+* HttpParams are class to represent prams 
+* can be passed with 
+	* get 
+	* post 
+	* put 
+	* delete 
+* HttpParams contains methods are below 
+	* Append
+	* Has
+	* Get
+	* Keys 
+	* getAll
+	* Set 
+	* Delete 
+	* toString
+
+
+### Example 
+```
+localhost://espark.com/data?key1=value1&key2=value2
+const param = new HttpParams({
+	  fromObject:{
+	  	  key1: 'value1',
+	  	  key2: 'value2'
+	  }
+});
+this.httpClient.get('localhost://espark.com/data',{params: param});
+
+localhost://espark.com/data?key1=value1&key2=value2
+const param = new HttpParams({
+	  fromString: `key1=${var1}&key1=${var2}`
+ });
+this.httpClient.get('localhost://espark.com/data',{params: param});
+```
