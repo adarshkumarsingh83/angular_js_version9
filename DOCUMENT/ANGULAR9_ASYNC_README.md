@@ -17,59 +17,63 @@
 	* routing 
 	* Event Handling 
 
+### [ANGULAR OBERAVABLE EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-async-obseravable)
 ### Example 
 * src/app/observable/observable.component.ts
 ```
 import { Component, OnInit } from '@angular/core';
-import { Obseravable } from 'rxjs';
+import { Observable } from 'rxjs';
+
 
 @Component({
-  selector: 'app-observable',
-  templateUrl: './observable.component.html',
-  styleUrls: ['./observable.component.scss']
+  selector: 'app-oservable-progress',
+  templateUrl: './oservable-progress.component.html',
+  styleUrls: ['./oservable-progress.component.scss']
 })
-export class ObservableComponent implements OnInit {
+export class OservableProgressComponent implements OnInit {
 
-  status = any;
-  statusObservable : Obseravable<any>
-  constructor(){
-  }
-  
+  status: any;
+  statusObservable : Observable<any>;
+
+  constructor() { }
+
   ngOnInit(): void {   
   
-    this.statusObservable =  new Obseravable(
-          obseravable =>{
-          	   setTimeout(()=>{
-                    observable.next('started downloading');
-          	   }, 20000);
+    this.statusObservable =  new Observable(
+          obseravable => {
+               setTimeout(() => {
+                obseravable.next('started downloading');
+               }, 2000);
 
-          	    setTimeout(()=>{
-                    observable.next('processing downloading');
-          	   }, 40000);
+                setTimeout(() => {
+                  obseravable.next('processing downloading');
+               }, 4000);
 
-          	    setTimeout(()=>{
-                    observable.next('processing completed');
-          	   }, 60000);
+                setTimeout(() => {
+                  obseravable.next('processing completed');
+               }, 6000);
 
-          	   // for error case senerio 
-          	    setTimeout(()=>{
-                    observable.error();
+               // for error case senerio 
+                setTimeout(() => {
+                  obseravable.error();
                     this.status = "error "
-          	   }, 80000);
+               }, 8000);
 
-          	   setTimeout(()=>{
-                    observable.complette();
-          	   }, 80000);
+               setTimeout(() => {
+                obseravable.complete();
+                console.log('processing finsish');
+               }, 10000);
           }
-     	);
+      );
 
-     	this.statusObservable.subscribe(val => {
-     		  this.status = val;
-     	});
+      this.statusObservable.subscribe(val => {
+         console.log(val);
+          this.status = val;
+      });
 
-     	this.statusObservable.subscribe(val => {
-     		  console.log(val);
-     	});
+      this.statusObservable.subscribe(val => {
+          console.log("log subscribe "+val);
+      });
   }
 }
 ```
