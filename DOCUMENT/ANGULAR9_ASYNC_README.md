@@ -84,6 +84,7 @@ export class OservableProgressComponent implements OnInit {
 ```
 
 --- 
+### [ANGULAR DEPENDENCY INJECTION SERVICE AND MULTIMODULE EXAMPLE ](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-autowire-service)
 
 ### Dependency Injection 
 * ability to add the functionality of component at run time 
