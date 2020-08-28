@@ -93,6 +93,7 @@ CREATE src/app/service/data.service.ts (133 bytes)
 * src/app/service/data.service.ts
 ```
 import { Injectable, Inject } from '@angular/core';
+
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 
@@ -101,22 +102,42 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 })
 export class DataService {
 
-  dataList: any;
   public storageKey = "espark";
-  constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) { }
-
+  constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) {
+     this.storage.set(this.storageKey, [{ 'name': 'adarsh kumar','email': 'adarsh@kumar', 'pwd': '****', 'term': true},
+     { 'name': 'radha singh','email': 'radha@singh', 'pwd': '****', 'term': true}]);
+   }
 
   public storeOnLocalStorage(data: object): void{
     console.log(`DataService.storeOnLocalStorage()  `+ JSON.stringify(data));
-    this.storage.set(this.storageKey, data);
+    this.addDataToList(data);
   }
 
-  public getFromLocalStorage(): object{
-     this.dataList = this.storage.get(this.storageKey) || [];
-     console.log(`DataService.getFromLocalStorage()   `+JSON.stringify(this.dataList));
-     return this.dataList;
+  public getFromLocalStorage(): any {
+    var dataList = this.getDataList();
+     console.log(`DataService.getFromLocalStorage() `,JSON.stringify(dataList));
+     return dataList;
   }
+
+  public deleteLocalStorage(): void {
+    console.log(`DataService.deleteLocalStorage()`);
+       this.storage.remove(this.storageKey);
+  }
+
+  private addDataToList(data: object): void{
+    var dataObjectList = this.getDataList();
+    dataObjectList.push(data);
+    this.storage.set(this.storageKey, dataObjectList);
+  }
+
+  private getDataList(): object[]{
+    var data = this.storage.get(this.storageKey) || [];
+    console.log(`DataService.getDataList()`,JSON.stringify(data));
+    return data;
+  }
+
 }
+
 ```
 
 ### Generating UI module 
@@ -159,10 +180,33 @@ UPDATE src/app/ui/ui.module.ts (255 bytes)
         <label class="form-check-label" for="exampleCheck1">Agreed on Contract</label>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
+      &nbsp;
+      <button type="button" class="btn btn-primary" (click)="clearFields(myForm)">Clear</button>
     </form>
-    <h3 class="display-5">
-      {{data | json }}
-    </h3>
+     <br/>
+     <br/>
+    <div class="container">
+      <h3>Data Table</h3>
+      <p>All the data stored curently in local storage </p>            
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Term & Condition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dataItem of data">
+            <td>{{dataItem.name}}</td>
+            <td>{{dataItem.email}}</td>
+            <td>{{dataItem.pwd}}</td>
+            <td>{{dataItem.term}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 ```
 
@@ -180,7 +224,10 @@ import {DataService} from '../../service/data.service';
 })
 export class FormComponent implements OnInit {
 
-  constructor(private daaService: DataService) { }
+  constructor(private daaService: DataService) {
+    console.log(`FormComponent constructor()`)
+    // this.daaService.deleteLocalStorage();
+   }
 
   data;
   savaData(myForm: NgForm){
@@ -188,13 +235,21 @@ export class FormComponent implements OnInit {
     console.log(`FormComponent.savaData() before daaService.storeOnLocalStorage()  `+ JSON.stringify(dataSample));
     this.daaService.storeOnLocalStorage(dataSample);
     this.data = this.daaService.getFromLocalStorage();
-    console.log(`FormComponent.savaData() after daaService.getFromLocalStorage()   `+ JSON.stringify(this.data));
+    console.log(`FormComponent.savaData() after daaService.getFromLocalStorage()  `,JSON.stringify(this.data));
+  }
+
+  clearFields(myForm: NgForm){
+    console.log(`FormComponent.clearFields()`)
+    myForm.reset();
   }
   
   ngOnInit(): void {
+    console.log(`FormComponent.ngOnInit()`);
+    this.data = this.daaService.getFromLocalStorage();
   }
 
 }
+
 ```
 
 ### ui module import formcompoent browser and service module 

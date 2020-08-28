@@ -19,8 +19,31 @@
         <label class="form-check-label" for="exampleCheck1">Agreed on Contract</label>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
+      &nbsp;
+      <button type="button" class="btn btn-primary" (click)="clearFields(myForm)">Clear</button>
     </form>
-    <h3 class="display-5">
-      {{data | json }}
-    </h3>
+     <br/>
+     <br/>
+    <div class="container">
+      <h3>Data Table</h3>
+      <p>All the data stored curently in local storage </p>            
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Term & Condition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dataItem of data">
+            <td>{{dataItem.name}}</td>
+            <td>{{dataItem.email}}</td>
+            <td>{{dataItem.pwd}}</td>
+            <td>{{dataItem.term}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>

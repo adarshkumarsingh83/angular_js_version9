@@ -9,7 +9,10 @@ import {DataService} from '../../service/data.service';
 })
 export class FormComponent implements OnInit {
 
-  constructor(private daaService: DataService) { }
+  constructor(private daaService: DataService) {
+    console.log(`FormComponent constructor()`)
+    // this.daaService.deleteLocalStorage();
+   }
 
   data;
   savaData(myForm: NgForm){
@@ -17,10 +20,17 @@ export class FormComponent implements OnInit {
     console.log(`FormComponent.savaData() before daaService.storeOnLocalStorage()  `+ JSON.stringify(dataSample));
     this.daaService.storeOnLocalStorage(dataSample);
     this.data = this.daaService.getFromLocalStorage();
-    console.log(`FormComponent.savaData() after daaService.getFromLocalStorage()   `+ JSON.stringify(this.data));
+    console.log(`FormComponent.savaData() after daaService.getFromLocalStorage()  `,JSON.stringify(this.data));
+  }
+
+  clearFields(myForm: NgForm){
+    console.log(`FormComponent.clearFields()`)
+    myForm.reset();
   }
   
   ngOnInit(): void {
+    console.log(`FormComponent.ngOnInit()`);
+    this.data = this.daaService.getFromLocalStorage();
   }
 
 }
