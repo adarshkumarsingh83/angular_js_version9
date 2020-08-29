@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS employee;
+
+CREATE TABLE user (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  userName VARCHAR(250) NOT NULL,
+  userPwd VARCHAR(250) NOT NULL,
+  email VARCHAR(250) DEFAULT NULL
+);
+
+INSERT INTO user (id,userName, userPwd, email) VALUES
+  (1,'adarsh', '****', 'adarsh@kumar'),
+  (2,'radha', '****', 'radha@singh'),
+  (3,'amit', '****', 'amit@kumar');
