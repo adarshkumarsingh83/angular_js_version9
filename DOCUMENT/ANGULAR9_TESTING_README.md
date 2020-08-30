@@ -66,7 +66,7 @@
        }
 		```
 	* Disabling the existing generated test case prefix the 
-		* xdewscrive 
+		* xdescribe 
 		 ```
 		 xdescribe('AppComponent', () => {
                 xxxx
@@ -79,3 +79,28 @@
 		 });
          ```
 
+### Only Executing Specific Test 
+* Focus Test Case which will be executed only 
+		* fdescribe 
+		 ```
+		 fdescribe('AppComponent', () => {
+                xxxx
+          });
+		 ```
+		* fit 
+         ```
+         fit('should display welcome message', () => {
+                xxxxx
+		 });
+* For E2E 
+	* project/e2e/protractor.conf.js mentioned in confi file 
+	```
+	exports.config = {
+         xxxxxxxx
+	  specs: [
+	    './src/**/*.e2e-spec.ts',  // execute every thing 
+	    './src/**/name.e2e-spec.ts' // execute only specific file 
+	  ],
+	    xxxxxxxxx
+	 }
+	```
