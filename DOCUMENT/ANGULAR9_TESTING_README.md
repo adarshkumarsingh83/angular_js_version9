@@ -57,44 +57,45 @@
 * for existing application 
 	* Not to generate more test case for existing projct for new components or services or others 
 		* project/angular.json projects -> schematics -> SkipTests:true
-		```
+```
 		"schematics": {
 	        "@schematics/angular:component": {
 	          "style": "scss",
 	          skipTests: true
 	        }
        }
-		```
+```
 	* Disabling the existing generated test case prefix the 
 		* xdescribe 
-		 ```
+```
 		 xdescribe('AppComponent', () => {
                 xxxx
           });
-		 ```
+```
 		* xit 
-         ```
+ ```
          xit('should display welcome message', () => {
                 xxxxx
 		 });
-         ```
+ ```
 
 ### Only Executing Specific Test 
 * Focus Test Case which will be executed only 
 	* fdescribe 
-	 ```
+```
 	 fdescribe('AppComponent', () => {
             xxxx
       });
-	 ```
+```
 	* fit 
-     ```
+ ```
      fit('should display welcome message', () => {
             xxxxx
 	 });
+```
 * For E2E 
 	* project/e2e/protractor.conf.js mentioned in confi file 
-	```
+```
 	exports.config = {
          xxxxxxxx
 	  specs: [
@@ -103,4 +104,8 @@
 	  ],
 	    xxxxxxxxx
 	 }
-	```
+```
+
+### Code coverage report 
+
+
