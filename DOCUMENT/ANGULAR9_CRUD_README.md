@@ -210,9 +210,29 @@ import { XxxxxComponent} from '../xxx/xxx.component';
   ]
 })
 export class XxxxxModule { }
-```
+``` 
 
+
+### Adding routes for the components 
+* project/src/app/xxx/xxx-routing.module.ts
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { Xxxxomponent } from './xxx/xxxx.component';
+
+const routes: Routes = [
+  { path: 'form' , component: Xxxxomponent}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class XxxxRoutingModule { }
+```
 ---
+
+
 
 
 
