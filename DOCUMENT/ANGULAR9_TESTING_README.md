@@ -74,8 +74,8 @@
 		 ```
 		* xit 
          ```
-             xit('should display welcome message', () => {
-
- 			 });
+         xit('should display welcome message', () => {
+                xxxxx
+		 });
          ```
 
