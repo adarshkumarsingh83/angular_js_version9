@@ -38,3 +38,15 @@
 * protractor config file e2e/protractor.conf.js 
 
 
+----
+
+# E2E Test 
+
+* Angular uses Protractor for running the e2e tests 
+* Protractor is build on the top of web drivers 
+
+
+### To Execute the E2E Test 
+* ng e2e 
+
+
