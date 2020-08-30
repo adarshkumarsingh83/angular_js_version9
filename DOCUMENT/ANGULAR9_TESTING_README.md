@@ -55,10 +55,27 @@
 * for new application 
 	* ng new <'project-name'> --skipTests
 * for existing application 
-	* adding skipTests true in schematics in angular.json 
-		* SkipTests:true
-	* Adding x in frount of the tests 
-		* Xdewscrive 
-		* Xit 
+	* Not to generate more test case for existing projct for new components or services or others 
+		* project/angular.json projects -> schematics -> SkipTests:true
+		```
+		"schematics": {
+	        "@schematics/angular:component": {
+	          "style": "scss",
+	          skipTests: true
+	        }
+       }
+		```
+	* Disabling the existing generated test case prefix the 
+		* xdewscrive 
+		 ```
+		 xdescribe('AppComponent', () => {
+                xxxx
+          });
+		 ```
+		* xit 
+         ```
+             xit('should display welcome message', () => {
 
+ 			 });
+         ```
 
