@@ -193,7 +193,7 @@ export class XxxxxComponent implements OnInit {
 }
 ```
 
-### Export the component  for global use 
+### Export the component for global use 
 * src/app/xxx/xxxx.module.ts
 ```
 import { NgModule } from '@angular/core';
@@ -211,6 +211,27 @@ import { XxxxxComponent} from '../xxx/xxx.component';
 })
 export class XxxxxModule { }
 ``` 
+
+### Import the new module to the app module
+* src/app/app.module.ts
+```
+import { NgModule } from '@angular/core';
+import { XxxxModule } from './xxx/xxx.module';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    XxxxModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
 
 ### Adding routes for the components 
