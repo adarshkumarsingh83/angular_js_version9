@@ -295,6 +295,8 @@ export interface XxxInterface {
 * In service class while calling the http methods 
 * Strict Type Binding for response type 
 ```
+
+ export class DataService {
    createXxx(xxxBody):Obserable<XxxxInterface>{
    	  this.httpClient.post<XxxInterface>(url,xxxBody);
    }
@@ -310,6 +312,39 @@ export interface XxxInterface {
    deletexx(xxxId):Obserable<XxxxInterface>{
    	 this.httpClient.delete<XxxInterface>(url);
    }
+}
+```
+
+* xxx.component.ts
+```
+export class XxxxComponent implements OnInit {
+
+     // auto matically list of Xxx Type will be binded 
+	 dataList: XxxInterface;
+
+     constructor(private daaService: DataService) {}
+
+	 ngOnInit(): void { 
+         
+	     this.daaService.getDataList().subscribe(
+	      (response) => {
+	        this.dataList = response.data;
+	      },
+	      (error) => {
+	        console.log(`FormComponent.fetchData() Erros `, error);
+	      }
+	    );
+    }
+}
+```
+
+* xxx.component.html 
+```
+<tr *ngFor="let dataItem of dataList">
+	  <td>{{dataItem.id}}</td>
+      <td>{{dataItem.name}}</td>
+      <td>{{dataItem.email}}</td>
+<tr>
 
 ```
 
