@@ -66,13 +66,18 @@
 <router-outlet></router-outlet>
 ```
 
-## Generate the Module 
+---
+
+## Approach with eager loading 
+
+
+### Generate the Module 
 * $ ng g module <'module-name'>
 
-## To Generate Component 
+### To Generate Component 
 * $ cd <'module-name'>
 * $ ng g component <'component-name'>
-
+* project/src/app/xxx/xxxx.component.ts
 ```
 import { Component, OnInit } from '@angular/core';
 
@@ -136,6 +141,7 @@ export class AppModule { }
 
 ### To show the compoenent to app.component.html 
 * take the selector name form the component and use it in the template 
+* project/src/app/xxx/xxxx.component.ts
 ```
 @Component({
   selector: 'app-xxxx',
@@ -155,4 +161,11 @@ export class AppModule { }
 <router-outlet></router-outlet>
 ```
 
+### Generate the module with lazy loading 
 
+---
+
+## Appraoch with lazy loading 
+
+### Generate module 
+* $ ng g module <'module-name'> --route <'route-name'>
