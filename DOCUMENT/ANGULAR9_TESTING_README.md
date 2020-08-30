@@ -54,11 +54,11 @@
 ### Skps Tests 
 * for new application 
 	* ng new -skipTests
+* for existing application 
+	* adding skipTests true in schematics in angular.json 
+		* SkipTests:true
+	* Adding x in frount of the tests 
+		* Xdewscrive 
+		* Xit 
 
-* adding skipTests true in schematics in angular.json 
-	* SkipTests:true
-* Adding x in frount of the tests 
-	* Xdewscrive 
-	* Xit 
 
-	
