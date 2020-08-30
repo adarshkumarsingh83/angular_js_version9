@@ -44,3 +44,15 @@
 	* ng build --index=index
 	* ng build --deployUrl=xxxxx
 
+
+### Angular Multi project 
+```
+    espark-project // main proejct 
+         |---project1  // sub project
+    	 |---project2  // sub project
+    	 |---project3  // sub project
+```
+* Build Project Cmd 
+	* $ ng build --project=<'project_name'> --baseHref=http://<'host-name'>:<'port-number'>/<'project_name'>/
+	
+
