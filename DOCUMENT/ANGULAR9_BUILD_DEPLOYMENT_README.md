@@ -54,5 +54,6 @@
 ```
 * Build Project Cmd 
 	* $ ng build --project=<'project_name'> --baseHref=http://<'host-name'>:<'port-number'>/<'project_name'>/
-	
+	* copy the dist directory to the server directory 
+
 
