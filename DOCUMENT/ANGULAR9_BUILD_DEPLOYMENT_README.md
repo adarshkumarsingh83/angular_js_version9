@@ -27,12 +27,20 @@
 	* Ahead of Time 
 		* which compiles app lib at build time started from angular 9 
 
-
-
 * AOT 
 	* phase 1 
 		* code analysis - ts compiler and aot collector create a representaion of the soruce and meta data collected from @xxxx 
 	* phase 2 
 		* code generation - compiler static reflector interprets the metadata collected in phase 1 (TypeScript code -> ES6 Code )
 	* phase 3 
-		* template type checking - angular template compiler uses the ts compile tto validats the binding expression in template 
+		* template type checking - angular template compiler uses the ts compile tto validats the binding expression in template  
+
+
+* Build Cli Cmd 
+	* ng build --base-href 
+	* ng build --aot
+	* ng build --outputPath=<'new path'>
+	* ng build --prod=true
+	* ng build --index=index
+	* ng build --deployUrl=xxxxx
+
