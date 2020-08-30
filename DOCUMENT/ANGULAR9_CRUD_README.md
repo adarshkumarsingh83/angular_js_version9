@@ -292,7 +292,8 @@ export interface XxxInterface {
 }
 ```
 
-* In service class while calling the http methos 
+* In service class while calling the http methods 
+* Strict Type Binding for response type 
 ```
    createXxx(xxxBody):Obserable<XxxxInterface>{
    	  this.httpClient.post<XxxInterface>(url,xxxBody);
