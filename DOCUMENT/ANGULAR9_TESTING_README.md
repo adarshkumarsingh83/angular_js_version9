@@ -57,6 +57,7 @@
 * for existing application 
 	* Not to generate more test case for existing projct for new components or services or others 
 		* project/angular.json projects -> schematics -> SkipTests:true
+
 ```
 		"schematics": {
 	        "@schematics/angular:component": {
@@ -65,15 +66,18 @@
 	        }
        }
 ```
+
 	* Disabling the existing generated test case prefix the 
 		* xdescribe 
+
 ```
 		 xdescribe('AppComponent', () => {
                 xxxx
           });
 ```
+		
 		* xit 
- ```
+```
          xit('should display welcome message', () => {
                 xxxxx
 		 });
@@ -87,8 +91,10 @@
             xxxx
       });
 ```
+	
 	* fit 
- ```
+
+```
      fit('should display welcome message', () => {
             xxxxx
 	 });
