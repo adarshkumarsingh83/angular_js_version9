@@ -138,4 +138,5 @@
   }
 }
 ```
-    * by adding the cli option --code coverage 
+    * by adding the cli option --codeCoverage 
+    	* Ex   $ ng test --codeCoverage 
