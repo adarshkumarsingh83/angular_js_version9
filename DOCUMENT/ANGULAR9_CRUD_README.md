@@ -168,4 +168,9 @@ export class AppModule { }
 ## Appraoch with lazy loading 
 
 ### Generate module 
-* $ ng g module <'module-name'> --route <'route-name'>
+* $ ng g module <'module-name'> --route <'route-name'> --module app.module 
+
+---
+
+
+
