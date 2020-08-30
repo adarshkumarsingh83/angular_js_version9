@@ -140,3 +140,7 @@
 ```
     * by adding the cli option --codeCoverage 
     	* Ex   $ ng test --codeCoverage 
+
+* it will generate a dir within project root with name *coverage* where src/index.html will contain the report 
+
+
