@@ -66,7 +66,11 @@
 	* add the configuration file in project/src/environments/environment.xxx.ts
 ```
 export const environment = {
-  env-name: true
+  "<env-name>": true,
+  "hostURL":"http://localhost",
+  "port": 8080 
+  "username":'user',
+  "xxxx",'xxxxx'
 };
 ```
 	* add the configuration file in project/angular.conf.ts 
@@ -99,6 +103,33 @@ export const environment = {
   }
 }
 ```
+
+* use config in code 
+* src/app/app.component.ts
+```
+
+import { Component } from '@angular/core';
+import {enviroment} from './enviroments/enviroment';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'angular-async-obseravable';
+
+  configPropName = enviroment.configPropName;
+}
+
+```
+
+* src/app/app.component.html 
+```
+<h3> {{configPropName}} </h3> 
+```
+
+* ng serve --configuration=<'config-name'>
 
 
 
