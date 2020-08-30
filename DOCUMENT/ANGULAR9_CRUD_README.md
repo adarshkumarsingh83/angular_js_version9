@@ -170,7 +170,51 @@ export class AppModule { }
 ### Generate module 
 * $ ng g module <'module-name'> --route <'route-name'> --module app.module 
 
+
+### To Generate Component 
+* $ cd <'module-name'>
+* $ ng g component <'component-name'>
+* project/src/app/xxx/xxxx.component.ts
+```
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class XxxxxComponent implements OnInit {
+
+  constructor() {
+   }
+  
+  ngOnInit(): void {
+  }
+}
+```
+
+### Export the component  for global use 
+* src/app/xxx/xxxx.module.ts
+```
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { XxxxxComponent} from '../xxx/xxx.component';
+
+@NgModule({
+  declarations: [XxxxxComponent],
+  imports: [
+    CommonModule
+  ],
+  exports:[
+    XxxxxComponent
+  ]
+})
+export class XxxxxModule { }
+```
+
 ---
+
+
 
 
 
