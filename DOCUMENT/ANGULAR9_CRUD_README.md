@@ -73,6 +73,44 @@
 * $ cd <'module-name'>
 * $ ng g component <'component-name'>
 
+```
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class XxxxxComponent implements OnInit {
+
+  constructor() {
+   }
+  
+  ngOnInit(): void {
+  }
+
+}
+
+```
+### Export the component  for global use 
+* src/app/xxx/xxxx.module.ts
+```
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { XxxxxComponent} from '../xxx/xxx.component';
+
+@NgModule({
+  declarations: [XxxxxComponent],
+  imports: [
+    CommonModule
+  ],
+  exports:[
+    XxxxxComponent
+  ]
+})
+export class XxxxxModule { }
+```
+
 ### Import the new module to the app module 
 * src/app/app.module.ts
 ```
@@ -96,5 +134,25 @@ export class AppModule { }
 
 ```
 
+### To show the compoenent to app.component.html 
+* take the selector name form the component and use it in the template 
+```
+@Component({
+  selector: 'app-xxxx',
+})
+```
+
+* project/src/app/app.component.html
+
+```
+<div class="container">
+  <div class="alert alert-primary" role="alert">
+    <h4 class="display-3">WELCOME TO APP MODULE</h4>
+  </div>
+</div>
+<h3> <app-xxx> </app-xxx> </h3>
+
+<router-outlet></router-outlet>
+```
 
 
