@@ -59,21 +59,17 @@
 		* project/angular.json projects -> schematics -> SkipTests:true
 
 ```
-
 {
-		"projects": {
-            
-             "projectname":{
-
-             	   		"schematics": {
-						        "@schematics/angular:component": {
-						          "style": "scss",
-						          skipTests: true
-						        }
-					       }
-                }
-
-		}
+  "projects": {
+    "projectname": {
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        }
+      }
+    }
+  }
 }
 
 ```
@@ -129,23 +125,17 @@
 	* ng test 
 ```
 {
-	"projects": {
-
-       "projectname":{
-
-          "architect": {
-
-			"test": {
-
-				"options": {
-					xxxxxxx
-					"codeCoverage": true
-					xxxxxxx
-				}
-			}
-		 }
-       }		
-	}
+  "projects": {
+    "projectname": {
+      "architect": {
+        "test": {
+          "options": {
+            "codeCoverage": true
+          }
+        }
+      }
+    }
+  }
 }
 ```
     * by adding the cli option --code coverage 
