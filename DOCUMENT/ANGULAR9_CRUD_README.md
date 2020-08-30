@@ -279,7 +279,38 @@ export class XxxxRoutingModule { }
 ---
 
 
-### 
+### Creating a Interface for uniformity of data model 
+* $ ng generate interface <'intrface-name'>
+
+```
+export interface XxxInterface {
+	id: number;
+	name: string;
+	email: string;
+	active: boolean;
+	xxxx
+}
+```
+
+* In service class while calling the http methos 
+```
+   createXxx(xxxBody):Obserable<XxxxInterface>{
+   	  this.httpClient.post<XxxInterface>(url,xxxBody);
+   }
+
+   updateXxx(xxxBody):Obserable<XxxxInterface>{
+   	 this.httpClient.put<XxxInterface>(url,xxxBody);
+   }
+
+   getXxx(xxxId):Obserable<XxxxInterface>{
+   	 this.httpClient.get<XxxInterface>(url);
+   }
+
+   deletexx(xxxId):Obserable<XxxxInterface>{
+   	 this.httpClient.delete<XxxInterface>(url);
+   }
+
+```
 
 
 
