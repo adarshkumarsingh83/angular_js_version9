@@ -57,3 +57,48 @@
 	* copy the dist directory to the server directory 
 
 
+### Configuraiton Env 
+* project/src/environments/environment.xxx.ts contains the configuration for env 
+* $ ng serve --configuration=<'env-name'>
+
+
+* Steps 
+	* add the configuration file in project/src/environments/environment.xxx.ts
+```
+export const environment = {
+  env-name: true
+};
+```
+	* add the configuration file in project/angular.conf.ts 
+```
+{
+  "projcts": {
+    "project-name": {
+      "architect": {
+        "build": {
+          "configurations": {
+            "<config-name>": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.<config-name>.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "configurations": {
+            "<config-name>": {
+              "browserTarget": "<project-name>:build:<config-name>"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+
+
