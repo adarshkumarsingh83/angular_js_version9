@@ -19,14 +19,19 @@
 
 * create a dir to store the json file for mock data in location  project/src/assets 
 	* $ mkdir data 
+
+* For Image 
+	* copy the images under the assets dir 
+	* eg 1img.jpg, 2img.jpg ... 
+	
 * create a json file inside the dir which is created earlier 
 	* data $ touch dtatbase.json 
 	```
     {
         "employee":[
-             {"id":1,"name":"adarsh kumar"},
-             {"id":2,"name":"radha singh"},
-             {"id":3,"name":"amit kumar"}
+             {"id":1,"name":"adarsh kumar","image":"http://localhost:4200/assetts/1img.jpg"},
+             {"id":2,"name":"radha singh","image":"http://localhost:4200/assetts/2img.jpg"},
+             {"id":3,"name":"amit kumar","image":"http://localhost:4200/assetts/3img.jpg"},
           ],
           "user":[
               {"id":1,"type":"admin"},
@@ -36,6 +41,7 @@
 	```
 * to execute the json serer 
 	* json-server --watch ./data/datbase.json 
+
 
 
 ## Install the Bootstrap 
