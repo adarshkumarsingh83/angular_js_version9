@@ -53,7 +53,7 @@
 
 ### Skps Tests 
 * for new application 
-	* ng new -skipTests
+	* ng new <'project-name'> --skipTests
 * for existing application 
 	* adding skipTests true in schematics in angular.json 
 		* SkipTests:true
