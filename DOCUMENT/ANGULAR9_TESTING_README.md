@@ -59,12 +59,23 @@
 		* project/angular.json projects -> schematics -> SkipTests:true
 
 ```
-		"schematics": {
-	        "@schematics/angular:component": {
-	          "style": "scss",
-	          skipTests: true
-	        }
-       }
+
+{
+		"projects": {
+            
+             "projectname":{
+
+             	   		"schematics": {
+						        "@schematics/angular:component": {
+						          "style": "scss",
+						          skipTests: true
+						        }
+					       }
+                }
+
+		}
+}
+
 ```
 
 	* Disabling the existing generated test case prefix the 
@@ -113,5 +124,28 @@
 ```
 
 ### Code coverage report 
+* for unit test 
+	* by adding "codeCoverage" in project/angular.json
+	* ng test 
+```
+{
+	"projects": {
 
+       "projectname":{
 
+          "architect": {
+
+			"test": {
+
+				"options": {
+					xxxxxxx
+					"codeCoverage": true
+					xxxxxxx
+				}
+			}
+		 }
+       }		
+	}
+}
+```
+    * by adding the cli option --code coverage 
