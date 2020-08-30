@@ -73,6 +73,19 @@
 
 ### Generate the Module 
 * $ ng g module <'module-name'>
+* src/app/xxx/xxxx.module.ts
+```
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule
+  ]
+})
+export class XxxxxModule { }
+```
 
 ### To Generate Component 
 * $ cd <'module-name'>
@@ -169,7 +182,19 @@ export class AppModule { }
 
 ### Generate module 
 * $ ng g module <'module-name'> --route <'route-name'> --module app.module 
+* src/app/xxx/xxxx.module.ts
+```
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule
+  ]
+})
+export class XxxxxModule { }
+```
 
 ### To Generate Component 
 * $ cd <'module-name'>
