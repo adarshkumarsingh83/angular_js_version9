@@ -44,9 +44,21 @@
 
 * Angular uses Protractor for running the e2e tests 
 * Protractor is build on the top of web drivers 
-
+* projct/e2e where all the e2e test spec file will be avaliable 
+* for configuration project/e2e/ protractor.conf.js 
+* By default it uses chrome driver 
 
 ### To Execute the E2E Test 
 * ng e2e 
 
+### Skps Tests 
+* for new application 
+	* ng new -skipTests
 
+* adding skipTests true in schematics in angular.json 
+	* SkipTests:true
+* Adding x in frount of the tests 
+	* Xdewscrive 
+	* Xit 
+
+	
