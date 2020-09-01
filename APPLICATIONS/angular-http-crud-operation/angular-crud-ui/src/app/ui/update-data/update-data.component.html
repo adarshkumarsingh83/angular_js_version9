@@ -1,0 +1,25 @@
+<div class="container">
+    <form #myForm="ngForm" (ngSubmit)="updateData()">
+    <div class="form-group">
+        <label for="inputId">Id </label>
+        <input type="text" class="form-control" id="inputId" [(ngModel)]='id' name="id"  required/>
+    </div>
+      <div class="form-group">
+        <label for="inputName">Name </label>
+        <input type="text" class="form-control" id="inputName" [(ngModel)]='name' name="name"  required/>
+      </div>
+      <div class="form-group">
+        <label for="inputEmail">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" [(ngModel)]='email' name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword" [(ngModel)]='pwd' name="pwd" required>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="checkbox" [(ngModel)]='checkbox' name="checkbox" />
+        <label class="form-check-label" for="checkbox">Agreed on Contract</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>

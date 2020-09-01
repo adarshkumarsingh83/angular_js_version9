@@ -1,0 +1,25 @@
+<div class="container">
+  <form #myForm="ngForm" (ngSubmit)="savaData(myForm)">
+    <div class="form-group">
+      <label for="inputName">Name </label>
+      <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" ngModel name="nameInput"  required/>
+      <small id="nameHelp" class="form-text text-muted">We'll never share your name with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail">Email address</label>
+      <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" ngModel name="emailInput" required />
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input type="password" class="form-control" id="inputPassword" ngModel name="pwdInput" required>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="inputCheck" ngModel name="checkboxInput" />
+      <label class="form-check-label" for="inputCheck">Agreed on Contract</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    &nbsp;
+    <button type="button" class="btn btn-primary" (click)="clearFields(myForm)">Clear</button>
+  </form>
+</div>

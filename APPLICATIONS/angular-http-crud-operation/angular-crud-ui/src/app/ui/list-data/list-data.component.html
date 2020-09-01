@@ -1,0 +1,27 @@
+<div class="container">
+    {{responseMsg}}
+    <h3>Data Table</h3>  
+    <p>All the data stored curently in db storage </p>            
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Term & Condition</th>
+          <th>operation</th>
+          <th>operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dataItem of responseData">
+          <td>{{dataItem.userName}}</td>
+          <td>{{dataItem.email}}</td>
+          <td>{{dataItem.userPwd}}</td>
+          <td>{{dataItem.term}}</td>
+          <td><button (click)="deleteUser(dataItem.id)" class="btn btn-danger">Delete</button></td>
+          <td><button (click)="updateUser(dataItem.id,dataItem)" class="btn btn-info">Update</button></td>
+        </tr>
+      </tbody> 
+    </table>
+  </div>
