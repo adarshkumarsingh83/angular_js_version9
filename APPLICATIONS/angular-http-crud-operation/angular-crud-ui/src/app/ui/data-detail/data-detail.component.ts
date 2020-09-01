@@ -25,5 +25,4 @@ export class DataDetailComponent implements OnInit {
            this.user = response.data;
       });
   }
-
 }
