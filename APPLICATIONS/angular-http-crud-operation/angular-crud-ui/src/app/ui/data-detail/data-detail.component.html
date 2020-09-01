@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>View Data</h1>
+  <table class="table">
+    <tr>
+      <td>Id:</td>
+      <td>{{ user.id }}</td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td>{{ user.userName }}</td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>{{ user.email }}</td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td>{{ user.userPwd }}</td>
+    </tr>
+    <tr>
+      <td>Terms & Condition:</td>
+      <td>{{ user.term }}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#" routerLink="/ui/data" class="btn btn-primary">Listing Page</a></td>
+    </tr>
+  </table>
+</div>

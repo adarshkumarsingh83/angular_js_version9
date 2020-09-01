@@ -115,13 +115,13 @@ UPDATE src/app/app-routing.module.ts (327 bytes)
 
 ### Genrate List Data Compoennt 
 * $ cd src/app/ui  
-* $ ng g component list-data
+* $ ng g component dataDetail
 ```
-CREATE src/app/ui/list-data/list-data.component.scss (0 bytes)
-CREATE src/app/ui/list-data/list-data.component.html (24 bytes)
-CREATE src/app/ui/list-data/list-data.component.spec.ts (643 bytes)
-CREATE src/app/ui/list-data/list-data.component.ts (287 bytes)
-UPDATE src/app/ui/ui.module.ts (409 bytes)
+CREATE src/app/ui/data-detail/data-detail.component.scss (0 bytes)
+CREATE src/app/ui/data-detail/data-detail.component.html (26 bytes)
+CREATE src/app/ui/data-detail/data-detail.component.spec.ts (657 bytes)
+CREATE src/app/ui/data-detail/data-detail.component.ts (295 bytes)
+UPDATE src/app/ui/ui.module.ts (910 bytes)
 ```
 
 ### Generate Create Data Component 
@@ -221,4 +221,4 @@ export class AppModule { }
   * app module url
   * http://localhost:4200
 ### form url 
-  * http://localhost:4200/ui
+  * http://localhost:4200/ui/data

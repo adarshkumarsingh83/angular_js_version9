@@ -1,4 +1,5 @@
 <div class="container">
+  {{responseMsg}}
   <form #myForm="ngForm" (ngSubmit)="savaData(myForm)">
     <div class="form-group">
       <label for="inputName">Name </label>
@@ -21,5 +22,7 @@
     <button type="submit" class="btn btn-primary">Submit</button>
     &nbsp;
     <button type="button" class="btn btn-primary" (click)="clearFields(myForm)">Clear</button>
+    &nbsp;
+    <a href="#" routerLink="/ui/data" class="btn btn-primary">Listing Page</a>
   </form>
 </div>

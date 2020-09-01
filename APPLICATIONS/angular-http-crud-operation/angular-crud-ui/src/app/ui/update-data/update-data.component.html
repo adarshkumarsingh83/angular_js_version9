@@ -1,4 +1,5 @@
 <div class="container">
+     {{responseMsg}}
     <form #myForm="ngForm" (ngSubmit)="updateData()">
     <div class="form-group">
         <label for="inputId">Id </label>
@@ -17,9 +18,11 @@
         <input type="password" class="form-control" id="inputPassword" [(ngModel)]='pwd' name="pwd" required>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="checkbox" [(ngModel)]='checkbox' name="checkbox" />
+        <input type="checkbox" class="form-check-input" id="term" [(ngModel)]='term' name="term" />
         <label class="form-check-label" for="checkbox">Agreed on Contract</label>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
+      &nbsp;
+      <a href="#" routerLink="/ui/data" class="btn btn-primary">Listing Page</a>
     </form>
   </div>

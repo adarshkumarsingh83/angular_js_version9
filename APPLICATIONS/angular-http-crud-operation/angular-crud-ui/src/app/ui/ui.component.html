@@ -1,6 +1,27 @@
-<app-create-data></app-create-data>
-
-<app-list-data></app-list-data>
-
-
-<app-update-data></app-update-data>
+<div class="container">
+    {{responseMsg}}
+    <h3>Data Table</h3>  
+    <p>All the data stored curently in db storage </p>            
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Term & Condition</th>
+          <th colspan="3">  <a href="#" routerLink="create" class="btn btn-success">Create New Data</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dataItem of responseData">
+          <td>{{dataItem.userName}}</td>
+          <td>{{dataItem.email}}</td>
+          <td>{{dataItem.userPwd}}</td>
+          <td>{{dataItem.term}}</td>
+          <td><button (click)="deleteUser(dataItem.id)" class="btn btn-danger">Delete</button></td>
+          <td><a href="#" [routerLink]="['update/', dataItem.id]" class="btn btn-info">Update</a></td>
+          <td><a href="#" [routerLink]="['detail/', dataItem.id]" class="btn btn-info">View</a></td>
+        </tr>
+      </tbody> 
+    </table>
+  </div>
