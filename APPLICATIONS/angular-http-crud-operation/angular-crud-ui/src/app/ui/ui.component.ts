@@ -13,11 +13,11 @@ export class UiComponent implements OnInit {
   responseData: User[];
 
   constructor(private daaService: DataService) {
-    console.log(`FormComponent constructor()`);
+    console.log(`UiComponent constructor()`);
   }
 
   ngOnInit(): void {
-    console.log(`ListDataComponent.ngOnInit()`);
+    console.log(`UiComponent.ngOnInit()`);
     this.fetchData();
   }
 
@@ -27,10 +27,11 @@ export class UiComponent implements OnInit {
       (response) => {
         this.responseData = response.data;
         this.responseMsg = response.message;
-        console.log(`FormComponent.fetchData()`,this.responseData);
+        console.log(`UiComponent.fetchData()`,this.responseData);
       },
       (error) => {
-        console.log(`FormComponent.fetchData() Erros `, error);
+        console.log(`UiComponent.fetchData() Erros `, error);
+        this.responseMsg='Unable to Fetch Users From Db'
       }
     );
   }

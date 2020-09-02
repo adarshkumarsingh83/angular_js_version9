@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {  Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Data } from '../model/data';
 import { User } from '../model/user';
 
@@ -18,7 +19,10 @@ export class DataService {
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
     httpHeaders.append('Access-Control-Allow-Origin', this.corsUrl);
-    return this.httpClient.post<Data<User>>(`${this.baseUrl}/user`,userData, { headers: httpHeaders });     
+    return this.httpClient.post<Data<User>>(`${this.baseUrl}/user`,userData, { headers: httpHeaders })
+    .pipe(
+      catchError(this.errorHandler)
+    );     
   }
 
 
@@ -27,7 +31,10 @@ export class DataService {
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
     httpHeaders.append('Access-Control-Allow-Origin', this.corsUrl);
-    return this.httpClient.put<Data<User>>(`${this.baseUrl}/user/${id}`, userData, { headers: httpHeaders }) 
+    return this.httpClient.put<Data<User>>(`${this.baseUrl}/user/${id}`, userData, { headers: httpHeaders })
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   deleteData(id: number): Observable<Data<User>> {
@@ -36,6 +43,9 @@ export class DataService {
     httpHeaders.append('content-type', 'application/json');
     httpHeaders.append('Access-Control-Allow-Origin', this.corsUrl);
     return this.httpClient.delete<Data<User>>(`${this.baseUrl}/user/${id}`, { headers: httpHeaders })
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   getData(id: number): Observable<Data<User>> {
@@ -44,6 +54,9 @@ export class DataService {
     httpHeaders.append('content-type', 'application/json');
     httpHeaders.append('Access-Control-Allow-Origin', this.corsUrl);
     return this.httpClient.get<Data<User>>(`${this.baseUrl}/user/${id}`, { headers: httpHeaders })
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   getDataList(): Observable<Data<User[]>> {
@@ -51,6 +64,20 @@ export class DataService {
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
     httpHeaders.append('Access-Control-Allow-Origin', this.corsUrl);
-    return this.httpClient.get<Data<User[]>>(`${this.baseUrl}/users`, { headers: httpHeaders });
+    return this.httpClient.get<Data<User[]>>(`${this.baseUrl}/users`, { headers: httpHeaders })
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
+
+  errorHandler(error) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(`Exception handler ${errorMessage}`)
+    return throwError(errorMessage);
+ }
 }
