@@ -50,12 +50,13 @@
 * projcect/Dockerfile 
 ```
 FROM node:latest as build
-RUN mkdir -o /app 
+RUN mkdir  /app 
 WORKDIR /app
 COPY . . 
 RUN npm install 
-RUN NPM RUN BUILD --prod 
+RUN npm run build
 CMD ["npm","start"]
+
 
 ```
 
