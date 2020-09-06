@@ -186,6 +186,8 @@ export class AppModule { }
 
 ## Appraoch with lazy loading 
 
+## [ANGULAR CRUD EXAMPLE](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/angular-http-crud-operation)
+
 ### Generate module 
 * $ ng g module <'module-name'> --route <'route-name'> --module app.module 
 * src/app/xxx/xxxx.module.ts
