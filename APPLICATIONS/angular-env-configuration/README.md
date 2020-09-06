@@ -56,6 +56,90 @@ export const environment = {
 };
 
 ```
+* project/enviroments/enviorement.dev.ts 
+```
+export const environment = {
+  dev: true,
+  production: false,
+  message: "welcome to dev profile"
+};
+```
+
+### Configuration of profile config in angular.json 
+* project/angular.json 
+```
+{
+  "projcts": {
+    "project-name": {
+      "architect": {
+        "build": {
+
+        
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+
+       }
+     }
+    }
+  }
+}
+```
 
 ### Config reading in app.module.ts 
 ```
@@ -86,3 +170,7 @@ export class AppComponent {
 ## on prod env 
 * ng build --production
 * ng serve --configuration production
+
+## on dev env 
+* ng build --production
+* ng serve --configuration dev

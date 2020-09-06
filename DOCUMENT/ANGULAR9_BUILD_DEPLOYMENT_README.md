@@ -73,7 +73,7 @@ export const environment = {
   "xxxx",'xxxxx'
 };
 ```
-	* add the configuration file in project/angular.conf.ts 
+	* add the configuration file in project/angular.json 
 ```
 {
   "projcts": {
@@ -129,7 +129,7 @@ export class AppComponent {
 <h3> {{configPropName}} </h3> 
 ```
 
-* ng serve --configuration=<'config-name'>
+* ng serve --configuration <'config-name'>
 
 
 
