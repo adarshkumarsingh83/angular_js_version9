@@ -30,14 +30,14 @@ $ select the type of css => SCCS
 
 # ANGULARJS DOCUMENTS 
 
-* [basic-document](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/DOCUMENT/README.md)
+* [BASIC-DOCUMENT-LISTS](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/DOCUMENT/README.md)
 
 * [BASIC_APPLICATION_DOCUMENT](https://github.com/adarshkumarsingh83/angular_js_version9/blob/master/DOCUMENT/ANGULAR9_BASICAPPLICATION_README.md)
 
 
 # ANGULARJS SAMPLES 
 
-* [applications](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/README.md) 
+* [APPLICATION LIST](https://github.com/adarshkumarsingh83/angular_js_version9/tree/master/APPLICATIONS/README.md) 
 
 
 
