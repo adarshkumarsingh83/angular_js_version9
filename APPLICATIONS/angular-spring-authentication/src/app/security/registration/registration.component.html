@@ -1,0 +1,32 @@
+<div class="container">
+    <!-- Content here -->
+    <div class="alert alert-primary" role="alert">
+      <h4 class="display-5"> ESPARK REGISTRATION</h4>
+    </div>
+    <form #myForm="ngForm" (ngSubmit)="registerUser(myForm)">
+      <div class="form-group">
+        <label for="exampleInputName">User Name </label>
+        <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp"  name="nameInput" ngModel required #nameInput="ngModel"/>
+        <small id="nameHelp" class="form-text text-muted" *ngIf="nameInput.touched && !nameInput.valid">Enter the Name Field Value </small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="emailInput" ngModel required #emailInput="ngModel"/>
+        <small id="emailHelp" class="form-text text-muted" *ngIf="emailInput.touched && !emailInput.valid">Enter the Email Field Value</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="pwdHelp" name="pwdInput" ngModel required #pwdInput="ngModel">
+        <small id="pwdHelp" class="form-text text-muted" *ngIf="pwdInput.touched && !pwdInput.valid">Enter the Password Field Value</small>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1"  aria-describedby="checkBoxHelp" name="checkboxInput" ngModel required #checkboxInput="ngModel" >
+        <label class="form-check-label" for="exampleCheck1">Agreed on Contract</label>
+        <small id="checkBoxHelp" class="form-text text-muted" *ngIf="checkboxInput.touched && !checkboxInput.valid">Check the Agreement </small>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+    </form>
+    <h3 class="display-5">
+      {{data | json }}
+    </h3>
+  </div>
