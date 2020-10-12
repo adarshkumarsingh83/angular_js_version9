@@ -121,6 +121,36 @@ CREATE src/app/security/registration/registration.component.ts (300 bytes)
 UPDATE src/app/security/security.module.ts (368 bytes)
 ```
 
+### To generate the local storage service
+
+- \$ npm install --save ngx-webstorage-service
+
+### To generate user model
+
+- \$ ng g interface user
+
+```
+CREATE src/app/app-services/user.ts (26 bytes)
+```
+
+### To generate the service module
+
+- \$ ng g module app-services
+
+```
+CREATE src/app/app-services/app-services.module.ts (197 bytes)
+```
+
+### To generate the servicess
+
+- cd proj/src/app/app-services
+- ng g service data
+
+```
+CREATE src/app/app-services/data.service.spec.ts (347 bytes)
+CREATE src/app/app-services/data.service.ts (133 bytes)
+```
+
 ### To Generate the RouteGurd
 
 - \$ ng generate guard security
@@ -144,29 +174,28 @@ CREATE src/app/security.guard.ts (460 bytes)
 ```
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { InvalidUrlComponent } from './invalid-url/invalid-url.component';
-import {LoginComponent} from './security/login/login.component';
-import {RegistrationComponent} from './security/registration/registration.component';
+import { LoginComponent } from './security/login/login.component';
+import { RegistrationComponent } from './security/registration/registration.component';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvalidUrlComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, StorageServiceModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
+
 ```
 
 ### add the router for the application

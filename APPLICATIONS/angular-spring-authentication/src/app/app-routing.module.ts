@@ -8,7 +8,7 @@ import { LoginComponent } from './security/login/login.component';
 import { RegistrationComponent } from './security/registration/registration.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full', canActivate: [SecurityGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   {

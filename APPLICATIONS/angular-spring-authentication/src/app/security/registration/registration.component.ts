@@ -1,27 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DataService } from '../../app-services/data.service';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
+  dataService: DataService;
 
-  constructor() { }
-
-  data;
-  registerUser(myForm: NgForm){
-    console.log(myForm);
-    console.log(myForm.value.nameInput);
-		console.log(myForm.value.emailInput);
-		console.log(myForm.value.pwdInput);
-    console.log(myForm.value.checkboxInput);
-    this.data = { "name": myForm.value.nameInput,"email": myForm.value.emailInput, "pwd": myForm.value.pwdInput, "term": myForm.value.checkboxInput}
-    console.log(this.data);
-	}
-
-  ngOnInit(): void {
+  constructor(dataService: DataService) {
+    this.dataService = dataService;
   }
 
+  data;
+  registerUser(myForm: NgForm) {
+    this.data = {
+      userName: myForm.value.nameInput,
+      email: myForm.value.emailInput,
+      userPwd: myForm.value.pwdInput,
+      isAdmin: myForm.value.checkboxInput,
+    };
+    this.dataService.storeOnLocalStorage(this.data);
+    console.log(this.data);
+  }
+
+  ngOnInit(): void {}
 }

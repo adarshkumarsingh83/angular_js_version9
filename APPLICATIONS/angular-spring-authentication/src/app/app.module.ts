@@ -5,22 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { InvalidUrlComponent } from './invalid-url/invalid-url.component';
-import {LoginComponent} from './security/login/login.component';
-import {RegistrationComponent} from './security/registration/registration.component';
+import { LoginComponent } from './security/login/login.component';
+import { RegistrationComponent } from './security/registration/registration.component';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvalidUrlComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, StorageServiceModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
