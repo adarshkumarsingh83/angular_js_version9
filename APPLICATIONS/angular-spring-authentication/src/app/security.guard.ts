@@ -1,27 +1,57 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+} from '@angular/router';
+import { SecurityUtilService } from './security/security-util.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SecurityGuard implements CanActivate {
-
-  constructor(private router: Router) {}
+  securityUtilService: SecurityUtilService;
+  constructor(
+    private router: Router,
+    securityUtilService: SecurityUtilService
+  ) {
+    this.securityUtilService = securityUtilService;
+  }
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-    console.log("security gurad execued")
+    state: RouterStateSnapshot
+  ): boolean {
+    console.log('security gurad execued');
     const queryParams = route.queryParams;
-    if(queryParams.valid === 'true'){
-      console.log("security gurad execued authentication is "+ queryParams.valid)
-       return true;
+    console.log(queryParams);
+    if (queryParams != null) {
+      if (queryParams.valid === 'true') {
+        console.log(
+          'security gurad execued authentication is ' + queryParams.valid
+        );
+        return true;
+      } else {
+        console.log(
+          'security gurad execued authentication is ' + queryParams.valid
+        );
+        this.router.navigateByUrl('/login');
+        return false;
+      }
     } else {
-      console.log("security gurad execued authentication is "+ queryParams.valid)
-      this.router.navigateByUrl('/login');
-      return false;
+      const userContext = this.securityUtilService.getFromStorge();
+      if (userContext != null) {
+        console.log(
+          'security gurad execued authentication is true user context found'
+        );
+        return true;
+      } else {
+        console.log(
+          'security gurad execued authentication is false user context not found'
+        );
+        this.router.navigateByUrl('/login');
+        return false;
+      }
     }
-  }  
-  
+  }
 }

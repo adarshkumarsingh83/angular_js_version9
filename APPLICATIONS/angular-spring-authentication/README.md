@@ -121,6 +121,25 @@ CREATE src/app/security/registration/registration.component.ts (300 bytes)
 UPDATE src/app/security/security.module.ts (368 bytes)
 ```
 
+### To generate user Context
+
+- cd proj/src/app/security
+- ng g interface user-context
+
+```
+CREATE src/app/security/user-context.ts (33 bytes)
+```
+
+### To generate security util
+
+- cd proj/src/app/security
+- ng g service security-util
+
+```
+CREATE src/app/security/security-util.service.spec.ts (388 bytes)
+CREATE src/app/security/security-util.service.ts (141 bytes)
+```
+
 ### To generate the local storage service
 
 - \$ npm install --save ngx-webstorage-service
@@ -208,24 +227,28 @@ import { Routes, RouterModule } from '@angular/router';
 import { InvalidUrlComponent } from './invalid-url/invalid-url.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
-import { SecurityGuard} from './security.guard';
-import {LoginComponent}  from './security/login/login.component'
-import {RegistrationComponent}  from './security/registration/registration.component'
+import { SecurityGuard } from './security.guard';
+import { LoginComponent } from './security/login/login.component';
+import { RegistrationComponent } from './security/registration/registration.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch:'full' },
+  { path: '', redirectTo: '', pathMatch: 'full', canActivate: [SecurityGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegistrationComponent },
-  { path: 'admin', component: AdminHomeComponent,canActivate: [SecurityGuard]},
-  { path: 'user', component: UserHomeComponent, canActivate: [SecurityGuard]},
-  { path: '**', component: InvalidUrlComponent }
+  { path: 'registration', component: RegistrationComponent },
+  {
+    path: 'admin',
+    component: AdminHomeComponent,
+    canActivate: [SecurityGuard],
+  },
+  { path: 'user', component: UserHomeComponent, canActivate: [SecurityGuard] },
+  { path: '**', component: InvalidUrlComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 ```
 
 ### To Buld
