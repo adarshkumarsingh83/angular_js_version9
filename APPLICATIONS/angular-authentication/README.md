@@ -1,6 +1,6 @@
-# AngularSpringAuthentication
+# AngularAuthentication
 
-- \$ ng new angular-spring-authentication
+- \$ ng new angular-authentication
 
 ```
 ? Would you like to add Angular routing? Yes
