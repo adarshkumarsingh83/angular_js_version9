@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataService } from '../../app-services/data.service';
 import { Router } from '@angular/router';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +12,11 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
   dataService: DataService;
   router: Router;
-  constructor(dataService: DataService, router: Router) {
+  constructor(
+    dataService: DataService,
+    router: Router,
+    appComponent: AppComponent
+  ) {
     this.dataService = dataService;
     this.router = router;
   }

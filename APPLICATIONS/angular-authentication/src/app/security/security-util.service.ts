@@ -14,10 +14,10 @@ export class SecurityUtilService {
     this.storage.set(STORAGE_KEY, userContext);
     console.log(this.storage.get(STORAGE_KEY) || 'LocaL storage is empty');
   }
-  public removeStoreage(): void{
-   this.storage.clear()
+  public removeStoreage(): void {
+    this.storage.remove(STORAGE_KEY);
   }
-  
+
   public getFromStorge(): UserContext {
     const userData = this.storage.get(STORAGE_KEY) || {};
     if (userData != null) {

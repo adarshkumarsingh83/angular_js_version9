@@ -3,9 +3,9 @@
     <h3 class="display-3">ESPARK INNOVATION LABS</h3>
   </div>
   <div>
-    <button (click)="logout()" class="btn btn-outline-dark">Logout</button>
+    <button (click)="logout()" class="btn btn-outline-dark" *ngIf="this.isLogoutButtonVisible">Logout</button>
     &nbsp;
-    <button (click)="registration()" class="btn btn-outline-dark">
+    <button (click)="registration()" class="btn btn-outline-dark" *ngIf="this.isRegistrationButtonVisible" >
       New User Registration
     </button>
   </div>

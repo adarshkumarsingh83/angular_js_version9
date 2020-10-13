@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { DataService } from '../../app-services/data.service';
 import { Router } from '@angular/router';
 import { SecurityUtilService } from '../security-util.service';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,13 @@ export class LoginComponent implements OnInit {
   constructor(
     dataService: DataService,
     router: Router,
-    securityUtilService: SecurityUtilService
+    securityUtilService: SecurityUtilService,
+    appComponent: AppComponent
   ) {
     this.dataService = dataService;
     this.router = router;
     this.securityUtilService = securityUtilService;
+    appComponent.setLogoutButtonVisible(false);
   }
 
   data;
