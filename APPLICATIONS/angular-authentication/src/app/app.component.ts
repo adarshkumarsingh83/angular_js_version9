@@ -9,6 +9,7 @@ import { SecurityUtilService } from './security/security-util.service';
 })
 export class AppComponent {
   title = 'angular-spring-authentication';
+  message = '';
   isLogoutButtonVisible = true;
   isRegistrationButtonVisible = true;
   isAdminHomeVisible = false;
@@ -26,6 +27,7 @@ export class AppComponent {
 
   logout() {
     console.log(`AppComponent.logout()`);
+    this.setMessage('');
     const userContext = this.securityUtilService.getFromStorge();
     if (userContext.isAuthenticate) {
       this.securityUtilService.removeStoreage();
@@ -105,7 +107,6 @@ export class AppComponent {
         this.setUserHomeVisible(true);
       }
       this.setCommonHomeVisible(false);
-
       this.router.navigate(['/'], {
         queryParams: { action: 'common-home' },
       });
@@ -133,5 +134,9 @@ export class AppComponent {
 
   public setCommonHomeVisible(isCommonHomeVisible: boolean): void {
     this.isCommonHomeVisible = isCommonHomeVisible;
+  }
+
+  public setMessage(message: string): void {
+    this.message = message;
   }
 }

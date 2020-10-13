@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
         this.appComponent.setRegistrationButtonVisible(false);
         this.appComponent.setAdminHomeVisible(true);
         this.appComponent.setUserHomeVisible(true);
+        this.appComponent.setMessage(`welcome to espark ${user.userName}`);
         this.router.navigate(['/'], {
           queryParams: { name: user.userName },
         });
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit {
         this.appComponent.setRegistrationButtonVisible(false);
         this.appComponent.setAdminHomeVisible(false);
         this.appComponent.setUserHomeVisible(true);
+        this.appComponent.setMessage(`welcome to espark ${user.userName}`);
         this.router.navigate(['/'], {
           queryParams: { name: user.userName },
         });
