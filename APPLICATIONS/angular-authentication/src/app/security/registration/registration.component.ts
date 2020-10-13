@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit {
       userName: myForm.value.nameInput,
       email: myForm.value.emailInput,
       userPwd: myForm.value.pwdInput,
-      isAdmin: myForm.value.checkboxInput,
+      isAdmin: myForm.value.checkboxInput ? myForm.value.checkboxInput : false,
     };
     this.dataService.storeOnLocalStorage(this.data);
     console.log(this.data);

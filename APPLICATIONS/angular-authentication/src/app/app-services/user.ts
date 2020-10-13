@@ -3,5 +3,4 @@ export interface User {
   email: string;
   userPwd: string;
   isAdmin: boolean;
-
 }

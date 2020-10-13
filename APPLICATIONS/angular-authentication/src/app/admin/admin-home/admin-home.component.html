@@ -1,3 +1,27 @@
 <div>
+  <br />
   <h3>WELCOME {{ userName }} TO THE ADMIN HOME</h3>
+  <br />
+  <div class="container">
+    <h3>Data Table</h3>
+    <p>All the data stored curently in db storage</p>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Is Admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dataItem of userList">
+          <td>{{ dataItem.userName }}</td>
+          <td>{{ dataItem.email }}</td>
+          <td>{{ dataItem.userPwd }}</td>
+          <td>{{ dataItem.isAdmin }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

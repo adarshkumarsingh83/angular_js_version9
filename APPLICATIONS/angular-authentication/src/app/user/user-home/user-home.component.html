@@ -1,3 +1,27 @@
 <div>
+  <br />
   <h3>WELCOME {{ userName }} TO THE USER HOME</h3>
+  <br />
+  <br />
+  <div class="container">
+    <h1>View {{ user.userName }} Data Details</h1>
+    <table class="table">
+      <tr>
+        <td>Name:</td>
+        <td>{{ user.userName }}</td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td>{{ user.email }}</td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td>{{ user.userPwd }}</td>
+      </tr>
+      <tr>
+        <td>Is Admin User</td>
+        <td>{{ user.isAdmin }}</td>
+      </tr>
+    </table>
+  </div>
 </div>

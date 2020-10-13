@@ -49,4 +49,19 @@ export class DataService {
     }
     return null;
   }
+
+  public getData(userName: String): User {
+    const userData = this.storage.get(STORAGE_KEY) || [];
+    for (var index in userData) {
+      const user = userData[index];
+      if (user.userName === userName) {
+        return user;
+      }
+    }
+    return null;
+  }
+
+  public getAllData(): User[] {
+    return this.storage.get(STORAGE_KEY) || [];
+  }
 }
