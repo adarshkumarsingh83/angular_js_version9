@@ -9,8 +9,8 @@ import { SecurityUtilService } from './security/security-util.service';
 })
 export class AppComponent {
   title = 'angular-spring-authentication';
-  public isLogoutButtonVisible = true;
-  public isRegistrationButtonVisible = true;
+  isLogoutButtonVisible = true;
+  isRegistrationButtonVisible = true;
   isAdminHomeVisible = false;
   isUserHomeVisible = false;
   isCommonHomeVisible = false;
@@ -26,15 +26,28 @@ export class AppComponent {
 
   logout() {
     console.log(`AppComponent.logout()`);
-    this.securityUtilService.removeStoreage();
-    this.router.navigate(['/login'], {
-      queryParams: { action: 'logout' },
-    });
-    this.setLogoutButtonVisible(false);
-    this.setRegistrationButtonVisible(true);
-    this.setAdminHomeVisible(false);
-    this.setUserHomeVisible(false);
-    this.setCommonHomeVisible(false);
+    const userContext = this.securityUtilService.getFromStorge();
+    if (userContext.isAuthenticate) {
+      this.securityUtilService.removeStoreage();
+      this.router.navigate(['/login'], {
+        queryParams: { action: 'logout' },
+      });
+      this.setLogoutButtonVisible(false);
+      this.setRegistrationButtonVisible(true);
+      this.setAdminHomeVisible(false);
+      this.setUserHomeVisible(false);
+      this.setCommonHomeVisible(false);
+    } else {
+      this.setLogoutButtonVisible(false);
+      this.setRegistrationButtonVisible(true);
+      this.setAdminHomeVisible(false);
+      this.setUserHomeVisible(false);
+      this.setCommonHomeVisible(false);
+      this.securityUtilService.removeStoreage();
+      this.router.navigate(['/login'], {
+        queryParams: { action: 'login-expired' },
+      });
+    }
   }
 
   registration() {
@@ -48,39 +61,57 @@ export class AppComponent {
   }
 
   public adminHome(): void {
-    this.setRegistrationButtonVisible(false);
-    this.setLogoutButtonVisible(true);
-    this.setAdminHomeVisible(false);
-    this.setCommonHomeVisible(true);
-    this.router.navigate(['/admin'], {
-      queryParams: { action: 'admin-home' },
-    });
+    const userContext = this.securityUtilService.getFromStorge();
+    if (userContext.isAuthenticate) {
+      this.setRegistrationButtonVisible(false);
+      this.setLogoutButtonVisible(true);
+      this.setAdminHomeVisible(false);
+      this.setUserHomeVisible(true);
+      this.setCommonHomeVisible(true);
+      this.router.navigate(['/admin'], {
+        queryParams: { action: 'admin-home' },
+      });
+    } else {
+      this.logout();
+    }
   }
 
   public userHome(): void {
-    this.setRegistrationButtonVisible(false);
-    this.setLogoutButtonVisible(true);
-    this.setUserHomeVisible(false);
-    this.setCommonHomeVisible(true);
-    this.router.navigate(['/user'], {
-      queryParams: { action: 'user-home' },
-    });
+    const userContext = this.securityUtilService.getFromStorge();
+    if (userContext.isAuthenticate) {
+      if (userContext.isAdmin) {
+        this.setAdminHomeVisible(true);
+      }
+      this.setRegistrationButtonVisible(false);
+      this.setLogoutButtonVisible(true);
+      this.setUserHomeVisible(false);
+      this.setCommonHomeVisible(true);
+      this.router.navigate(['/user'], {
+        queryParams: { action: 'user-home' },
+      });
+    } else {
+      this.logout();
+    }
   }
 
   public home(): void {
     const userContext = this.securityUtilService.getFromStorge();
-    if (userContext.isAdmin) {
-      this.setAdminHomeVisible(true);
-      this.setUserHomeVisible(true);
-    } else {
-      this.setAdminHomeVisible(false);
-      this.setUserHomeVisible(true);
-    }
-    this.setCommonHomeVisible(false);
+    if (userContext.isAuthenticate) {
+      if (userContext.isAdmin) {
+        this.setAdminHomeVisible(true);
+        this.setUserHomeVisible(true);
+      } else {
+        this.setAdminHomeVisible(false);
+        this.setUserHomeVisible(true);
+      }
+      this.setCommonHomeVisible(false);
 
-    this.router.navigate(['/'], {
-      queryParams: { action: 'common-home' },
-    });
+      this.router.navigate(['/'], {
+        queryParams: { action: 'common-home' },
+      });
+    } else {
+      this.logout();
+    }
   }
 
   public setLogoutButtonVisible(isLogoutButtonVisible: boolean): void {
