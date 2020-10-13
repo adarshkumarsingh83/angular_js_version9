@@ -44,12 +44,12 @@ export class LoginComponent implements OnInit {
       if (user.isAdmin == true) {
         console.log(user.isAdmin);
         this.router.navigate(['/admin'], {
-          queryParams: { valid: 'true', name: user.userName },
+          queryParams: { name: user.userName },
         });
       } else if (user.isAdmin == false) {
         console.log(user.isAdmin);
         this.router.navigate(['/user'], {
-          queryParams: { valid: 'true', name: user.userName },
+          queryParams: { name: user.userName },
         });
       }
     } else {
