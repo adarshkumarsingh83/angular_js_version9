@@ -20,4 +20,6 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+
+}
