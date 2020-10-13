@@ -69,7 +69,6 @@
         aria-describedby="checkBoxHelp"
         name="checkboxInput"
         ngModel
-        required
         #checkboxInput="ngModel"
       />
       <label class="form-check-label" for="exampleCheck1">Is Admin</label>
@@ -77,11 +76,15 @@
         id="checkBoxHelp"
         class="form-text text-muted"
         *ngIf="checkboxInput.touched && !checkboxInput.valid"
-        >Check the Agreement
+        >Admin or Not
       </small>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">
       Submit
+    </button>
+    &nbsp;
+    <button class="btn btn-primary" (click)="cancelRegistrattion()">
+      cancel
     </button>
   </form>
   <h3 class="display-5">

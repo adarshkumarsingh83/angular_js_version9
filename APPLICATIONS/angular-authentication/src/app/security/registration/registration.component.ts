@@ -12,6 +12,8 @@ import { AppComponent } from '../../app.component';
 export class RegistrationComponent implements OnInit {
   dataService: DataService;
   router: Router;
+  appComponent: AppComponent;
+
   constructor(
     dataService: DataService,
     router: Router,
@@ -19,6 +21,9 @@ export class RegistrationComponent implements OnInit {
   ) {
     this.dataService = dataService;
     this.router = router;
+    this.appComponent = appComponent;
+    this.appComponent.setLogoutButtonVisible(false);
+    this.appComponent.setRegistrationButtonVisible(false);
   }
 
   data;
@@ -31,8 +36,18 @@ export class RegistrationComponent implements OnInit {
     };
     this.dataService.storeOnLocalStorage(this.data);
     console.log(this.data);
+    this.appComponent.setLogoutButtonVisible(false);
+    this.appComponent.setRegistrationButtonVisible(true);
     this.router.navigate(['/login'], {
       queryParams: { action: 'new-registration' },
+    });
+  }
+
+  cancelRegistrattion() {
+    this.appComponent.setLogoutButtonVisible(false);
+    this.appComponent.setRegistrationButtonVisible(true);
+    this.router.navigate(['/login'], {
+      queryParams: { action: 'cancel-registration' },
     });
   }
 

@@ -3,12 +3,46 @@
     <h3 class="display-3">ESPARK INNOVATION LABS</h3>
   </div>
   <div>
-    <button (click)="logout()" class="btn btn-outline-dark" *ngIf="this.isLogoutButtonVisible">Logout</button>
+    <button
+      (click)="logout()"
+      class="btn btn-outline-dark"
+      *ngIf="this.isLogoutButtonVisible"
+    >
+      Logout
+    </button>
     &nbsp;
-    <button (click)="registration()" class="btn btn-outline-dark" *ngIf="this.isRegistrationButtonVisible" >
+    <button
+      (click)="registration()"
+      class="btn btn-outline-dark"
+      *ngIf="this.isRegistrationButtonVisible"
+    >
       New User Registration
     </button>
-  </div>
-</div>
+    &nbsp; &nbsp; &nbsp; &nbsp;
 
-<router-outlet></router-outlet>
+    <button
+      (click)="adminHome()"
+      class="btn btn-outline-dark"
+      *ngIf="this.isAdminHomeVisible"
+    >
+      Admin Home
+    </button>
+    &nbsp;
+    <button
+      (click)="userHome()"
+      class="btn btn-outline-dark"
+      *ngIf="this.isUserHomeVisible"
+    >
+      User Home
+    </button>
+    &nbsp;
+    <button
+      (click)="home()"
+      class="btn btn-outline-dark"
+      *ngIf="this.isCommonHomeVisible"
+    >
+      Common Home
+    </button>
+  </div>
+  <router-outlet></router-outlet>
+</div>
