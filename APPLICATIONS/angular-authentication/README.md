@@ -261,14 +261,16 @@ export class AppRoutingModule {}
 
 ### Application Url
 
+- admin
+  - admin/admin
+- user
+  - user/user
 - app module url
   - http://localhost:4200
 - admin home
-  - http://localhost:4200/admin?valid=true
-  - http://localhost:4200/admin?valid=false
+  - http://localhost:4200/admin
 - user home
-  - http://localhost:4200/user?valid=true
-  - http://localhost:4200/user?valid=false
+  - http://localhost:4200/user
 - invalid url
   - http://localhost:4200/xxxx
 - app registration url

@@ -18,9 +18,17 @@ export class AppComponent {
   }
 
   logout() {
+    console.log(`AppComponent.logout()`);
     this.securityUtilService.removeStoreage();
     this.router.navigate(['/login'], {
       queryParams: { action: 'logout' },
+    });
+  }
+
+  registration() {
+    console.log(`AppComponent.registration()`);
+    this.router.navigate(['/registration'], {
+      queryParams: { action: 'registration' },
     });
   }
 }
