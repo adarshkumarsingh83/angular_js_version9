@@ -49,7 +49,7 @@ public class AuthenticationService {
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(userName);
         String token = this.jwtUtilService.generateToken(userDetails);
         UserBean userBean = this.userDetailsService.getUserDetailBean(userName);
-        return new AuthenticationResponseBean("X-TOKEN: "+token,"Token for Authenticated User" , userBean);
+        return new AuthenticationResponseBean(token,"X-TOKEN","Token for Authenticated User" , userBean);
     }
 
 }

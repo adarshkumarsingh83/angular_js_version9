@@ -4,4 +4,5 @@ export interface UserContext {
   isAdmin: boolean;
   isAuthenticate: boolean;
   userToken: string;
+  key: string;
 }

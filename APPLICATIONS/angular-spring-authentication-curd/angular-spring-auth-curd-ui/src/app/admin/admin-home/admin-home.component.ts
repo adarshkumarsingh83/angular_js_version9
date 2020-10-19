@@ -12,6 +12,7 @@ import { EmployeeService } from '../../app-services/employee.service';
 })
 export class AdminHomeComponent implements OnInit {
   userName: string;
+  message: string;
   router: Router;
   employeeList: Employee[];
   employeeService: EmployeeService;
@@ -31,9 +32,15 @@ export class AdminHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employeeList = this.employeeService.getEmployees();
-    console.debug(
-      `AdminHomeComponent.ngOnInit() data fetch from db ${this.employeeList}`
+    this.employeeService.getEmployees().subscribe(
+      (response) => {
+        this.employeeList = response.data;
+        this.message = response.message;
+        console.log(`AdminHomeComponent.getEmployees()`, this.employeeList);
+      },
+      (error) => {
+        console.log(`AdminHomeComponent.getEmployees() Errors `, error);
+      }
     );
   }
 }

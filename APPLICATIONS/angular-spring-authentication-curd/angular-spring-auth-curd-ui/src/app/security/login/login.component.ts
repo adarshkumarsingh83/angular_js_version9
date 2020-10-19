@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
         isAdmin: this.authentication.userBean.isAdmin,
         isAuthenticate: this.authentication.token ? true : false,
         userToken: this.authentication.token,
+        key: this.authentication.key,
       });
 
       if (this.authentication.userBean.isAdmin == true) {

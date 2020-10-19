@@ -9,6 +9,7 @@ import lombok.*;
 public class AuthenticationResponseBean {
 
     private String token;
+    private String key;
     private String message;
     private UserBean userBean;
 

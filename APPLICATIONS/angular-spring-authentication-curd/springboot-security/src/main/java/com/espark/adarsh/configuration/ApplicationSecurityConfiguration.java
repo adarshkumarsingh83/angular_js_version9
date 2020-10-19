@@ -15,8 +15,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import javax.annotation.Priority;
+import java.util.Arrays;
 
 @Slf4j
 @Priority(1)
@@ -41,7 +44,9 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.cors().disable()
+        httpSecurity
+                .cors()
+                .and()
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/login").permitAll()
                 .antMatchers("/api/**").authenticated()
@@ -51,6 +56,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
+
 
 
     @Bean
