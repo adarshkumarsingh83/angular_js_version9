@@ -10,9 +10,14 @@ const STORAGE_KEY = 'user_context';
 export class SecurityUtilService {
   constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) {}
 
-  public storeOnLocalStorage(userContext: UserContext): void {
-    this.storage.set(STORAGE_KEY, userContext);
-    console.log(this.storage.get(STORAGE_KEY) || 'LocaL storage is empty');
+  public storeOnLocalStorage(userContext: UserContext): UserContext {
+    if (userContext != null) {
+      this.storage.set(STORAGE_KEY, userContext);
+      console.log(this.storage.get(STORAGE_KEY) || 'LocaL storage is empty');
+      return this.storage.get(STORAGE_KEY);
+    } else {
+      return null;
+    }
   }
 
   public removeStoreage(): void {

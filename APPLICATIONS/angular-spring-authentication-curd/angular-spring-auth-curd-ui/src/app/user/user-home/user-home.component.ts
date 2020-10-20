@@ -11,8 +11,9 @@ import { Employee } from 'src/app/app-services/employee';
   styleUrls: ['./user-home.component.scss'],
 })
 export class UserHomeComponent implements OnInit {
-  employee: Employee;
+  employeeList: Employee[];
   userName: string;
+  message: string;
   router: Router;
   employeeService: EmployeeService;
   securityUtilService: SecurityUtilService;
@@ -32,9 +33,15 @@ export class UserHomeComponent implements OnInit {
     appComponent.setLogoutButtonVisible(true);
   }
   ngOnInit(): void {
-    const userContext = this.securityUtilService.getFromStorge();
-    this.employee = this.employeeService.getEmployeeByName(
-      userContext.userName
+    this.employeeService.getEmployees().subscribe(
+      (response) => {
+        this.employeeList = response.data;
+        this.message = response.message;
+        console.log(`AdminHomeComponent.getEmployees()`, this.employeeList);
+      },
+      (error) => {
+        console.log(`AdminHomeComponent.getEmployees() Errors `, error);
+      }
     );
   }
 }

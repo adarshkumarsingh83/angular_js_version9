@@ -64,35 +64,49 @@ export class LoginComponent implements OnInit {
         'authentication true for login ',
         this.authentication.userBean
       );
-      this.securityUtilService.storeOnLocalStorage({
+      const userContext = this.securityUtilService.storeOnLocalStorage({
         userName: this.authentication.userBean.userName,
         email: this.authentication.userBean.email,
-        isAdmin: this.authentication.userBean.isAdmin,
+        isAdmin: this.authentication.userBean.userRoles[0] == 'ADMIN',
+        isUser: this.authentication.userBean.userRoles[0] == 'USER',
+        isGuest: this.authentication.userBean.userRoles[0] == 'GUEST',
         isAuthenticate: this.authentication.token ? true : false,
         userToken: this.authentication.token,
         key: this.authentication.key,
       });
 
-      if (this.authentication.userBean.isAdmin == true) {
+      if (userContext.isAdmin) {
         console.log(this.authentication.userBean.isAdmin);
         this.appComponent.setLogoutButtonVisible(true);
         this.appComponent.setRegistrationButtonVisible(false);
         this.appComponent.setAdminHomeVisible(true);
         this.appComponent.setUserHomeVisible(true);
         this.appComponent.setMessage(
-          `welcome to espark ${this.authentication.userBean.userName}`
+          `welcome to espark ${this.authentication.userBean.userName} loggin as Admin`
         );
         this.router.navigate(['/'], {
           queryParams: { name: this.authentication.userBean.userName },
         });
-      } else if (this.authentication.userBean.isAdmin == false) {
+      } else if (userContext.isUser) {
         console.log(this.authentication.userBean.isAdmin);
         this.appComponent.setLogoutButtonVisible(true);
         this.appComponent.setRegistrationButtonVisible(false);
         this.appComponent.setAdminHomeVisible(false);
         this.appComponent.setUserHomeVisible(true);
         this.appComponent.setMessage(
-          `welcome to espark ${this.authentication.userBean.userName}`
+          `welcome to espark ${this.authentication.userBean.userName} loggin as User`
+        );
+        this.router.navigate(['/'], {
+          queryParams: { name: this.authentication.userBean.userName },
+        });
+      } else if (userContext.isGuest) {
+        console.log(this.authentication.userBean.isAdmin);
+        this.appComponent.setLogoutButtonVisible(true);
+        this.appComponent.setRegistrationButtonVisible(false);
+        this.appComponent.setAdminHomeVisible(false);
+        this.appComponent.setUserHomeVisible(false);
+        this.appComponent.setMessage(
+          `welcome to espark ${this.authentication.userBean.userName} loggin as Guest`
         );
         this.router.navigate(['/'], {
           queryParams: { name: this.authentication.userBean.userName },

@@ -13,6 +13,11 @@
           <th>Last Name</th>
           <th>Email</th>
           <th>Profession</th>
+          <th colspan="3">
+            <a href="#" routerLink="create" class="btn btn-success"
+              >Create New Data</a
+            >
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +27,27 @@
           <td>{{ dataItem.lastName }}</td>
           <td>{{ dataItem.email }}</td>
           <td>{{ dataItem.profession }}</td>
+          <td>
+            <button (click)="deleteEmployee(dataItem.id)" class="btn btn-danger">
+              Delete
+            </button>
+          </td>
+          <td>
+            <a
+              href="#"
+              [routerLink]="['update/', dataItem.id]"
+              class="btn btn-info"
+              >Update</a
+            >
+          </td>
+          <td>
+            <a
+              href="#"
+              [routerLink]="['detail/', dataItem.id]"
+              class="btn btn-info"
+              >View</a
+            >
+          </td>
         </tr>
       </tbody>
     </table>

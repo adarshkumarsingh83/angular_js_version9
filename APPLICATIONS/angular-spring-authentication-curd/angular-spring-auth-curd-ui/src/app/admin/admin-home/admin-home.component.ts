@@ -31,6 +31,10 @@ export class AdminHomeComponent implements OnInit {
     appComponent.setLogoutButtonVisible(true);
   }
 
+  deleteEmployee(employeeId: number): void {
+    console.log(`AdminHomeComponent.deleteEmployee()`);
+  }
+
   ngOnInit(): void {
     this.employeeService.getEmployees().subscribe(
       (response) => {
