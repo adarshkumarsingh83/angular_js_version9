@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Employee } from './employee';
+import { Employee } from './beans/employee';
 import { SecurityUtilService } from '../security/security-util.service';
 import { Observable } from 'rxjs';
-import { Data } from './data';
+import { Data } from './beans/data';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({

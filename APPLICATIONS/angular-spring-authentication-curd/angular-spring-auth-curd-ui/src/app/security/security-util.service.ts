@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
-import { UserContext } from './user-context';
+import { UserContext } from './beans/user-context';
 
 const STORAGE_KEY = 'user_context';
 

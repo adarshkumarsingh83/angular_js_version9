@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../app-services/authentication.service';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
-import { User } from 'src/app/app-services/user';
+import { User } from 'src/app/app-services/beans/user';
 
 @Component({
   selector: 'app-registration',

@@ -3,7 +3,7 @@ import { SecurityUtilService } from '../../security/security-util.service';
 import { AppComponent } from '../../app.component';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../../app-services/employee.service';
-import { Employee } from 'src/app/app-services/employee';
+import { Employee } from 'src/app/app-services/beans/employee';
 
 @Component({
   selector: 'app-user-home',

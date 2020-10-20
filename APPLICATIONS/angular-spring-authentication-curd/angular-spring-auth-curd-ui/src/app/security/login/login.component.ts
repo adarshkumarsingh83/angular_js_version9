@@ -4,7 +4,7 @@ import { AuthenticationService } from '../../app-services/authentication.service
 import { Router } from '@angular/router';
 import { SecurityUtilService } from '../security-util.service';
 import { AppComponent } from '../../app.component';
-import { Authentication } from '../../app-services/authentication';
+import { Authentication } from '../../app-services/beans/authentication';
 
 @Component({
   selector: 'app-login',

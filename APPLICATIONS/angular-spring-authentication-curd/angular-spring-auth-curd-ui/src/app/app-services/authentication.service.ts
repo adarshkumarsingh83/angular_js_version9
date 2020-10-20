@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Authentication } from './authentication';
-import { User } from './user';
-import { Data } from './data';
+import { Authentication } from './beans/authentication';
+import { User } from './beans/user';
+import { Data } from './beans/data';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 

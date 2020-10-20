@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../../app-services/employee.service';
-import { Employee } from 'src/app/app-services/employee';
+import { Employee } from 'src/app/app-services/beans/employee';
 import { AppComponent } from '../../../app.component';
 
 @Component({
