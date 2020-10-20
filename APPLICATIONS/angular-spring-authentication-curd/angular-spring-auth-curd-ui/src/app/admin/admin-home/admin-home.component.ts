@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SecurityUtilService } from '../../security/security-util.service';
 import { AppComponent } from '../../app.component';
 import { Router } from '@angular/router';
-import { Employee } from 'src/app/app-services/employee';
-import { EmployeeService } from '../../app-services/employee.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -14,37 +12,36 @@ export class AdminHomeComponent implements OnInit {
   userName: string;
   message: string;
   router: Router;
-  employeeList: Employee[];
-  employeeService: EmployeeService;
 
   constructor(
     router: Router,
     securityUtilService: SecurityUtilService,
-    appComponent: AppComponent,
-    employeeService: EmployeeService
+    private appComponent: AppComponent
   ) {
     this.router = router;
-    this.employeeService = employeeService;
     const userContext = securityUtilService.getFromStorge();
     this.userName = userContext.userName.toUpperCase();
     appComponent.setRegistrationButtonVisible(false);
     appComponent.setLogoutButtonVisible(true);
   }
 
-  deleteEmployee(employeeId: number): void {
-    console.log(`AdminHomeComponent.deleteEmployee()`);
+  employees(): void {
+    this.appComponent.setRegistrationButtonVisible(false);
+    this.appComponent.setCommonHomeVisible(true);
+    this.appComponent.setLogoutButtonVisible(true);
+    this.router.navigate(['/admin/employees-mgmt/employees'], {
+      queryParams: { action: 'employees-mgmt' },
+    });
   }
 
-  ngOnInit(): void {
-    this.employeeService.getEmployees().subscribe(
-      (response) => {
-        this.employeeList = response.data;
-        this.message = response.message;
-        console.log(`AdminHomeComponent.getEmployees()`, this.employeeList);
-      },
-      (error) => {
-        console.log(`AdminHomeComponent.getEmployees() Errors `, error);
-      }
-    );
+  users(): void {
+    this.appComponent.setRegistrationButtonVisible(false);
+    this.appComponent.setCommonHomeVisible(true);
+    this.appComponent.setLogoutButtonVisible(true);
+    this.router.navigate(['/admin/users-mgmt/users'], {
+      queryParams: { action: 'users-mgmt' },
+    });
   }
+
+  ngOnInit(): void {}
 }

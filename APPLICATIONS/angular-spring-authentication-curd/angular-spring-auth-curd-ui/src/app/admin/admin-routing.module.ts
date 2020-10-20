@@ -7,14 +7,14 @@ import { SecurityGuard } from '../security/security.guard';
 const routes: Routes = [
   { path: '', component: AdminHomeComponent, canActivate: [SecurityGuard] },
   {
-    path: 'employee-mgmt',
+    path: 'employees-mgmt',
     loadChildren: () =>
       import('./emloyee-managment/emloyee-managment.module').then(
         (m) => m.EmloyeeManagmentModule
       ),
   },
   {
-    path: 'user-mgmt',
+    path: 'users-mgmt',
     loadChildren: () =>
       import('./user-managment/user-managment.module').then(
         (m) => m.UserManagmentModule

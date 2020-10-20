@@ -1,39 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Employee } from './employee';
 import { SecurityUtilService } from '../security/security-util.service';
 import { Observable } from 'rxjs';
 import { Data } from './data';
+import { User } from './user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EmployeeService {
+export class UsersService {
   private baseUrl = 'http://localhost:8080/api';
 
-  private securityUtilService: SecurityUtilService;
-
   constructor(
-    securityUtilService: SecurityUtilService,
+    private securityUtilService: SecurityUtilService,
     private httpClient: HttpClient
-  ) {
-    this.securityUtilService = securityUtilService;
-  }
+  ) {}
 
-  public getEmployees(): Observable<Data<Employee[]>> {
+  public getUsers(): Observable<Data<User[]>> {
     const userContext = this.securityUtilService.getFromStorge();
-    console.log('EmployeeService.getEmployees()', userContext);
+    console.log('UsersService.getUsers()', userContext);
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);
-    return this.httpClient.get<Data<Employee[]>>(`${this.baseUrl}/employees`, {
+    return this.httpClient.get<Data<User[]>>(`${this.baseUrl}/users`, {
       headers: httpHeaders,
     });
 
-    return null;
-  }
-
-  public getEmployeeByName(name: string): Employee {
     return null;
   }
 }

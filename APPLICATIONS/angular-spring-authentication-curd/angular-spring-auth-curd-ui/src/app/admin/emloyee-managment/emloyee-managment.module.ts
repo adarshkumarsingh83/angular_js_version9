@@ -5,12 +5,14 @@ import { EmployeeCreateComponent } from './employee-create/employee-create.compo
 import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeeRoutingModule } from './employee-routing.module';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
     EmployeeCreateComponent,
     EmployeeUpdateComponent,
     EmployeeDetailsComponent,
+    EmployeeListComponent,
   ],
   imports: [CommonModule, FormsModule, EmployeeRoutingModule],
 })
