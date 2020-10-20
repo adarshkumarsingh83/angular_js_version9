@@ -34,6 +34,7 @@ public class UserBean implements Serializable {
     @JsonIgnore
     public User getUser() {
         User user = new User();
+        user.setId((this.getId() == 0) ? null : this.getId());
         user.setUserName(this.getUserName());
         user.setUserPwd(this.getUserPwd());
         user.setEmail(this.getEmail());

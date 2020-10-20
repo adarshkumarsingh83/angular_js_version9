@@ -5,6 +5,7 @@ import com.espark.adarsh.service.UserDetailsServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -48,7 +49,9 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .cors()
                 .and()
                 .csrf().disable()
-                .authorizeRequests().antMatchers("/login").permitAll()
+                .authorizeRequests().antMatchers(HttpMethod.POST,"/api/user").permitAll()
+                .and()
+                .authorizeRequests().antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers("/api/**").authenticated()
                 .anyRequest().authenticated()
                 .and()

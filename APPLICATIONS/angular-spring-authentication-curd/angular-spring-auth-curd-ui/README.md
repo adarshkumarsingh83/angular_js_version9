@@ -64,6 +64,102 @@ CREATE src/app/admin/admin-home/admin-home.component.ts (291 bytes)
 UPDATE src/app/admin/admin.module.ts (281 bytes)
 ```
 
+### To Generate Employee Module under Admin
+
+- cd proj/src/app/admin
+- ng g module emloyee-managment
+
+```
+CREATE src/app/admin/emloyee-managment/emloyee-managment.module.ts (202 bytes)
+```
+
+### To Generate EmployeeCreate component
+
+- cd src/app/admin/emloyee-managment
+- ng g component EmployeeCreate
+
+```
+CREATE src/app/admin/emloyee-managment/employee-create/employee-create.component.scss (0 bytes)
+CREATE src/app/admin/emloyee-managment/employee-create/employee-create.component.html (30 bytes)
+CREATE src/app/admin/emloyee-managment/employee-create/employee-create.component.spec.ts (685 bytes)
+CREATE src/app/admin/emloyee-managment/employee-create/employee-create.component.ts (311 bytes)
+UPDATE src/app/admin/emloyee-managment/emloyee-managment.module.ts (312 bytes)
+```
+
+### To Generate EmployeeUpdate component
+
+- cd src/app/admin/emloyee-managment
+- ng g component EmployeeUpdate
+
+```
+CREATE src/app/admin/emloyee-managment/employee-update/employee-update.component.scss (0 bytes)
+CREATE src/app/admin/emloyee-managment/employee-update/employee-update.component.html (30 bytes)
+CREATE src/app/admin/emloyee-managment/employee-update/employee-update.component.spec.ts (685 bytes)
+CREATE src/app/admin/emloyee-managment/employee-update/employee-update.component.ts (311 bytes)
+UPDATE src/app/admin/emloyee-managment/emloyee-managment.module.ts (424 bytes)
+```
+
+### To Generate EmployeeDetails component
+
+- cd src/app/admin/emloyee-managment
+- ng g component EmployeeDetails
+
+```
+CREATE src/app/admin/emloyee-managment/employee-details/employee-details.component.scss (0 bytes)
+CREATE src/app/admin/emloyee-managment/employee-details/employee-details.component.html (31 bytes)
+CREATE src/app/admin/emloyee-managment/employee-details/employee-details.component.spec.ts (692 bytes)
+CREATE src/app/admin/emloyee-managment/employee-details/employee-details.component.ts (315 bytes)
+UPDATE src/app/admin/emloyee-managment/emloyee-managment.module.ts (540 bytes)
+```
+
+### To Generate User Module under Admin
+
+- cd proj/src/app/admin
+- ng g module user-managment
+
+```
+CREATE src/app/admin/user-managment/user-managment.module.ts (199 bytes)
+```
+
+### To Generate UserCreate component
+
+- cd src/app/admin/user-managment
+- ng g component UserCreate
+
+```
+CREATE src/app/admin/user-managment/user-create/user-create.component.scss (0 bytes)
+CREATE src/app/admin/user-managment/user-create/user-create.component.html (26 bytes)
+CREATE src/app/admin/user-managment/user-create/user-create.component.spec.ts (657 bytes)
+CREATE src/app/admin/user-managment/user-create/user-create.component.ts (295 bytes)
+UPDATE src/app/admin/user-managment/user-managment.module.ts (293 bytes)
+```
+
+### To Generate UserUpdate component
+
+- cd src/app/admin/user-managment
+- ng g component UserUpdate
+
+```
+CREATE src/app/admin/user-managment/user-update/user-update.component.scss (0 bytes)
+CREATE src/app/admin/user-managment/user-update/user-update.component.html (26 bytes)
+CREATE src/app/admin/user-managment/user-update/user-update.component.spec.ts (657 bytes)
+CREATE src/app/admin/user-managment/user-update/user-update.component.ts (295 bytes)
+UPDATE src/app/admin/user-managment/user-managment.module.ts (389 bytes)
+```
+
+### To Generate UserDetails component
+
+- cd src/app/admin/user-managment
+- ng g component UserDetails
+
+```
+CREATE src/app/admin/user-managment/user-details/user-details.component.scss (0 bytes)
+CREATE src/app/admin/user-managment/user-details/user-details.component.html (27 bytes)
+CREATE src/app/admin/user-managment/user-details/user-details.component.spec.ts (664 bytes)
+CREATE src/app/admin/user-managment/user-details/user-details.component.ts (299 bytes)
+UPDATE src/app/admin/user-managment/user-managment.module.ts (489 bytes)
+```
+
 ---
 
 ### To generate user Module
