@@ -1,1 +1,85 @@
-<p>employee-create works!</p>
+<div class="container">
+  {{ responseMsg }}
+  <form #myForm="ngForm" (ngSubmit)="savaEmployee(myForm)">
+    <div class="form-group">
+      <label for="inputFirstName">First Name </label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputFirstName"
+        aria-describedby="nameFirstHelp"
+        ngModel
+        name="inputFirstName"
+        required
+      />
+      <small id="nameFirstHelp" class="form-text text-muted"
+        >We'll never share your name with anyone else.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="inputLastName">Last Name </label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputLastName"
+        aria-describedby="nameLastHelp"
+        ngModel
+        name="inputLastName"
+        required
+      />
+      <small id="nameLastHelp" class="form-text text-muted"
+        >We'll never share your name with anyone else.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="inputEmail">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="inputEmail"
+        aria-describedby="emailHelp"
+        ngModel
+        name="emailInput"
+        required
+      />
+      <small id="emailHelp" class="form-text text-muted"
+        >We'll never share your email with anyone else.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="inputProfession">Profession</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputProfession"
+        ngModel
+        name="professionInput"
+        required
+      />
+    </div>
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="inputCheck"
+        ngModel
+        name="checkboxInput"
+      />
+      <label class="form-check-label" for="inputCheck"
+        >Agreed on Contract</label
+      >
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    &nbsp;
+    <button type="button" class="btn btn-primary" (click)="clearFields(myForm)">
+      Clear
+    </button>
+    &nbsp;
+    <a
+      href="#"
+      routerLink="/admin/employees-mgmt/employees"
+      class="btn btn-primary"
+      >Listing Page</a
+    >
+  </form>
+</div>

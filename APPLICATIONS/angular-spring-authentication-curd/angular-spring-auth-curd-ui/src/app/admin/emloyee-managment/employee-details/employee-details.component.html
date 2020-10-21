@@ -1,1 +1,37 @@
-<p>employee-details works!</p>
+<div class="container">
+  <h1>View Data</h1>
+  <table class="table">
+    <tr>
+      <td>Id:</td>
+      <td>{{ employee.id }}</td>
+    </tr>
+    <tr>
+      <td>First Name:</td>
+      <td>{{ employee.firstName }}</td>
+    </tr>
+
+    <tr>
+      <td>Last Name:</td>
+      <td>{{ employee.lastName }}</td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>{{ employee.email }}</td>
+    </tr>
+
+    <tr>
+      <td>Profession</td>
+      <td>{{ employee.profession }}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a
+          href="#"
+          routerLink="/admin/employees-mgmt/employees"
+          class="btn btn-primary"
+          >Listing Page</a
+        >
+      </td>
+    </tr>
+  </table>
+</div>

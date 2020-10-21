@@ -18,12 +18,26 @@ export class EmployeeListComponent implements OnInit {
 
   deleteEmployee(employeeId: number): void {
     console.log(`EmployeeListComponent.deleteEmployee()`);
+    this.employeeService.deleteEmployee(employeeId).subscribe(
+      (response) => {
+        this.message = response.message;
+        console.log(`EmployeeListComponent.getEmployees()`, this.employeeList);
+        this.loadEmployees();
+      },
+      (error) => {
+        console.log(`EmployeeListComponent.getEmployees() Errors `, error);
+      }
+    );
   }
 
   ngOnInit(): void {
     this.appComponent.setCommonHomeVisible(true);
     this.appComponent.setLogoutButtonVisible(true);
     this.appComponent.setRegistrationButtonVisible(false);
+    this.loadEmployees();
+  }
+
+  public loadEmployees(): void {
     this.employeeService.getEmployees().subscribe(
       (response) => {
         this.employeeList = response.data;

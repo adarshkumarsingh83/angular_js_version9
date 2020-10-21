@@ -1,11 +1,14 @@
 package com.espark.adarsh.service;
 
+import com.espark.adarsh.entity.Employee;
 import com.espark.adarsh.entity.User;
 import com.espark.adarsh.entity.UserRole;
+import com.espark.adarsh.repository.EmployeeRepository;
 import com.espark.adarsh.repository.UserRepository;
 import com.espark.adarsh.repository.UserRoleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapAutoConfiguration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
@@ -31,12 +34,24 @@ public class DataInitService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    EmployeeRepository employeeRepository;
+
     @Transactional
     @PostConstruct
     public void init() {
-        Resource initSchema = new ClassPathResource("data.sql");
+        /*Resource initSchema = new ClassPathResource("data.sql");
         DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema);
-        DatabasePopulatorUtils.execute(databasePopulator, dataSource);
+        DatabasePopulatorUtils.execute(databasePopulator, dataSource);*/
+
+        Employee adarshEmployee = new Employee("adarsh", "kumar","adarsh@kumar", "It");
+        adarshEmployee = this.employeeRepository.save(adarshEmployee);
+        Employee radhaEmployee = new Employee ("radha", "singh","radhaj@singh", "IT");
+        radhaEmployee = this.employeeRepository.save(radhaEmployee);
+        Employee sonuEmployee = new Employee ("sonu", "singh","sonu@singh", "IT");
+        sonuEmployee = this.employeeRepository.save(sonuEmployee);
+        Employee amitEmployee = new Employee ("amit", "kumar","amit@kumar", "Finance");
+        amitEmployee = this.employeeRepository.save(amitEmployee);
 
         UserRole adminRole = new UserRole();
         adminRole.setRoleName("ADMIN");

@@ -19,12 +19,21 @@ public class EmployeeBean implements Serializable {
     private String email;
     private String profession;
 
-    public EmployeeBean(Employee employee){
+    public EmployeeBean(Employee employee) {
         this.id = employee.getId();
         this.firstName = employee.getFirstName();
         this.lastName = employee.getLastName();
         this.email = employee.getEmail();
         this.profession = employee.getProfession();
+    }
 
+    public Employee getEmployee() {
+        Employee employee = new Employee();
+        employee.setId((this.getId() == 0 ? null : this.getId()));
+        employee.setFirstName(this.getFirstName());
+        employee.setLastName(this.getLastName());
+        employee.setEmail(this.getEmail());
+        employee.setProfession(this.getProfession());
+        return employee;
     }
 }

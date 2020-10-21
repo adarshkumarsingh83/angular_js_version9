@@ -51,7 +51,7 @@ public class EmployeeController {
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Invalid ID supplied"),
             @ApiResponse(code = 404, message = "Employee not found")
             , @ApiResponse(code = 500, message = "Server Error")})
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping("/employee/{id}")
     public ApiResponseBean<EmployeeBean> removeEmployee(@PathVariable("id") Long id) throws ResourceNotFound {
         ApiResponseBean apiResponseBean = new ApiResponseBean();
         apiResponseBean.setData(this.employeeService.removeEmployee(id));
@@ -65,9 +65,9 @@ public class EmployeeController {
             , @ApiResponse(code = 500, message = "Server Error")
             , @ApiResponse(code = 200, message = "Employee Created", responseContainer = "EsparkResponseBean")})
     @PostMapping("/employee")
-    public ApiResponseBean<EmployeeBean> saveEmployee(@RequestBody Employee employee) {
+    public ApiResponseBean<EmployeeBean> saveEmployee(@RequestBody EmployeeBean employee) {
         ApiResponseBean apiResponseBean = new ApiResponseBean();
-        apiResponseBean.setData(this.employeeService.saveEmployee(employee));
+        apiResponseBean.setData(this.employeeService.saveEmployee(employee.getEmployee()));
         apiResponseBean.setMessage("User Created Successfully");
         return apiResponseBean;
     }
@@ -79,9 +79,9 @@ public class EmployeeController {
             , @ApiResponse(code = 200, message = "Employee Updated", responseContainer = "EsparkResponseBean")})
     @PutMapping("/employee/{id}")
     public ApiResponseBean<EmployeeBean> updateEmployee(@PathVariable("id") Long id,
-                                                    @RequestBody Employee employee) throws ResourceNotFound {
+                                                    @RequestBody EmployeeBean employee) throws ResourceNotFound {
         ApiResponseBean apiResponseBean = new ApiResponseBean();
-        apiResponseBean.setData(this.employeeService.updateEmployee(id, employee));
+        apiResponseBean.setData(this.employeeService.updateEmployee(id, employee.getEmployee()));
         apiResponseBean.setMessage("User Updated Successfully");
         return apiResponseBean;
     }
