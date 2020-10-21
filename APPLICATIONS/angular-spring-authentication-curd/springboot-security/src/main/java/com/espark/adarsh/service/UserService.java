@@ -58,7 +58,6 @@ public class UserService {
         return this.userRepository.save(user).getUserBean();
     }
 
-    @Transactional
     public UserBean deleteUser(Long userId) {
         UserBean userBeanResponse =
                 this.userRepository.findById(userId)
@@ -66,8 +65,10 @@ public class UserService {
                         .getUserBean();
         User user = userBeanResponse.getUser();
         user.setRoles(null);
-        this.userRepository.save(user);
-        this.userRepository.deleteById(userId);
+        this.delete(user);
         return userBeanResponse;
+    }
+    private void delete(User user){
+        this.userRepository.delete(user);
     }
 }

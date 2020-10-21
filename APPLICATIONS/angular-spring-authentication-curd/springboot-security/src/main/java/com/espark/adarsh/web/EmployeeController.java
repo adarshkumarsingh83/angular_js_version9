@@ -31,7 +31,7 @@ public class EmployeeController {
     public ApiResponseBean<List<EmployeeBean>> getAllEmployee() throws ResourceNotFound {
         ApiResponseBean apiResponseBean = new ApiResponseBean();
         apiResponseBean.setData(this.employeeService.getAllEmployee());
-        apiResponseBean.setMessage("All User Fetched Successfully");
+        apiResponseBean.setMessage("All Employee Fetched Successfully");
         return apiResponseBean;
     }
 
@@ -43,7 +43,7 @@ public class EmployeeController {
     public ApiResponseBean<EmployeeBean> getEmployee(@PathVariable("id") Long id) throws ResourceNotFound {
         ApiResponseBean apiResponseBean = new ApiResponseBean();
         apiResponseBean.setData(this.employeeService.getEmployee(id));
-        apiResponseBean.setMessage("User Fetched Successfully");
+        apiResponseBean.setMessage("Employee Fetched Successfully");
         return apiResponseBean;
     }
 
@@ -55,7 +55,7 @@ public class EmployeeController {
     public ApiResponseBean<EmployeeBean> removeEmployee(@PathVariable("id") Long id) throws ResourceNotFound {
         ApiResponseBean apiResponseBean = new ApiResponseBean();
         apiResponseBean.setData(this.employeeService.removeEmployee(id));
-        apiResponseBean.setMessage("User Deleted Successfully");
+        apiResponseBean.setMessage("Employee Deleted Successfully");
         return apiResponseBean;
     }
 
@@ -68,7 +68,7 @@ public class EmployeeController {
     public ApiResponseBean<EmployeeBean> saveEmployee(@RequestBody EmployeeBean employee) {
         ApiResponseBean apiResponseBean = new ApiResponseBean();
         apiResponseBean.setData(this.employeeService.saveEmployee(employee.getEmployee()));
-        apiResponseBean.setMessage("User Created Successfully");
+        apiResponseBean.setMessage("Employee Created Successfully");
         return apiResponseBean;
     }
 
@@ -82,7 +82,7 @@ public class EmployeeController {
                                                     @RequestBody EmployeeBean employee) throws ResourceNotFound {
         ApiResponseBean apiResponseBean = new ApiResponseBean();
         apiResponseBean.setData(this.employeeService.updateEmployee(id, employee.getEmployee()));
-        apiResponseBean.setMessage("User Updated Successfully");
+        apiResponseBean.setMessage("Employee Updated Successfully");
         return apiResponseBean;
     }
 

@@ -13,20 +13,13 @@ import { Employee } from 'src/app/app-services/beans/employee';
 export class UserHomeComponent implements OnInit {
   employeeList: Employee[];
   userName: string;
-  message: string;
-  router: Router;
-  employeeService: EmployeeService;
-  securityUtilService: SecurityUtilService;
 
   constructor(
-    router: Router,
-    securityUtilService: SecurityUtilService,
-    appComponent: AppComponent,
-    employeeService: EmployeeService
+    private router: Router,
+    private securityUtilService: SecurityUtilService,
+    private appComponent: AppComponent,
+    private employeeService: EmployeeService
   ) {
-    this.router = router;
-    this.employeeService = employeeService;
-    this.securityUtilService = securityUtilService;
     const userContext = securityUtilService.getFromStorge();
     this.userName = userContext.userName.toUpperCase();
     appComponent.setRegistrationButtonVisible(false);
@@ -36,11 +29,12 @@ export class UserHomeComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(
       (response) => {
         this.employeeList = response.data;
-        this.message = response.message;
+        this.appComponent.setMessageSucess(response.message);
         console.log(`AdminHomeComponent.getEmployees()`, this.employeeList);
       },
       (error) => {
         console.log(`AdminHomeComponent.getEmployees() Errors `, error);
+        this.appComponent.setMessageSucess(error.error.message);
       }
     );
   }

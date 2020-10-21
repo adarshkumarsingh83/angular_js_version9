@@ -18,27 +18,27 @@ public class UserController {
 
     @GetMapping(value = "/user/{id}")
     public ApiResponseBean<UserBean> getUserById(@PathVariable("id") Long id) {
-        return new ApiResponseBean<UserBean>(userService.getUserById(id), "user fetch successfully", null);
+        return new ApiResponseBean<UserBean>(userService.getUserById(id), "User fetch successfully", null);
     }
 
     @GetMapping(value = "/users")
     public ApiResponseBean<List<UserBean>> getUsers() {
-        return new ApiResponseBean<List<UserBean>>(userService.getUsers(), "users fetch successfully", null);
+        return new ApiResponseBean<List<UserBean>>(userService.getUsers(), "Users fetch successfully", null);
     }
 
     @PostMapping(value = "/user")
     public ApiResponseBean<UserBean> saveUser(@RequestBody UserBean userBean) {
-        return new ApiResponseBean<UserBean>(userService.createUser(userBean), "user created successfully", null);
+        return new ApiResponseBean<UserBean>(userService.createUser(userBean), "User created successfully", null);
     }
 
     @PutMapping(value = "/user/{id}")
     public ApiResponseBean<UserBean> updateUser(@PathVariable("id") Long id, @RequestBody UserBean userBean) {
-        return new ApiResponseBean<UserBean>(userService.updateUser(userBean), "user updated successfully", null);
+        return new ApiResponseBean<UserBean>(userService.updateUser(userBean), "User updated successfully", null);
     }
 
 
     @DeleteMapping(value = "/user/{id}")
     public ApiResponseBean<UserBean> deleteUser(@PathVariable("id") Long id) {
-        return new ApiResponseBean<UserBean>(userService.deleteUser(id), "user deleted successfully", null);
+        return new ApiResponseBean<UserBean>(userService.deleteUser(id), "User deleted successfully", null);
     }
 }

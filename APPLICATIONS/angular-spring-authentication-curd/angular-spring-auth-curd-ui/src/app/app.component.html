@@ -43,9 +43,18 @@
     >
       Common Home
     </button>
+    &nbsp;
+    <div class="success">
+      {{ messageSucess }}
+    </div>
+    <div class="error">
+      {{ messageFailure }}
+    </div>
+    &nbsp;
     <div class="display-5; text-info">
       {{ message }}
     </div>
   </div>
+
   <router-outlet></router-outlet>
 </div>

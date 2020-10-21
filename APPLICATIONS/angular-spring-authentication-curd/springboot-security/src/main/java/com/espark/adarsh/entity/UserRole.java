@@ -21,7 +21,9 @@ public class UserRole implements Serializable {
     @Enumerated(EnumType.STRING)
     private Role roleName;
 
-    @ManyToMany(mappedBy = "roles", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "roles"
+            , cascade = {CascadeType.PERSIST}
+    , fetch = FetchType.EAGER)
     private List<User> user = new LinkedList<>();
 
     public UserRole() {

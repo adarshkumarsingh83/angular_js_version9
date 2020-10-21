@@ -3,6 +3,12 @@
   <div class="alert alert-primary" role="alert">
     <h4 class="display-5">ESPARK REGISTRATION</h4>
   </div>
+  <h3 class="success">
+    {{ messageSucess }}
+  </h3>
+  <h3 class="error">
+    {{ messageFailure }}
+  </h3>
   <form #myForm="ngForm" (ngSubmit)="registerUser(myForm)">
     <div class="form-group">
       <label for="exampleInputName">User Name </label>
@@ -71,12 +77,14 @@
         ngModel
         #checkboxInput="ngModel"
       />
-      <label class="form-check-label" for="exampleCheck1">Is Admin</label>
+      <label class="form-check-label" for="exampleCheck1"
+        >Terms & Conditions</label
+      >
       <small
         id="checkBoxHelp"
         class="form-text text-muted"
         *ngIf="checkboxInput.touched && !checkboxInput.valid"
-        >Admin or Not
+        >Terms & Conditions
       </small>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">
@@ -87,7 +95,4 @@
       cancel
     </button>
   </form>
-  <h3 class="display-5">
-    {{ user | json }}
-  </h3>
 </div>

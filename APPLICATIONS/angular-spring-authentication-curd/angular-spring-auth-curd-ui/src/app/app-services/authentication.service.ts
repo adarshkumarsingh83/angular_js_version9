@@ -32,7 +32,7 @@ export class AuthenticationService {
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
     httpHeaders.append('Access-Control-Allow-Origin', this.corsUrl);
-    return this.httpClient.post<Data<User>>(`${this.baseUrl}/login`, user, {
+    return this.httpClient.post<Data<User>>(`${this.baseUrl}/register`, user, {
       headers: httpHeaders,
     });
   }

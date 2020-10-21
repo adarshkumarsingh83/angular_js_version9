@@ -14,21 +14,13 @@ import { Authentication } from '../../app-services/beans/authentication';
 export class LoginComponent implements OnInit {
   message: any;
   authentication: Authentication;
-  router: Router;
-  authenticationService: AuthenticationService;
-  securityUtilService: SecurityUtilService;
-  appComponent: AppComponent;
 
   constructor(
-    authenticationService: AuthenticationService,
-    router: Router,
-    securityUtilService: SecurityUtilService,
-    appComponent: AppComponent
+    private router: Router,
+    private appComponent: AppComponent,
+    private securityUtilService: SecurityUtilService,
+    private authenticationService: AuthenticationService
   ) {
-    this.authenticationService = authenticationService;
-    this.router = router;
-    this.securityUtilService = securityUtilService;
-    this.appComponent = appComponent;
     appComponent.setLogoutButtonVisible(false);
     appComponent.setRegistrationButtonVisible(true);
   }
@@ -50,8 +42,9 @@ export class LoginComponent implements OnInit {
           console.log(`LoginComponent.login()`, this.authentication);
           this.doAction(this.authentication);
         },
-        (error) => {
-          console.log(`LoginComponent.login() Errors `, error);
+        (errorResponse) => {
+          console.log(`LoginComponent.login() Errors `, errorResponse);
+          this.message = errorResponse.error.message;
         }
       );
   }
@@ -64,6 +57,7 @@ export class LoginComponent implements OnInit {
         'authentication true for login ',
         this.authentication.userBean
       );
+      this.appComponent.setMessageSucess('login sucessful');
       const userContext = this.securityUtilService.storeOnLocalStorage({
         userName: this.authentication.userBean.userName,
         email: this.authentication.userBean.email,
@@ -113,6 +107,7 @@ export class LoginComponent implements OnInit {
         });
       }
     } else {
+      this.appComponent.setMessageSucess('login failure');
       console.log('authentication false for login ', this.authentication);
       this.appComponent.setAdminHomeVisible(false);
       this.appComponent.setUserHomeVisible(false);

@@ -9,7 +9,6 @@ import { AppComponent } from '../../../app.component';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  message: string;
   usersList: User[];
 
   constructor(
@@ -21,12 +20,13 @@ export class UserListComponent implements OnInit {
     console.log(`UserListComponent.deleteUsers()`);
     this.usersService.deleteUser(userId).subscribe(
       (response) => {
-        this.message = response.message;
+        this.appComponent.setMessageSucess(response.message);
         console.log(`UserListComponent.deleteUser()`, response.data);
         this.loadUsers();
       },
       (error) => {
         console.log(`EmployeeListComponent.getEmployees() Errors `, error);
+        this.appComponent.setMessageFailure(error.error.message);
       }
     );
   }
@@ -42,11 +42,12 @@ export class UserListComponent implements OnInit {
     this.usersService.getUsers().subscribe(
       (response) => {
         this.usersList = response.data;
-        this.message = response.message;
+        this.appComponent.setMessageSucess(response.message);
         console.log(`UserListComponent.loadUsers()`, this.usersList);
       },
       (error) => {
         console.log(`UserListComponent.loadUsers() Errors `, error);
+        this.appComponent.setMessageFailure(error.error.message);
       }
     );
   }

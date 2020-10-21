@@ -6,6 +6,7 @@ import com.espark.adarsh.bean.AuthenticationResponseBean;
 import com.espark.adarsh.bean.UserBean;
 import com.espark.adarsh.service.AuthenticationService;
 import com.espark.adarsh.service.SecurityService;
+import com.espark.adarsh.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,9 @@ public class SecurityController {
 
     @Autowired
     AuthenticationService authenticationService;
+
+    @Autowired
+    UserService userService;
 
 
     @PostMapping("/login")
@@ -38,6 +42,12 @@ public class SecurityController {
         apiResponseBean.setData(this.securityService.getUserDetails(userName));
         apiResponseBean.setMessage("User Details");
         return apiResponseBean;
+    }
+
+
+    @PostMapping(value = "/register")
+    public ApiResponseBean<UserBean> registerUser(@RequestBody UserBean userBean) {
+        return new ApiResponseBean<UserBean>(userService.createUser(userBean), "User register successfully", null);
     }
 
 }

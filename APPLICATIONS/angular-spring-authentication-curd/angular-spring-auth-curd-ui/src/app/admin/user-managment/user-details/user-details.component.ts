@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppComponent } from '../../../app.component';
 import { User } from '../../../app-services/beans/user';
 import { UsersService } from '../../../app-services/users.service';
 
@@ -10,25 +11,26 @@ import { UsersService } from '../../../app-services/users.service';
 })
 export class UserDetailsComponent implements OnInit {
   id: number;
-  responseMsg: string;
   user: User;
 
   constructor(
     private userService: UsersService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private appComponent: AppComponent
   ) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.userService.getUser(this.id).subscribe(
       (response) => {
-        this.responseMsg = response.message;
+        this.appComponent.setMessageSucess(response.message);
         this.user = response.data;
         console.log(`UserDetailsComponent.getUser() `, this.user);
       },
       (error) => {
         console.log(`UserDetailsComponent.getUser() Erros `, error);
+        this.appComponent.setMessageFailure(error.error.message);
       }
     );
   }

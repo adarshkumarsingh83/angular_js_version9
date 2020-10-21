@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AppComponent } from '../../../app.component';
 import { User } from '../../../app-services/beans/user';
 import { UsersService } from '../../../app-services/users.service';
 
@@ -9,10 +10,12 @@ import { UsersService } from '../../../app-services/users.service';
   styleUrls: ['./user-create.component.scss'],
 })
 export class UserCreateComponent implements OnInit {
-  responseMsg: string;
   user: User;
 
-  constructor(private userService: UsersService) {}
+  constructor(
+    private userService: UsersService,
+    private appComponent: AppComponent
+  ) {}
 
   public savaEmployee(myForm: NgForm): void {
     this.user = {
@@ -29,10 +32,11 @@ export class UserCreateComponent implements OnInit {
     );
     this.userService.saveUser(this.user).subscribe(
       (response) => {
-        this.responseMsg = response.message;
+        this.appComponent.setMessageSucess(response.message);
       },
       (error) => {
         console.log(`UserCreateComponent.savaEmployee() Erros `, error);
+        this.appComponent.setMessageFailure(error.error.message);
       }
     );
   }

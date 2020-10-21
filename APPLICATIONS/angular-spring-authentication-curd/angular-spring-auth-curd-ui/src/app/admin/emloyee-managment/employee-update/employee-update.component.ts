@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../../../app-services/beans/employee';
 import { Data } from '../../../app-services/beans/data';
 import { EmployeeService } from '../../../app-services/employee.service';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-employee-update',
@@ -16,11 +17,11 @@ export class EmployeeUpdateComponent implements OnInit {
   email: String;
   profession: String;
   employee: Employee;
-  responseMsg: string;
 
   constructor(
     private route: ActivatedRoute,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private appComponent: AppComponent
   ) {}
 
   public updateEmployee(): void {
@@ -37,10 +38,10 @@ export class EmployeeUpdateComponent implements OnInit {
     );
     this.employeeService.updateEmployee(this.id, this.employee).subscribe(
       (response) => {
-        this.responseMsg = response.message;
+        this.appComponent.setMessageSucess(response.message);
         console.log(
           `EmployeeUpdateComponent.savupdateEmployeeaData() `,
-          this.responseMsg
+          response.message
         );
       },
       (error) => {
@@ -48,21 +49,27 @@ export class EmployeeUpdateComponent implements OnInit {
           `EmployeeUpdateComponent.savupdateEmployeeaData() Erros `,
           error
         );
+        this.appComponent.setMessageFailure(error.error.message);
       }
     );
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.employeeService
-      .getEmployee(this.id)
-      .subscribe((response: Data<Employee>) => {
+    console.log(`EmployeeUpdateComponent.ngOnInit()`, this.id);
+    this.employeeService.getEmployee(this.id).subscribe(
+      (response: Data<Employee>) => {
         this.id = response.data.id;
         this.firstName = response.data.firstName;
         this.lastName = response.data.lastName;
         this.email = response.data.email;
         this.profession = response.data.profession;
-      });
-    console.log(`EmployeeUpdateComponent.ngOnInit()`, this.id);
+        this.appComponent.setMessageSucess(response.message);
+      },
+      (error) => {
+        console.log(`EmployeeUpdateComponent.getEmployee() Erros `, error);
+        this.appComponent.setMessageFailure(error.error.message);
+      }
+    );
   }
 }

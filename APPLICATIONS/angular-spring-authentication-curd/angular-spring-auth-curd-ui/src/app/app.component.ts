@@ -10,17 +10,18 @@ import { SecurityUtilService } from './security/security-util.service';
 export class AppComponent {
   title = 'angular-spring-auth-curd-ui';
   message = '';
+  messageSucess: string;
+  messageFailure: string;
   isLogoutButtonVisible = true;
   isRegistrationButtonVisible = true;
   isAdminHomeVisible = false;
   isUserHomeVisible = false;
   isCommonHomeVisible = false;
-  router: Router;
-  securityUtilService: SecurityUtilService;
 
-  constructor(router: Router, securityUtilService: SecurityUtilService) {
-    this.securityUtilService = securityUtilService;
-    this.router = router;
+  constructor(
+    private router: Router,
+    private securityUtilService: SecurityUtilService
+  ) {
     this.isLogoutButtonVisible = true;
     this.isRegistrationButtonVisible = false;
   }
@@ -31,7 +32,7 @@ export class AppComponent {
     const userContext = this.securityUtilService.getFromStorge();
     if (userContext.isAuthenticate) {
       this.securityUtilService.removeStoreage();
-      this.router.navigate(['/login'], {
+      this.router.navigate(['login'], {
         queryParams: { action: 'logout' },
       });
       this.setLogoutButtonVisible(false);
@@ -39,6 +40,7 @@ export class AppComponent {
       this.setAdminHomeVisible(false);
       this.setUserHomeVisible(false);
       this.setCommonHomeVisible(false);
+      this.setMessageSucess('logout sucessful');
     } else {
       this.setLogoutButtonVisible(false);
       this.setRegistrationButtonVisible(true);
@@ -46,15 +48,16 @@ export class AppComponent {
       this.setUserHomeVisible(false);
       this.setCommonHomeVisible(false);
       this.securityUtilService.removeStoreage();
-      this.router.navigate(['/login'], {
+      this.router.navigate(['login'], {
         queryParams: { action: 'login-expired' },
       });
+      this.setMessageSucess('logout failure');
     }
   }
 
   registration() {
     console.log(`AppComponent.registration()`);
-    this.router.navigate(['/registration'], {
+    this.router.navigate(['registration'], {
       queryParams: { action: 'registration' },
     });
     this.setLogoutButtonVisible(false);
@@ -70,7 +73,7 @@ export class AppComponent {
       this.setAdminHomeVisible(false);
       this.setUserHomeVisible(true);
       this.setCommonHomeVisible(true);
-      this.router.navigate(['/admin'], {
+      this.router.navigate(['admin'], {
         queryParams: { action: 'admin-home' },
       });
     } else {
@@ -88,7 +91,7 @@ export class AppComponent {
       this.setLogoutButtonVisible(true);
       this.setUserHomeVisible(false);
       this.setCommonHomeVisible(true);
-      this.router.navigate(['/user'], {
+      this.router.navigate(['user'], {
         queryParams: { action: 'user-home' },
       });
     } else {
@@ -138,5 +141,13 @@ export class AppComponent {
 
   public setMessage(message: string): void {
     this.message = message;
+  }
+
+  public setMessageSucess(messageSucess: string): void {
+    this.messageSucess = messageSucess;
+  }
+
+  public setMessageFailure(messageFailure: string): void {
+    this.messageFailure = messageFailure;
   }
 }

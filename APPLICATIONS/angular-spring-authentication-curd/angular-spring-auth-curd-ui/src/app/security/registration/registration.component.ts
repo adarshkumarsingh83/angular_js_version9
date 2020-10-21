@@ -11,20 +11,15 @@ import { User } from 'src/app/app-services/beans/user';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
-  authenticationService: AuthenticationService;
-  router: Router;
   user: User;
-  message: String;
-  appComponent: AppComponent;
+  messageSucess: String;
+  messageFailure: String;
 
   constructor(
-    authenticationService: AuthenticationService,
-    router: Router,
-    appComponent: AppComponent
+    private router: Router,
+    private appComponent: AppComponent,
+    private authenticationService: AuthenticationService
   ) {
-    this.authenticationService = authenticationService;
-    this.router = router;
-    this.appComponent = appComponent;
     this.appComponent.setLogoutButtonVisible(false);
     this.appComponent.setRegistrationButtonVisible(false);
   }
@@ -35,17 +30,18 @@ export class RegistrationComponent implements OnInit {
       userName: myForm.value.nameInput,
       email: myForm.value.emailInput,
       userPwd: myForm.value.pwdInput,
-      isAdmin: myForm.value.checkboxInput ? myForm.value.checkboxInput : false,
-      userRoles: [myForm.value.checkboxInput ? 'ADMIN' : 'USER'],
+      isAdmin: false,
+      userRoles: ['GUEST'],
     };
     this.authenticationService.registerUser(this.user).subscribe(
       (response) => {
         this.user = response.data;
-        this.message = response.message;
+        this.messageSucess = response.message;
         console.log(`RegistrationComponent.registerUser()`, this.user);
       },
       (error) => {
         console.log(`RegistrationComponent.registerUser() Erros `, error);
+        this.messageFailure = error.error.message;
       }
     );
     console.log(this.user);

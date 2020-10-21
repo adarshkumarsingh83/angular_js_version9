@@ -49,7 +49,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .cors()
                 .and()
                 .csrf().disable()
-                .authorizeRequests().antMatchers(HttpMethod.POST,"/api/user").permitAll()
+                .authorizeRequests().antMatchers(HttpMethod.POST,"/register").permitAll()
                 .and()
                 .authorizeRequests().antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers("/api/**").authenticated()
