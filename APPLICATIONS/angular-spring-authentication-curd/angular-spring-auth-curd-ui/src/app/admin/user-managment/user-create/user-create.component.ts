@@ -15,7 +15,9 @@ export class UserCreateComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private appComponent: AppComponent
-  ) {}
+  ) {
+    console.log(`EmployeeCreateComponent.constructor()`);
+  }
 
   public savaEmployee(myForm: NgForm): void {
     this.user = {
@@ -26,12 +28,10 @@ export class UserCreateComponent implements OnInit {
       userRoles: [myForm.value.userRoleInput],
       isAdmin: myForm.value.userRoleInput == 'ADMIN',
     };
-    console.log(
-      `EmployeeCreateComponent.savaEmployee()`,
-      JSON.stringify(this.user)
-    );
+    console.log(`EmployeeCreateComponent.savaEmployee()`, this.user);
     this.userService.saveUser(this.user).subscribe(
       (response) => {
+        console.log(`UserCreateComponent.savaEmployee() `, response);
         this.appComponent.setMessageSucess(response.message);
       },
       (error) => {
@@ -41,7 +41,7 @@ export class UserCreateComponent implements OnInit {
     );
   }
 
-  clearFields(myForm: NgForm) {
+  public clearFields(myForm: NgForm) {
     console.log(`UserCreateComponent.clearFields()`);
     myForm.reset();
   }

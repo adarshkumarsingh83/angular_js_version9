@@ -10,31 +10,26 @@ import { SecurityUtilService } from '../security/security-util.service';
   providedIn: 'root',
 })
 export class SecurityGuard implements CanActivate {
-  securityUtilService: SecurityUtilService;
   constructor(
     private router: Router,
-    securityUtilService: SecurityUtilService
+    private securityUtilService: SecurityUtilService
   ) {
-    this.securityUtilService = securityUtilService;
+    console.log('SecurityGuard.constructor');
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    console.log('security gurad execued');
+    console.log('SecurityGuard.canActivate()');
     const queryParams = route.queryParams;
     console.log(queryParams);
     if (queryParams.valid != null) {
       if (queryParams.valid === 'true') {
-        console.log(
-          'security gurad execued authentication is ' + queryParams.valid
-        );
+        console.log('SecurityGuard.canActivate() ' + queryParams.valid);
         return true;
       } else {
-        console.log(
-          'security gurad execued authentication is ' + queryParams.valid
-        );
+        console.log('SecurityGuard.canActivate() ' + queryParams.valid);
         this.router.navigateByUrl('/login');
         return false;
       }
@@ -42,12 +37,12 @@ export class SecurityGuard implements CanActivate {
       const userContext = this.securityUtilService.getFromStorge();
       if (userContext != null && userContext.isAuthenticate) {
         console.log(
-          'security gurad execued authentication is true user context found'
+          'SecurityGuard.canActivate() execued authentication is true user context found'
         );
         return true;
       } else {
         console.log(
-          'security gurad execued authentication is false user context not found'
+          'SecurityGuard.canActivate() authentication is false user context not found'
         );
         this.router.navigateByUrl('/login');
         return false;

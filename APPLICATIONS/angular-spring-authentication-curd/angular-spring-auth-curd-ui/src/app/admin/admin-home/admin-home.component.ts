@@ -11,21 +11,21 @@ import { Router } from '@angular/router';
 export class AdminHomeComponent implements OnInit {
   userName: string;
   message: string;
-  router: Router;
 
   constructor(
-    router: Router,
-    securityUtilService: SecurityUtilService,
+    private router: Router,
+    private securityUtilService: SecurityUtilService,
     private appComponent: AppComponent
   ) {
-    this.router = router;
+    console.log(`AdminHomeComponent.constructor()`);
     const userContext = securityUtilService.getFromStorge();
     this.userName = userContext.userName.toUpperCase();
     appComponent.setRegistrationButtonVisible(false);
     appComponent.setLogoutButtonVisible(true);
   }
 
-  employees(): void {
+  public employees(): void {
+    console.log(`AdminHomeComponent.employees()`);
     this.appComponent.setRegistrationButtonVisible(false);
     this.appComponent.setCommonHomeVisible(true);
     this.appComponent.setLogoutButtonVisible(true);
@@ -34,7 +34,8 @@ export class AdminHomeComponent implements OnInit {
     });
   }
 
-  users(): void {
+  public users(): void {
+    console.log(`AdminHomeComponent.users()`);
     this.appComponent.setRegistrationButtonVisible(false);
     this.appComponent.setCommonHomeVisible(true);
     this.appComponent.setLogoutButtonVisible(true);

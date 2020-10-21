@@ -11,18 +11,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class EmployeeService {
   private baseUrl = 'http://localhost:8080/api';
 
-  private securityUtilService: SecurityUtilService;
-
   constructor(
-    securityUtilService: SecurityUtilService,
+    private securityUtilService: SecurityUtilService,
     private httpClient: HttpClient
   ) {
-    this.securityUtilService = securityUtilService;
+    console.log('EmployeeService.constructor()');
   }
 
   public getEmployees(): Observable<Data<Employee[]>> {
+    console.log('EmployeeService.getEmployees()');
     const userContext = this.securityUtilService.getFromStorge();
-    console.log('EmployeeService.getEmployees()', userContext);
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);
@@ -32,8 +30,8 @@ export class EmployeeService {
   }
 
   public saveEmployee(employee: Employee): Observable<Data<Employee>> {
+    console.log('EmployeeService.saveEmployee()');
     const userContext = this.securityUtilService.getFromStorge();
-    console.log('EmployeeService.saveEmployee()', employee);
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);
@@ -45,8 +43,8 @@ export class EmployeeService {
   }
 
   public deleteEmployee(id: Number): Observable<Data<Employee>> {
-    const userContext = this.securityUtilService.getFromStorge();
     console.log('EmployeeService.deleteEmployee()', id);
+    const userContext = this.securityUtilService.getFromStorge();
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);
@@ -57,8 +55,8 @@ export class EmployeeService {
   }
 
   public getEmployee(id: Number): Observable<Data<Employee>> {
-    const userContext = this.securityUtilService.getFromStorge();
     console.log('EmployeeService.getEmployee()', id);
+    const userContext = this.securityUtilService.getFromStorge();
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);
@@ -72,8 +70,8 @@ export class EmployeeService {
     id: Number,
     employee: Employee
   ): Observable<Data<Employee>> {
-    const userContext = this.securityUtilService.getFromStorge();
     console.log('EmployeeService.updateEmployee()', id);
+    const userContext = this.securityUtilService.getFromStorge();
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);

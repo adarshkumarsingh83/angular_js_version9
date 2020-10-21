@@ -14,11 +14,13 @@ export class UsersService {
   constructor(
     private securityUtilService: SecurityUtilService,
     private httpClient: HttpClient
-  ) {}
+  ) {
+    console.log('UsersService.constructor()');
+  }
 
   public getUsers(): Observable<Data<User[]>> {
+    console.log('UsersService.getUsers()');
     const userContext = this.securityUtilService.getFromStorge();
-    console.log('UsersService.getUsers()', userContext);
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);
@@ -28,8 +30,8 @@ export class UsersService {
   }
 
   public saveUser(user: User): Observable<Data<User>> {
+    console.log('UsersService.saveUser()', user);
     const userContext = this.securityUtilService.getFromStorge();
-    console.log('UsersService.saveUser()', userContext);
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);
@@ -39,8 +41,8 @@ export class UsersService {
   }
 
   public deleteUser(userId: Number): Observable<Data<User>> {
+    console.log('UsersService.deleteUser()', userId);
     const userContext = this.securityUtilService.getFromStorge();
-    console.log('UsersService.deleteUser()', userContext);
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);
@@ -53,8 +55,8 @@ export class UsersService {
   }
 
   public getUser(userId: Number): Observable<Data<User>> {
+    console.log('UsersService.getUser()', userId);
     const userContext = this.securityUtilService.getFromStorge();
-    console.log('UsersService.getUser()', userContext);
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);
@@ -64,8 +66,8 @@ export class UsersService {
   }
 
   public updateUser(userId: Number, user: User): Observable<Data<User>> {
+    console.log('UsersService.updateUser()', userId);
     const userContext = this.securityUtilService.getFromStorge();
-    console.log('UsersService.updateUser()', userContext);
     let httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.append('content-type', 'application/json');
     httpHeaders = httpHeaders.append(userContext.key, userContext.userToken);

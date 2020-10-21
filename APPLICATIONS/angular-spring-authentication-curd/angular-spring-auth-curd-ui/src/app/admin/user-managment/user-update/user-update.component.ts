@@ -22,7 +22,9 @@ export class UserUpdateComponent implements OnInit {
     private usersService: UsersService,
     private route: ActivatedRoute,
     private appComponent: AppComponent
-  ) {}
+  ) {
+    console.log(`UserUpdateComponent.constructor()`);
+  }
 
   public updateUser(): void {
     this.user = {
@@ -37,8 +39,8 @@ export class UserUpdateComponent implements OnInit {
     console.log(`UserUpdateComponent.updateUser()`, this.user);
     this.usersService.updateUser(this.id, this.user).subscribe(
       (response) => {
+        console.log(`UserUpdateComponent.updateUser() `, response);
         this.appComponent.setMessageSucess(response.message);
-        console.log(`UserUpdateComponent.updateUser() `, response.message);
       },
       (error) => {
         console.log(`UserUpdateComponent.updateUser() Erros `, error);
@@ -48,10 +50,11 @@ export class UserUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(`UserUpdateComponent.ngOnInit()`);
     this.id = this.route.snapshot.params['id'];
     this.usersService.getUser(this.id).subscribe(
       (response: Data<User>) => {
-        console.log(`UserUpdateComponent.getUser()  `, response);
+        console.log(`UserUpdateComponent.getUser() `, response);
         this.id = response.data.id;
         this.userName = response.data.userName;
         this.userPwd = response.data.userPwd;

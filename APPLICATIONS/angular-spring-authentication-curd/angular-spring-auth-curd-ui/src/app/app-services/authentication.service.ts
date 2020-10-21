@@ -12,12 +12,15 @@ export class AuthenticationService {
   private baseUrl = 'http://localhost:8080';
   private corsUrl = 'http://localhost:4200';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    console.log(`AuthenticationService.constructor()`);
+  }
 
   public loginUser(
     userName: String,
     userPwd: String
   ): Observable<Data<Authentication>> {
+    console.log(`AuthenticationService.loginUser()`);
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
     httpHeaders.append('Access-Control-Allow-Origin', this.corsUrl);
@@ -29,6 +32,7 @@ export class AuthenticationService {
   }
 
   public registerUser(user: User): Observable<Data<User>> {
+    console.log(`AuthenticationService.registerUser()`);
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('content-type', 'application/json');
     httpHeaders.append('Access-Control-Allow-Origin', this.corsUrl);

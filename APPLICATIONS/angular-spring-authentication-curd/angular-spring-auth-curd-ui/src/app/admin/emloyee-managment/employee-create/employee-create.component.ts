@@ -15,7 +15,9 @@ export class EmployeeCreateComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private appComponent: AppComponent
-  ) {}
+  ) {
+    console.log(`EmployeeCreateComponent.constructor()`);
+  }
 
   public savaEmployee(myForm: NgForm): void {
     this.employee = {
@@ -32,6 +34,7 @@ export class EmployeeCreateComponent implements OnInit {
     this.employeeService.saveEmployee(this.employee).subscribe(
       (response) => {
         this.appComponent.setMessageSucess(response.message);
+        console.log(`EmployeeCreateComponent.savaEmployee() `, response);
       },
       (error) => {
         console.log(`EmployeeCreateComponent.savaEmployee() Erros `, error);
@@ -40,7 +43,7 @@ export class EmployeeCreateComponent implements OnInit {
     );
   }
 
-  clearFields(myForm: NgForm) {
+  public clearFields(myForm: NgForm): void {
     console.log(`EmployeeCreateComponent.clearFields()`);
     myForm.reset();
   }

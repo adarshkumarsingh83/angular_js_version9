@@ -15,12 +15,12 @@ export class EmployeeListComponent implements OnInit {
     private appComponent: AppComponent
   ) {}
 
-  deleteEmployee(employeeId: number): void {
+  public deleteEmployee(employeeId: number): void {
     console.log(`EmployeeListComponent.deleteEmployee()`);
     this.employeeService.deleteEmployee(employeeId).subscribe(
       (response) => {
         this.appComponent.setMessageSucess(response.message);
-        console.log(`EmployeeListComponent.deleteEmployee()`, response.data);
+        console.log(`EmployeeListComponent.deleteEmployee()`, response);
         this.loadEmployees();
       },
       (error) => {
@@ -31,6 +31,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(`EmployeeListComponent.ngOnInit()`);
     this.appComponent.setCommonHomeVisible(true);
     this.appComponent.setLogoutButtonVisible(true);
     this.appComponent.setRegistrationButtonVisible(false);
@@ -38,15 +39,16 @@ export class EmployeeListComponent implements OnInit {
   }
 
   public loadEmployees(): void {
+    console.log(`EmployeeListComponent.loadEmployees()`);
     this.employeeService.getEmployees().subscribe(
       (response) => {
         this.employeeList = response.data;
         this.appComponent.setMessageSucess(response.message);
-        console.log(`EmployeeListComponent.loadEmployees()`, this.employeeList);
+        console.log(`EmployeeListComponent.loadEmployees()`, response);
       },
       (error) => {
-        console.log(`EmployeeListComponent.loadEmployees() Errors `, error);
         this.appComponent.setMessageFailure(error.error.message);
+        console.log(`EmployeeListComponent.loadEmployees() Errors `, error);
       }
     );
   }

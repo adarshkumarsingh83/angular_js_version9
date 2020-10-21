@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../../app.component';
 import { User } from '../../../app-services/beans/user';
 import { UsersService } from '../../../app-services/users.service';
@@ -16,17 +16,18 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private route: ActivatedRoute,
-    private router: Router,
     private appComponent: AppComponent
-  ) {}
+  ) {
+    console.log(`UserDetailsComponent.constructor() `);
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.userService.getUser(this.id).subscribe(
       (response) => {
+        console.log(`UserDetailsComponent.getUser() `, response);
         this.appComponent.setMessageSucess(response.message);
         this.user = response.data;
-        console.log(`UserDetailsComponent.getUser() `, this.user);
       },
       (error) => {
         console.log(`UserDetailsComponent.getUser() Erros `, error);

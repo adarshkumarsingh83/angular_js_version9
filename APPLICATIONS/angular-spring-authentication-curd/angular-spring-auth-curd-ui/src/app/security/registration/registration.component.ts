@@ -12,8 +12,6 @@ import { User } from 'src/app/app-services/beans/user';
 })
 export class RegistrationComponent implements OnInit {
   user: User;
-  messageSucess: String;
-  messageFailure: String;
 
   constructor(
     private router: Router,
@@ -24,7 +22,8 @@ export class RegistrationComponent implements OnInit {
     this.appComponent.setRegistrationButtonVisible(false);
   }
 
-  registerUser(myForm: NgForm) {
+  public registerUser(myForm: NgForm): void {
+    console.log(`RegistrationComponent.registerUser()`);
     this.user = {
       id: 0,
       userName: myForm.value.nameInput,
@@ -36,15 +35,14 @@ export class RegistrationComponent implements OnInit {
     this.authenticationService.registerUser(this.user).subscribe(
       (response) => {
         this.user = response.data;
-        this.messageSucess = response.message;
-        console.log(`RegistrationComponent.registerUser()`, this.user);
+        console.log(`RegistrationComponent.registerUser()`, response);
+        this.appComponent.setMessageSucess(response.message);
       },
       (error) => {
         console.log(`RegistrationComponent.registerUser() Erros `, error);
-        this.messageFailure = error.error.message;
+        this.appComponent.setMessageSucess(error.error.message);
       }
     );
-    console.log(this.user);
     this.appComponent.setLogoutButtonVisible(false);
     this.appComponent.setRegistrationButtonVisible(true);
     this.router.navigate(['/login'], {
@@ -53,6 +51,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   cancelRegistrattion() {
+    console.log(`RegistrationComponent.cancelRegistrattion()`);
     this.appComponent.setLogoutButtonVisible(false);
     this.appComponent.setRegistrationButtonVisible(true);
     this.router.navigate(['/login'], {

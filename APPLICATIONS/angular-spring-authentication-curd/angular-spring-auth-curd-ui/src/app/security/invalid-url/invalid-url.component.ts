@@ -9,9 +9,12 @@ import { Router } from '@angular/router';
 export class InvalidUrlComponent implements OnInit {
   public href: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    console.log(`InvalidUrlComponent.constructor`);
+  }
 
   ngOnInit() {
+    console.log(`InvalidUrlComponent.ngOnInit`);
     this.href = this.router.url;
     console.log(this.router.url);
   }

@@ -26,7 +26,7 @@ export class AppComponent {
     this.isRegistrationButtonVisible = false;
   }
 
-  logout() {
+  public logout(): void {
     console.log(`AppComponent.logout()`);
     this.setMessage('');
     const userContext = this.securityUtilService.getFromStorge();
@@ -55,7 +55,7 @@ export class AppComponent {
     }
   }
 
-  registration() {
+  public registration(): void {
     console.log(`AppComponent.registration()`);
     this.router.navigate(['registration'], {
       queryParams: { action: 'registration' },
@@ -66,6 +66,7 @@ export class AppComponent {
   }
 
   public adminHome(): void {
+    console.log(`AppComponent.adminHome()`);
     const userContext = this.securityUtilService.getFromStorge();
     if (userContext.isAuthenticate) {
       this.setRegistrationButtonVisible(false);
@@ -82,6 +83,7 @@ export class AppComponent {
   }
 
   public userHome(): void {
+    console.log(`AppComponent.userHome()`);
     const userContext = this.securityUtilService.getFromStorge();
     if (userContext.isAuthenticate) {
       if (userContext.isAdmin) {
@@ -100,6 +102,7 @@ export class AppComponent {
   }
 
   public home(): void {
+    console.log(`AppComponent.home()`);
     const userContext = this.securityUtilService.getFromStorge();
     if (userContext.isAuthenticate) {
       if (userContext.isAdmin) {

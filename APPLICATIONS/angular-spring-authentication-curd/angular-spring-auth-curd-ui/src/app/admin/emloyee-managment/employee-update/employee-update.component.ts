@@ -22,7 +22,9 @@ export class EmployeeUpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private employeeService: EmployeeService,
     private appComponent: AppComponent
-  ) {}
+  ) {
+    console.log(`EmployeeUpdateComponent.constructor()`);
+  }
 
   public updateEmployee(): void {
     this.employee = {
@@ -32,23 +34,14 @@ export class EmployeeUpdateComponent implements OnInit {
       email: this.email,
       profession: this.profession,
     };
-    console.log(
-      `EmployeeUpdateComponent.savupdateEmployeeaData()`,
-      this.employee
-    );
+    console.log(`EmployeeUpdateComponent.updateEmployee()`, this.employee);
     this.employeeService.updateEmployee(this.id, this.employee).subscribe(
       (response) => {
         this.appComponent.setMessageSucess(response.message);
-        console.log(
-          `EmployeeUpdateComponent.savupdateEmployeeaData() `,
-          response.message
-        );
+        console.log(`EmployeeUpdateComponent.updateEmployee() `, response);
       },
       (error) => {
-        console.log(
-          `EmployeeUpdateComponent.savupdateEmployeeaData() Erros `,
-          error
-        );
+        console.log(`EmployeeUpdateComponent.updateEmployee() Erros `, error);
         this.appComponent.setMessageFailure(error.error.message);
       }
     );
@@ -65,6 +58,7 @@ export class EmployeeUpdateComponent implements OnInit {
         this.email = response.data.email;
         this.profession = response.data.profession;
         this.appComponent.setMessageSucess(response.message);
+        console.log(`EmployeeUpdateComponent.getEmployee() `, response);
       },
       (error) => {
         console.log(`EmployeeUpdateComponent.getEmployee() Erros `, error);

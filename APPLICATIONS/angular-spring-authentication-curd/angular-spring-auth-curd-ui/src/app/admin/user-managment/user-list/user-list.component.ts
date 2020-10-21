@@ -14,7 +14,9 @@ export class UserListComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private appComponent: AppComponent
-  ) {}
+  ) {
+    console.log(`UserListComponent.constructor()`);
+  }
 
   public deleteUsers(userId: number): void {
     console.log(`UserListComponent.deleteUsers()`);
@@ -32,6 +34,7 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(`UserListComponent.ngOnInit()`);
     this.appComponent.setCommonHomeVisible(true);
     this.appComponent.setLogoutButtonVisible(true);
     this.appComponent.setRegistrationButtonVisible(false);
@@ -39,11 +42,12 @@ export class UserListComponent implements OnInit {
   }
 
   public loadUsers(): void {
+    console.log(`UserListComponent.loadUsers()`);
     this.usersService.getUsers().subscribe(
       (response) => {
         this.usersList = response.data;
         this.appComponent.setMessageSucess(response.message);
-        console.log(`UserListComponent.loadUsers()`, this.usersList);
+        console.log(`UserListComponent.loadUsers()`, response);
       },
       (error) => {
         console.log(`UserListComponent.loadUsers() Errors `, error);

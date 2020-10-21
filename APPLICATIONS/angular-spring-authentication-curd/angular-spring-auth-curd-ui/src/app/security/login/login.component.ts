@@ -12,7 +12,6 @@ import { Authentication } from '../../app-services/beans/authentication';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  message: any;
   authentication: Authentication;
 
   constructor(
@@ -21,11 +20,13 @@ export class LoginComponent implements OnInit {
     private securityUtilService: SecurityUtilService,
     private authenticationService: AuthenticationService
   ) {
+    console.log(`LoginComponent.constructor()`);
     appComponent.setLogoutButtonVisible(false);
     appComponent.setRegistrationButtonVisible(true);
   }
 
-  login(myForm: NgForm) {
+  public login(myForm: NgForm): void {
+    console.log(`LoginComponent.login()`);
     const requestedUrl = this.router.url;
     console.log(`reqeusted url ${requestedUrl}`);
     const user = this.authenticationService.loginUser(
@@ -38,25 +39,20 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (response) => {
           this.authentication = response.data;
-          this.message = response.message;
-          console.log(`LoginComponent.login()`, this.authentication);
+          this.appComponent.setMessageSucess(response.message);
+          console.log(`LoginComponent.login()`, response);
           this.doAction(this.authentication);
         },
         (errorResponse) => {
           console.log(`LoginComponent.login() Errors `, errorResponse);
-          this.message = errorResponse.error.message;
+          this.appComponent.setMessageFailure(errorResponse.error.message);
         }
       );
   }
 
-  ngOnInit(): void {}
-
   private doAction(authentication: Authentication): void {
     if (this.authentication != null) {
-      console.log(
-        'authentication true for login ',
-        this.authentication.userBean
-      );
+      console.log('LoginComponent.doAction() ', this.authentication.userBean);
       this.appComponent.setMessageSucess('login sucessful');
       const userContext = this.securityUtilService.storeOnLocalStorage({
         userName: this.authentication.userBean.userName,
@@ -70,7 +66,6 @@ export class LoginComponent implements OnInit {
       });
 
       if (userContext.isAdmin) {
-        console.log(this.authentication.userBean.isAdmin);
         this.appComponent.setLogoutButtonVisible(true);
         this.appComponent.setRegistrationButtonVisible(false);
         this.appComponent.setAdminHomeVisible(true);
@@ -82,7 +77,6 @@ export class LoginComponent implements OnInit {
           queryParams: { name: this.authentication.userBean.userName },
         });
       } else if (userContext.isUser) {
-        console.log(this.authentication.userBean.isAdmin);
         this.appComponent.setLogoutButtonVisible(true);
         this.appComponent.setRegistrationButtonVisible(false);
         this.appComponent.setAdminHomeVisible(false);
@@ -94,7 +88,6 @@ export class LoginComponent implements OnInit {
           queryParams: { name: this.authentication.userBean.userName },
         });
       } else if (userContext.isGuest) {
-        console.log(this.authentication.userBean.isAdmin);
         this.appComponent.setLogoutButtonVisible(true);
         this.appComponent.setRegistrationButtonVisible(false);
         this.appComponent.setAdminHomeVisible(false);
@@ -113,8 +106,10 @@ export class LoginComponent implements OnInit {
       this.appComponent.setUserHomeVisible(false);
       this.appComponent.setLogoutButtonVisible(false);
       this.appComponent.setRegistrationButtonVisible(true);
-      this.message = { message: 'invalid credentials' };
+      this.appComponent.setMessageFailure('invalid credentials');
       this.router.navigate(['/login']);
     }
   }
+
+  ngOnInit(): void {}
 }

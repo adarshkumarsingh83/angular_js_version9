@@ -20,12 +20,14 @@ export class UserHomeComponent implements OnInit {
     private appComponent: AppComponent,
     private employeeService: EmployeeService
   ) {
+    console.log(`UserHomeComponent.constructor()`);
     const userContext = securityUtilService.getFromStorge();
     this.userName = userContext.userName.toUpperCase();
     appComponent.setRegistrationButtonVisible(false);
     appComponent.setLogoutButtonVisible(true);
   }
   ngOnInit(): void {
+    console.log(`UserHomeComponent.ngOnInit()`);
     this.employeeService.getEmployees().subscribe(
       (response) => {
         this.employeeList = response.data;
