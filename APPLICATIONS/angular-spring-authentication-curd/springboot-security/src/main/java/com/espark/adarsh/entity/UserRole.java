@@ -18,7 +18,8 @@ public class UserRole implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String roleName;
+    @Enumerated(EnumType.STRING)
+    private Role roleName;
 
     @ManyToMany(mappedBy = "roles", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<User> user = new LinkedList<>();
@@ -26,11 +27,11 @@ public class UserRole implements Serializable {
     public UserRole() {
     }
 
-    public UserRole(String roleName) {
+    public UserRole(Role roleName) {
         this.roleName = roleName;
     }
 
-    public void setUser(User user){
+    public void setUser(User user) {
         this.user.add(user);
     }
 }

@@ -17,22 +17,36 @@ export class UserListComponent implements OnInit {
     private appComponent: AppComponent
   ) {}
 
-  deleteUsers(userId: number): void {
+  public deleteUsers(userId: number): void {
     console.log(`UserListComponent.deleteUsers()`);
+    this.usersService.deleteUser(userId).subscribe(
+      (response) => {
+        this.message = response.message;
+        console.log(`UserListComponent.deleteUser()`, response.data);
+        this.loadUsers();
+      },
+      (error) => {
+        console.log(`EmployeeListComponent.getEmployees() Errors `, error);
+      }
+    );
   }
 
   ngOnInit(): void {
     this.appComponent.setCommonHomeVisible(true);
     this.appComponent.setLogoutButtonVisible(true);
     this.appComponent.setRegistrationButtonVisible(false);
+    this.loadUsers();
+  }
+
+  public loadUsers(): void {
     this.usersService.getUsers().subscribe(
       (response) => {
         this.usersList = response.data;
         this.message = response.message;
-        console.log(`UserListComponent.getUsers()`, this.usersList);
+        console.log(`UserListComponent.loadUsers()`, this.usersList);
       },
       (error) => {
-        console.log(`UserListComponent.getUsers() Errors `, error);
+        console.log(`UserListComponent.loadUsers() Errors `, error);
       }
     );
   }

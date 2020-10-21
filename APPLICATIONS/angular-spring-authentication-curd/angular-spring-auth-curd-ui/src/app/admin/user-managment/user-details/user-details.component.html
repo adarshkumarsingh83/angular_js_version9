@@ -1,1 +1,28 @@
-<p>user-details works!</p>
+<div class="container">
+  <h1>View Data</h1>
+  <table class="table">
+    <tr>
+      <td>Id:</td>
+      <td>{{ user.id }}</td>
+    </tr>
+    <tr>
+      <td>User Name:</td>
+      <td>{{ user.userName }}</td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>{{ user.email }}</td>
+    </tr>
+    <tr>
+      <td>Roles:</td>
+      <td>{{ user.userRoles }}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a href="#" routerLink="/admin/users-mgmt/users" class="btn btn-primary"
+          >Listing Page</a
+        >
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../../../app-services/beans/employee';
 import { Data } from '../../../app-services/beans/data';
 import { EmployeeService } from '../../../app-services/employee.service';
@@ -20,7 +20,6 @@ export class EmployeeUpdateComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private employeeService: EmployeeService
   ) {}
 
@@ -32,13 +31,23 @@ export class EmployeeUpdateComponent implements OnInit {
       email: this.email,
       profession: this.profession,
     };
-    console.log(``, this.employee);
+    console.log(
+      `EmployeeUpdateComponent.savupdateEmployeeaData()`,
+      this.employee
+    );
     this.employeeService.updateEmployee(this.id, this.employee).subscribe(
       (response) => {
         this.responseMsg = response.message;
+        console.log(
+          `EmployeeUpdateComponent.savupdateEmployeeaData() `,
+          this.responseMsg
+        );
       },
       (error) => {
-        console.log(`FormComponent.savaData() Erros `, error);
+        console.log(
+          `EmployeeUpdateComponent.savupdateEmployeeaData() Erros `,
+          error
+        );
       }
     );
   }
@@ -54,5 +63,6 @@ export class EmployeeUpdateComponent implements OnInit {
         this.email = response.data.email;
         this.profession = response.data.profession;
       });
+    console.log(`EmployeeUpdateComponent.ngOnInit()`, this.id);
   }
 }

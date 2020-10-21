@@ -1,1 +1,65 @@
-<p>user-update works!</p>
+<div class="container">
+  {{ responseMsg }}
+  <form #myForm="ngForm" (ngSubmit)="updateUser()">
+    <div class="form-group">
+      <label for="inputId">Id </label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputId"
+        [(ngModel)]="id"
+        name="id"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputUserName">User Name </label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputUserName"
+        [(ngModel)]="userName"
+        name="userName"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputUserPwd">User Pwd </label>
+      <input
+        type="password"
+        class="form-control"
+        id="inputUserPwd"
+        [(ngModel)]="userPwd"
+        name="userPwd"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputEmail">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="inputEmail"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputUserRoles">User Roles</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputUserRoles"
+        [(ngModel)]="userRoles"
+        name="userRoles"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    &nbsp;
+    <a href="#" routerLink="/admin/users-mgmt/users" class="btn btn-primary"
+      >Listing Page</a
+    >
+  </form>
+</div>

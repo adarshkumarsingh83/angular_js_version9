@@ -21,11 +21,11 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.deleteEmployee(employeeId).subscribe(
       (response) => {
         this.message = response.message;
-        console.log(`EmployeeListComponent.getEmployees()`, this.employeeList);
+        console.log(`EmployeeListComponent.deleteEmployee()`, response.data);
         this.loadEmployees();
       },
       (error) => {
-        console.log(`EmployeeListComponent.getEmployees() Errors `, error);
+        console.log(`EmployeeListComponent.deleteEmployee() Errors `, error);
       }
     );
   }
@@ -42,10 +42,10 @@ export class EmployeeListComponent implements OnInit {
       (response) => {
         this.employeeList = response.data;
         this.message = response.message;
-        console.log(`EmployeeListComponent.getEmployees()`, this.employeeList);
+        console.log(`EmployeeListComponent.loadEmployees()`, this.employeeList);
       },
       (error) => {
-        console.log(`EmployeeListComponent.getEmployees() Errors `, error);
+        console.log(`EmployeeListComponent.loadEmployees() Errors `, error);
       }
     );
   }

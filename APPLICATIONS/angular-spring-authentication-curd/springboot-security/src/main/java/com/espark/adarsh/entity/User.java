@@ -45,12 +45,13 @@ public class User implements Serializable {
         UserBean userBean = new UserBean();
         List<String> roles = this.getRoles()
                 .stream()
-                .map(userRole -> userRole.getRoleName())
+                .map(userRole -> userRole.getRoleName().name())
                 .collect(Collectors.toList());
         userBean.setId(this.getId());
         userBean.setUserName(this.getUserName());
         userBean.setUserRoles(roles);
         userBean.setEmail(this.getEmail());
+        userBean.setUserPwd(this.getUserPwd());
         userBean.setIsAdmin(roles.contains("ADMIN"));
         return userBean;
     }

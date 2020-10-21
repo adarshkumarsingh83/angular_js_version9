@@ -31,7 +31,7 @@ public class SecurityService {
         if (user != null) {
             List<String> roles = user.getRoles()
                     .stream()
-                    .map(userRole -> userRole.getRoleName())
+                    .map(userRole -> userRole.getRoleName().name())
                     .collect(Collectors.toList());
             UserBean userBean = new UserBean();
             userBean.setId(user.getId());

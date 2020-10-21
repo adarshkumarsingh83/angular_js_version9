@@ -25,9 +25,10 @@ export class EmployeeDetailsComponent implements OnInit {
       (response) => {
         this.responseMsg = response.message;
         this.employee = response.data;
+        console.log(`EmployeeCreateComponent.getEmployee()  `, this.employee);
       },
       (error) => {
-        console.log(`EmployeeCreateComponent.savaEmployee() Erros `, error);
+        console.log(`EmployeeCreateComponent.getEmployee() Erros `, error);
       }
     );
   }

@@ -28,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (findUser != null) {
             List<SimpleGrantedAuthority> userRoles = findUser.getRoles()
                     .stream()
-                    .map(role -> new SimpleGrantedAuthority(role.getRoleName())).collect(Collectors.toList());
+                    .map(role -> new SimpleGrantedAuthority(role.getRoleName().name())).collect(Collectors.toList());
             return new User(findUser.getUserName(), findUser.getUserPwd(), userRoles);
         }
         throw new UsernameNotFoundException("User Not Found for name" + userName);

@@ -1,6 +1,7 @@
 package com.espark.adarsh.service;
 
 import com.espark.adarsh.entity.Employee;
+import com.espark.adarsh.entity.Role;
 import com.espark.adarsh.entity.User;
 import com.espark.adarsh.entity.UserRole;
 import com.espark.adarsh.repository.EmployeeRepository;
@@ -54,15 +55,15 @@ public class DataInitService {
         amitEmployee = this.employeeRepository.save(amitEmployee);
 
         UserRole adminRole = new UserRole();
-        adminRole.setRoleName("ADMIN");
+        adminRole.setRoleName(Role.ADMIN);
         adminRole = this.userRoleRepository.save(adminRole);
 
         UserRole userRole = new UserRole();
-        userRole.setRoleName("USER");
+        userRole.setRoleName(Role.USER);
         userRole = this.userRoleRepository.save(userRole);
 
         UserRole guestRole = new UserRole();
-        guestRole.setRoleName("GUEST");
+        guestRole.setRoleName(Role.GUEST);
         guestRole = this.userRoleRepository.save(guestRole);
 
         User adarsh = new User();

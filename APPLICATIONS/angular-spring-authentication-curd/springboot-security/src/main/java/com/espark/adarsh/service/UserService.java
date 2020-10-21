@@ -2,10 +2,16 @@ package com.espark.adarsh.service;
 
 
 import com.espark.adarsh.bean.UserBean;
+import com.espark.adarsh.entity.Role;
+import com.espark.adarsh.entity.User;
+import com.espark.adarsh.entity.UserRole;
 import com.espark.adarsh.repository.UserRepository;
+import com.espark.adarsh.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +20,9 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    UserRoleRepository  userRoleRepository;
 
 
     public UserBean getUserById(Long userId) {
@@ -30,18 +39,34 @@ public class UserService {
     }
 
     public UserBean createUser(UserBean userBean) {
-        return this.userRepository.save(userBean.getUser()).getUserBean();
+        User user = userBean.getUser();
+        List<UserRole> roles = userBean.getUserRoles()
+                .stream()
+                .map(roleName-> this.userRoleRepository.findByRoleName(Role.getRole(roleName)) )
+                .collect(Collectors.toList());
+        user.setRoles(roles);
+        return this.userRepository.save(user).getUserBean();
     }
 
     public UserBean updateUser(UserBean userBean) {
-        return this.userRepository.save(userBean.getUser()).getUserBean();
+        User user = userBean.getUser();
+        List<UserRole> roles = userBean.getUserRoles()
+                .stream()
+                .map(roleName-> this.userRoleRepository.findByRoleName(Role.getRole(roleName)) )
+                .collect(Collectors.toList());
+        user.setRoles(roles);
+        return this.userRepository.save(user).getUserBean();
     }
 
+    @Transactional
     public UserBean deleteUser(Long userId) {
         UserBean userBeanResponse =
                 this.userRepository.findById(userId)
                         .get()
                         .getUserBean();
+        User user = userBeanResponse.getUser();
+        user.setRoles(null);
+        this.userRepository.save(user);
         this.userRepository.deleteById(userId);
         return userBeanResponse;
     }

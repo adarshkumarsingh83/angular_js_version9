@@ -1,5 +1,6 @@
 package com.espark.adarsh.bean;
 
+import com.espark.adarsh.entity.Role;
 import com.espark.adarsh.entity.User;
 import com.espark.adarsh.entity.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -40,11 +41,11 @@ public class UserBean implements Serializable {
         user.setEmail(this.getEmail());
 
         this.userRoles.stream().map(roles -> {
-            return new UserRole(roles);
+            return new UserRole(Role.getRole(roles));
         }).collect(Collectors.toList());
 
         user.setRoles(this.userRoles.stream().map(roles -> {
-            return new UserRole(roles);
+            return new UserRole(Role.getRole(roles));
         }).collect(Collectors.toList()));
         return user;
     }

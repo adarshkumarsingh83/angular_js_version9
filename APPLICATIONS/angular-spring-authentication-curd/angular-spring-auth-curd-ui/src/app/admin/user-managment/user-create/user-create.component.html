@@ -1,1 +1,82 @@
-<p>user-create works!</p>
+<div class="container">
+  {{ responseMsg }}
+  <form #myForm="ngForm" (ngSubmit)="savaEmployee(myForm)">
+    <div class="form-group">
+      <label for="inputUserName">User Name </label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputUserName"
+        aria-describedby="nameUsertHelp"
+        ngModel
+        name="inputUserName"
+        required
+      />
+      <small id="nameUsertHelp" class="form-text text-muted"
+        >We'll never share your name with anyone else.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="inputUserPwd">User Pwd</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputUserPwd"
+        aria-describedby="userPwdHelp"
+        ngModel
+        name="inputUserPwd"
+        required
+      />
+      <small id="userPwdHelp" class="form-text text-muted"
+        >We'll never share your name with anyone else.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="inputEmail">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="inputEmail"
+        aria-describedby="emailHelp"
+        ngModel
+        name="emailInput"
+        required
+      />
+      <small id="emailHelp" class="form-text text-muted"
+        >We'll never share your email with anyone else.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="inputUserRole">User Role</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputUserRole"
+        ngModel
+        name="userRoleInput"
+        required
+      />
+    </div>
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="inputCheck"
+        ngModel
+        name="checkboxInput"
+      />
+      <label class="form-check-label" for="inputCheck"
+        >Term and conditions</label
+      >
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    &nbsp;
+    <button type="button" class="btn btn-primary" (click)="clearFields(myForm)">
+      Clear
+    </button>
+    &nbsp;
+    <a href="#" routerLink="/admin/users-mgmt/users" class="btn btn-primary"
+      >Listing Page</a
+    >
+  </form>
+</div>
