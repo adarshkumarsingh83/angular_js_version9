@@ -8,12 +8,14 @@ import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
 import { AppServicesModule } from './app-services/app-services.module';
 import { StorageServiceModule } from 'ngx-webstorage-service';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
+    FlashMessagesModule.forRoot(),
     StorageServiceModule,
     AppRoutingModule,
     SecurityModule,

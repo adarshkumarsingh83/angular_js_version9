@@ -3,6 +3,9 @@
     <h3 class="display-3">ESPARK INNOVATION LABS</h3>
   </div>
   <div>
+    <div>
+      <flash-messages></flash-messages>
+    </div>
     <button
       (click)="logout()"
       class="btn btn-outline-dark"
@@ -43,14 +46,6 @@
     >
       Common Home
     </button>
-    &nbsp;
-    <div class="success">
-      {{ messageSucess }}
-    </div>
-    <div class="error">
-      {{ messageFailure }}
-    </div>
-    &nbsp;
     <div class="display-5; text-info">
       {{ message }}
     </div>

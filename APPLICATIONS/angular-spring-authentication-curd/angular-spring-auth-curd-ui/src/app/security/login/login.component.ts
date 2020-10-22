@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (response) => {
           this.authentication = response.data;
-          this.appComponent.setMessageSucess(response.message);
+          this.appComponent.setMessageInfo(response.message);
           console.log(`LoginComponent.login()`, response);
           this.doAction(this.authentication);
         },

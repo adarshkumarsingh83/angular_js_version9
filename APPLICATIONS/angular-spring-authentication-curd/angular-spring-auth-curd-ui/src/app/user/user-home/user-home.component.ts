@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SecurityUtilService } from '../../security/security-util.service';
 import { AppComponent } from '../../app.component';
-import { Router } from '@angular/router';
 import { EmployeeService } from '../../app-services/employee.service';
 import { Employee } from 'src/app/app-services/beans/employee';
 
@@ -15,7 +14,6 @@ export class UserHomeComponent implements OnInit {
   userName: string;
 
   constructor(
-    private router: Router,
     private securityUtilService: SecurityUtilService,
     private appComponent: AppComponent,
     private employeeService: EmployeeService
@@ -36,7 +34,7 @@ export class UserHomeComponent implements OnInit {
       },
       (error) => {
         console.log(`AdminHomeComponent.getEmployees() Errors `, error);
-        this.appComponent.setMessageSucess(error.error.message);
+        this.appComponent.setMessageFailure(error.error.message);
       }
     );
   }

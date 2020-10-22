@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SecurityUtilService } from './security/security-util.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,6 @@ import { SecurityUtilService } from './security/security-util.service';
 export class AppComponent {
   title = 'angular-spring-auth-curd-ui';
   message = '';
-  messageSucess: string;
-  messageFailure: string;
   isLogoutButtonVisible = true;
   isRegistrationButtonVisible = true;
   isAdminHomeVisible = false;
@@ -20,7 +19,8 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private securityUtilService: SecurityUtilService
+    private securityUtilService: SecurityUtilService,
+    private flashMessage: FlashMessagesService
   ) {
     this.isLogoutButtonVisible = true;
     this.isRegistrationButtonVisible = false;
@@ -147,10 +147,23 @@ export class AppComponent {
   }
 
   public setMessageSucess(messageSucess: string): void {
-    this.messageSucess = messageSucess;
+    this.flashMessage.show(messageSucess, {
+      cssClass: 'alert-success',
+      timeout: 2000,
+    });
   }
 
   public setMessageFailure(messageFailure: string): void {
-    this.messageFailure = messageFailure;
+    this.flashMessage.show(messageFailure, {
+      cssClass: 'alert-danger',
+      timeout: 2000,
+    });
+  }
+
+  public setMessageInfo(messageInfo: string): void {
+    this.flashMessage.show(messageInfo, {
+      cssClass: 'alert-info',
+      timeout: 2000,
+    });
   }
 }

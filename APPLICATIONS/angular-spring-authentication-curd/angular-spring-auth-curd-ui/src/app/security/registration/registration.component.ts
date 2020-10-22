@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit {
       },
       (error) => {
         console.log(`RegistrationComponent.registerUser() Erros `, error);
-        this.appComponent.setMessageSucess(error.error.message);
+        this.appComponent.setMessageFailure(error.error.message);
       }
     );
     this.appComponent.setLogoutButtonVisible(false);
@@ -51,6 +51,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   cancelRegistrattion() {
+    this.appComponent.setMessageInfo('Registration Cancel');
     console.log(`RegistrationComponent.cancelRegistrattion()`);
     this.appComponent.setLogoutButtonVisible(false);
     this.appComponent.setRegistrationButtonVisible(true);
