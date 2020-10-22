@@ -41,7 +41,7 @@
 
 ### To install Fash message
 
-- install the flash
+- npm install angular2-flash-messages --save
 
 ---
 
