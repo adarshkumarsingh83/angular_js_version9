@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="alert alert-info text-center">
+    <h3 class="display-3">ESPARK INNOVATION LABS</h3>
+  </div>
+  <br />
+  <flash-messages></flash-messages>
+  <br />
+  <div>
+    <button type="button" (click)="showPrimaryFlash()" class="btn btn-primary">
+      Primary Flash
+    </button>
+    &nbsp;
+    <button
+      type="button"
+      (click)="showSecoundaryFlash()"
+      class="btn btn-secondary"
+    >
+      Secondary Flash
+    </button>
+    &nbsp;
+    <button type="button" (click)="showSucessFlash()" class="btn btn-success">
+      Sucess Flash
+    </button>
+    &nbsp;
+    <button type="button" (click)="showDangerFlash()" class="btn btn-danger">
+      Alert Flash
+    </button>
+    &nbsp;
+    <button type="button" (click)="showWarningFlash()" class="btn btn-warning">
+      Warning Flash
+    </button>
+    &nbsp;
+    <button type="button" (click)="showInfoFlash()" class="btn btn-info">
+      Info Flash
+    </button>
+    &nbsp;
+    <button type="button" (click)="showLightFlash()" class="btn btn-light">
+      Light Flash
+    </button>
+    &nbsp;
+    <button type="button" (click)="showDarkFlash()" class="btn btn-dark">
+      Dark Flash
+    </button>
+  </div>
+  <router-outlet></router-outlet>
+</div>
