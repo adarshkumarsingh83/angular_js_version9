@@ -39,6 +39,10 @@
     ]
 ```
 
+### To install Fash message
+
+- install the flash
+
 ---
 
 ### To generate admin Module
