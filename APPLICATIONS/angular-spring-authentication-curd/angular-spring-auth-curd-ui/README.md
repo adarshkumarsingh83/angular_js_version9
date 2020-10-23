@@ -45,6 +45,43 @@
 
 ---
 
+### To generate a layout module
+
+- cd src/app
+- ng g module layout
+
+```
+CREATE src/app/layout/layout.module.ts (192 bytes)
+```
+
+### To genrate header component
+
+- cd src/app/layout
+- ng g component header
+
+```
+CREATE src/app/layout/header/header.component.scss (0 bytes)
+CREATE src/app/layout/header/header.component.html (21 bytes)
+CREATE src/app/layout/header/header.component.spec.ts (628 bytes)
+CREATE src/app/layout/header/header.component.ts (276 bytes)
+UPDATE src/app/layout/layout.module.ts (268 bytes)
+```
+
+### To generate footer component
+
+- cd src/app/layout
+- ng g component footer
+
+```
+CREATE src/app/layout/footer/footer.component.scss (0 bytes)
+CREATE src/app/layout/footer/footer.component.html (21 bytes)
+CREATE src/app/layout/footer/footer.component.spec.ts (628 bytes)
+CREATE src/app/layout/footer/footer.component.ts (276 bytes)
+UPDATE src/app/layout/layout.module.ts (346 bytes)
+```
+
+---
+
 ### To generate admin Module
 
 - \$ cd src/app

@@ -19,8 +19,8 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private securityUtilService: SecurityUtilService,
-    private flashMessage: FlashMessagesService
+    private flashMessage: FlashMessagesService,
+    private securityUtilService: SecurityUtilService
   ) {
     this.isLogoutButtonVisible = true;
     this.isRegistrationButtonVisible = false;

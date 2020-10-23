@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { AppServicesModule } from './app-services/app-services.module';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     AdminModule,
     UserModule,
     AppServicesModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
