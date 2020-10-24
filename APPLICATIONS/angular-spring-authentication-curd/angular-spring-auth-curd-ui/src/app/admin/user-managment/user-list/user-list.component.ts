@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/app-services/beans/user';
 import { UsersService } from '../../../app-services/users.service';
-import { AppComponent } from '../../../app.component';
+import { HeaderService } from '../../../app-services/header.service';
 
 @Component({
   selector: 'app-user-list',
@@ -13,7 +13,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private appComponent: AppComponent
+    private headerService: HeaderService
   ) {
     console.log(`UserListComponent.constructor()`);
   }
@@ -22,22 +22,19 @@ export class UserListComponent implements OnInit {
     console.log(`UserListComponent.deleteUsers()`);
     this.usersService.deleteUser(userId).subscribe(
       (response) => {
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
         console.log(`UserListComponent.deleteUser()`, response.data);
         this.loadUsers();
       },
       (error) => {
         console.log(`EmployeeListComponent.getEmployees() Errors `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
   }
 
   ngOnInit(): void {
     console.log(`UserListComponent.ngOnInit()`);
-    this.appComponent.setCommonHomeVisible(true);
-    this.appComponent.setLogoutButtonVisible(true);
-    this.appComponent.setRegistrationButtonVisible(false);
     this.loadUsers();
   }
 
@@ -46,12 +43,12 @@ export class UserListComponent implements OnInit {
     this.usersService.getUsers().subscribe(
       (response) => {
         this.usersList = response.data;
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
         console.log(`UserListComponent.loadUsers()`, response);
       },
       (error) => {
         console.log(`UserListComponent.loadUsers() Errors `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
   }

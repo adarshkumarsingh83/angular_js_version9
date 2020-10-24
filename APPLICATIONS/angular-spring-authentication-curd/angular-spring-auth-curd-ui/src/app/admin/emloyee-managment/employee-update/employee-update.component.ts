@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../../../app-services/beans/employee';
 import { Data } from '../../../app-services/beans/data';
 import { EmployeeService } from '../../../app-services/employee.service';
-import { AppComponent } from '../../../app.component';
+import { HeaderService } from '../../../app-services/header.service';
 
 @Component({
   selector: 'app-employee-update',
@@ -21,7 +21,7 @@ export class EmployeeUpdateComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private employeeService: EmployeeService,
-    private appComponent: AppComponent
+    private headerService: HeaderService
   ) {
     console.log(`EmployeeUpdateComponent.constructor()`);
   }
@@ -37,12 +37,12 @@ export class EmployeeUpdateComponent implements OnInit {
     console.log(`EmployeeUpdateComponent.updateEmployee()`, this.employee);
     this.employeeService.updateEmployee(this.id, this.employee).subscribe(
       (response) => {
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
         console.log(`EmployeeUpdateComponent.updateEmployee() `, response);
       },
       (error) => {
         console.log(`EmployeeUpdateComponent.updateEmployee() Erros `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
   }
@@ -57,12 +57,12 @@ export class EmployeeUpdateComponent implements OnInit {
         this.lastName = response.data.lastName;
         this.email = response.data.email;
         this.profession = response.data.profession;
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
         console.log(`EmployeeUpdateComponent.getEmployee() `, response);
       },
       (error) => {
         console.log(`EmployeeUpdateComponent.getEmployee() Erros `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
   }

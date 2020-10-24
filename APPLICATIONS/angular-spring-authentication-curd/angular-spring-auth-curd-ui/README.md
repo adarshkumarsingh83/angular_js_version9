@@ -372,6 +372,13 @@ CREATE src/app/app-services/authentication.service.spec.ts (397 bytes)
 CREATE src/app/app-services/authentication.service.ts (143 bytes)
 ```
 
+- ng g service header
+
+```
+CREATE src/app/app-services/header.service.spec.ts (357 bytes)
+CREATE src/app/app-services/header.service.ts (135 bytes)
+```
+
 ### To generate user model
 
 - ng g interface user

@@ -3,8 +3,8 @@ import { NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../app-services/authentication.service';
 import { Router } from '@angular/router';
 import { SecurityUtilService } from '../security-util.service';
-import { AppComponent } from '../../app.component';
 import { Authentication } from '../../app-services/beans/authentication';
+import { HeaderService, PageType } from '../../app-services/header.service';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +16,11 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private appComponent: AppComponent,
+    private headerService: HeaderService,
     private securityUtilService: SecurityUtilService,
     private authenticationService: AuthenticationService
   ) {
     console.log(`LoginComponent.constructor()`);
-    appComponent.setLogoutButtonVisible(false);
-    appComponent.setRegistrationButtonVisible(true);
   }
 
   public login(myForm: NgForm): void {
@@ -39,13 +37,13 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (response) => {
           this.authentication = response.data;
-          this.appComponent.setMessageInfo(response.message);
+          this.headerService.setInfoMessage(response.message);
           console.log(`LoginComponent.login()`, response);
           this.doAction(this.authentication);
         },
         (errorResponse) => {
           console.log(`LoginComponent.login() Errors `, errorResponse);
-          this.appComponent.setMessageFailure(errorResponse.error.message);
+          this.headerService.setFailureMessage(errorResponse.error.message);
         }
       );
   }
@@ -53,7 +51,7 @@ export class LoginComponent implements OnInit {
   private doAction(authentication: Authentication): void {
     if (this.authentication != null) {
       console.log('LoginComponent.doAction() ', this.authentication.userBean);
-      this.appComponent.setMessageSucess('login sucessful');
+      this.headerService.setSucsessMessage('login sucessful');
       const userContext = this.securityUtilService.storeOnLocalStorage({
         userName: this.authentication.userBean.userName,
         email: this.authentication.userBean.email,
@@ -65,34 +63,27 @@ export class LoginComponent implements OnInit {
         key: this.authentication.key,
       });
 
+      this.headerService.calculateHeaderMenu(
+        PageType.COMMON_HOME_PAGE,
+        userContext
+      );
+
       if (userContext.isAdmin) {
-        this.appComponent.setLogoutButtonVisible(true);
-        this.appComponent.setRegistrationButtonVisible(false);
-        this.appComponent.setAdminHomeVisible(true);
-        this.appComponent.setUserHomeVisible(true);
-        this.appComponent.setMessage(
+        this.headerService.setInfoMessage(
           `welcome to espark ${this.authentication.userBean.userName} loggin as Admin`
         );
         this.router.navigate(['/'], {
           queryParams: { name: this.authentication.userBean.userName },
         });
       } else if (userContext.isUser) {
-        this.appComponent.setLogoutButtonVisible(true);
-        this.appComponent.setRegistrationButtonVisible(false);
-        this.appComponent.setAdminHomeVisible(false);
-        this.appComponent.setUserHomeVisible(true);
-        this.appComponent.setMessage(
+        this.headerService.setInfoMessage(
           `welcome to espark ${this.authentication.userBean.userName} loggin as User`
         );
         this.router.navigate(['/'], {
           queryParams: { name: this.authentication.userBean.userName },
         });
       } else if (userContext.isGuest) {
-        this.appComponent.setLogoutButtonVisible(true);
-        this.appComponent.setRegistrationButtonVisible(false);
-        this.appComponent.setAdminHomeVisible(false);
-        this.appComponent.setUserHomeVisible(false);
-        this.appComponent.setMessage(
+        this.headerService.setInfoMessage(
           `welcome to espark ${this.authentication.userBean.userName} loggin as Guest`
         );
         this.router.navigate(['/'], {
@@ -100,13 +91,9 @@ export class LoginComponent implements OnInit {
         });
       }
     } else {
-      this.appComponent.setMessageSucess('login failure');
+      this.headerService.setFailureMessage('login failure');
       console.log('authentication false for login ', this.authentication);
-      this.appComponent.setAdminHomeVisible(false);
-      this.appComponent.setUserHomeVisible(false);
-      this.appComponent.setLogoutButtonVisible(false);
-      this.appComponent.setRegistrationButtonVisible(true);
-      this.appComponent.setMessageFailure('invalid credentials');
+      this.headerService.setFailureMessage('invalid credentials');
       this.router.navigate(['/login']);
     }
   }

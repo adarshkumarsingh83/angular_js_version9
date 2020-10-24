@@ -1,56 +1,6 @@
 <header>
   <app-header></app-header>
 </header>
-<div class="container">
-  <div>
-    <div>
-      <flash-messages></flash-messages>
-    </div>
-    <button
-      (click)="logout()"
-      class="btn btn-outline-dark"
-      *ngIf="this.isLogoutButtonVisible"
-    >
-      Logout
-    </button>
-    &nbsp;
-    <button
-      (click)="registration()"
-      class="btn btn-outline-dark"
-      *ngIf="this.isRegistrationButtonVisible"
-    >
-      New User Registration
-    </button>
-    &nbsp; &nbsp; &nbsp; &nbsp;
-
-    <button
-      (click)="adminHome()"
-      class="btn btn-outline-dark"
-      *ngIf="this.isAdminHomeVisible"
-    >
-      Admin Home
-    </button>
-    &nbsp;
-    <button
-      (click)="userHome()"
-      class="btn btn-outline-dark"
-      *ngIf="this.isUserHomeVisible"
-    >
-      User Home
-    </button>
-    &nbsp;
-    <button
-      (click)="home()"
-      class="btn btn-outline-dark"
-      *ngIf="this.isCommonHomeVisible"
-    >
-      Common Home
-    </button>
-    <div class="display-5; text-info">
-      {{ message }}
-    </div>
-  </div>
-</div>
 <div class="content">
   <router-outlet></router-outlet>
 </div>

@@ -20,15 +20,10 @@ export class AdminHomeComponent implements OnInit {
     console.log(`AdminHomeComponent.constructor()`);
     const userContext = securityUtilService.getFromStorge();
     this.userName = userContext.userName.toUpperCase();
-    appComponent.setRegistrationButtonVisible(false);
-    appComponent.setLogoutButtonVisible(true);
   }
 
   public employees(): void {
     console.log(`AdminHomeComponent.employees()`);
-    this.appComponent.setRegistrationButtonVisible(false);
-    this.appComponent.setCommonHomeVisible(true);
-    this.appComponent.setLogoutButtonVisible(true);
     this.router.navigate(['/admin/employees-mgmt/employees'], {
       queryParams: { action: 'employees-mgmt' },
     });
@@ -36,9 +31,6 @@ export class AdminHomeComponent implements OnInit {
 
   public users(): void {
     console.log(`AdminHomeComponent.users()`);
-    this.appComponent.setRegistrationButtonVisible(false);
-    this.appComponent.setCommonHomeVisible(true);
-    this.appComponent.setLogoutButtonVisible(true);
     this.router.navigate(['/admin/users-mgmt/users'], {
       queryParams: { action: 'users-mgmt' },
     });

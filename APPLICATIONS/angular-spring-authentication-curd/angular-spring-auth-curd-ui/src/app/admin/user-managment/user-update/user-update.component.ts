@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../app-services/beans/user';
 import { Data } from '../../../app-services/beans/data';
 import { UsersService } from '../../../app-services/users.service';
-import { AppComponent } from '../../../app.component';
+import { HeaderService } from '../../../app-services/header.service';
 
 @Component({
   selector: 'app-user-update',
@@ -21,7 +21,7 @@ export class UserUpdateComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private route: ActivatedRoute,
-    private appComponent: AppComponent
+    private headerService: HeaderService
   ) {
     console.log(`UserUpdateComponent.constructor()`);
   }
@@ -40,11 +40,11 @@ export class UserUpdateComponent implements OnInit {
     this.usersService.updateUser(this.id, this.user).subscribe(
       (response) => {
         console.log(`UserUpdateComponent.updateUser() `, response);
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
       },
       (error) => {
         console.log(`UserUpdateComponent.updateUser() Erros `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
   }
@@ -60,11 +60,11 @@ export class UserUpdateComponent implements OnInit {
         this.userPwd = response.data.userPwd;
         this.email = response.data.email;
         this.userRoles = response.data.userRoles[0];
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
       },
       (error) => {
         console.log(`UserUpdateComponent.getUser() Erros `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
   }

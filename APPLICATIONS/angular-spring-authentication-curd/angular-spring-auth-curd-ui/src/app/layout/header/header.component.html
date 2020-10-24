@@ -1,33 +1,80 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarTogglerDemo01"
-    aria-controls="navbarTogglerDemo01"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="/?action=common-home">HOME</a>
+    <button
+      type="button"
+      class="btn btn-outline-light"
+      (click)="home()"
+      *ngIf="homeVisiable"
+    >
+      Home
+    </button>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="/admin"
-          >ADMIN <span class="sr-only">(current)</span></a
+        <button
+          type="button"
+          class="btn btn-outline-light"
+          (click)="registration()"
+          *ngIf="registrationVisiable"
         >
+          New User
+        </button>
+      </li>
+      <li class="nav-item active">
+        <button
+          type="button"
+          class="btn btn-outline-light"
+          (click)="adminHome()"
+          *ngIf="adminVisiable"
+        >
+          ADMIN
+        </button>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/user">USER</a>
+        <button
+          type="button"
+          class="btn btn-outline-light"
+          (click)="userHome()"
+          *ngIf="userVisiable"
+        >
+          USER
+        </button>
+      </li>
+      <li class="nav-item active">
+        <button
+          type="button"
+          class="btn btn-outline-light"
+          *ngIf="employeMgmtVisable"
+        >
+          EMP-MGMT
+        </button>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">GUEST</a>
+        <button
+          type="button"
+          class="btn btn-outline-light"
+          *ngIf="userMgmtVisable"
+        >
+          USER-MGMT
+        </button>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">TODO</a>
+        <button
+          type="button"
+          class="btn btn-outline-light"
+          *ngIf="contactUsVisiable"
+        >
+          Contact Us
+        </button>
       </li>
     </ul>
+    <button
+      type="button"
+      class="btn btn-outline-light"
+      *ngIf="logoutVisiable"
+      (click)="logout()"
+    >
+      LOGOUT
+    </button>
     <form class="form-inline my-2 my-lg-0">
       <input
         class="form-control mr-sm-2"
@@ -44,5 +91,8 @@
 <div class="alert alert-info">
   <div class="row justify-content-center align-items-center alert alert-info">
     <h1>ESPARK INNOVATION LABS</h1>
+  </div>
+  <div>
+    <flash-messages></flash-messages>
   </div>
 </div>

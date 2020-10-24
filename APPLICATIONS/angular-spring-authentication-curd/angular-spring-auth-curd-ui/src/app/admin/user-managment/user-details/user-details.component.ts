@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppComponent } from '../../../app.component';
 import { User } from '../../../app-services/beans/user';
 import { UsersService } from '../../../app-services/users.service';
+import { HeaderService } from '../../../app-services/header.service';
 
 @Component({
   selector: 'app-user-details',
@@ -16,7 +16,7 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private route: ActivatedRoute,
-    private appComponent: AppComponent
+    private headerService: HeaderService
   ) {
     console.log(`UserDetailsComponent.constructor() `);
   }
@@ -26,12 +26,12 @@ export class UserDetailsComponent implements OnInit {
     this.userService.getUser(this.id).subscribe(
       (response) => {
         console.log(`UserDetailsComponent.getUser() `, response);
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
         this.user = response.data;
       },
       (error) => {
         console.log(`UserDetailsComponent.getUser() Erros `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
   }

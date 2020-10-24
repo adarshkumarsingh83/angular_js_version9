@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../../../app-services/beans/employee';
 import { EmployeeService } from '../../../app-services/employee.service';
-import { AppComponent } from '../../../app.component';
+import { HeaderService } from '../../../app-services/header.service';
 
 @Component({
   selector: 'app-employee-details',
@@ -16,7 +16,7 @@ export class EmployeeDetailsComponent implements OnInit {
   constructor(
     public employeeService: EmployeeService,
     private route: ActivatedRoute,
-    private appComponent: AppComponent
+    private headerService: HeaderService
   ) {}
 
   ngOnInit(): void {
@@ -24,13 +24,13 @@ export class EmployeeDetailsComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.employeeService.getEmployee(this.id).subscribe(
       (response) => {
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
         this.employee = response.data;
         console.log(`EmployeeCreateComponent.getEmployee()  `, response);
       },
       (error) => {
         console.log(`EmployeeCreateComponent.getEmployee() Erros `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
   }

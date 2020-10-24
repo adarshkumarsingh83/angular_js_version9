@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Employee } from '../../../app-services/beans/employee';
 import { EmployeeService } from '../../../app-services/employee.service';
 import { AppComponent } from '../../../app.component';
+import { HeaderService } from '../../../app-services/header.service';
 
 @Component({
   selector: 'app-employee-create',
@@ -14,7 +15,7 @@ export class EmployeeCreateComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private appComponent: AppComponent
+    private headerService: HeaderService
   ) {
     console.log(`EmployeeCreateComponent.constructor()`);
   }
@@ -33,12 +34,12 @@ export class EmployeeCreateComponent implements OnInit {
     );
     this.employeeService.saveEmployee(this.employee).subscribe(
       (response) => {
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
         console.log(`EmployeeCreateComponent.savaEmployee() `, response);
       },
       (error) => {
         console.log(`EmployeeCreateComponent.savaEmployee() Erros `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
   }

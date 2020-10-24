@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AppComponent } from '../../../app.component';
 import { User } from '../../../app-services/beans/user';
 import { UsersService } from '../../../app-services/users.service';
+import { HeaderService } from '../../../app-services/header.service';
 
 @Component({
   selector: 'app-user-create',
@@ -14,7 +14,7 @@ export class UserCreateComponent implements OnInit {
 
   constructor(
     private userService: UsersService,
-    private appComponent: AppComponent
+    private headerService: HeaderService
   ) {
     console.log(`EmployeeCreateComponent.constructor()`);
   }
@@ -32,11 +32,11 @@ export class UserCreateComponent implements OnInit {
     this.userService.saveUser(this.user).subscribe(
       (response) => {
         console.log(`UserCreateComponent.savaEmployee() `, response);
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
       },
       (error) => {
         console.log(`UserCreateComponent.savaEmployee() Erros `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
   }

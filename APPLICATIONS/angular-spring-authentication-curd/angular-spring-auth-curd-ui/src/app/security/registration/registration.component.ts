@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../app-services/authentication.service';
 import { Router } from '@angular/router';
-import { AppComponent } from '../../app.component';
 import { User } from 'src/app/app-services/beans/user';
+import { HeaderService, PageType } from '../../app-services/header.service';
 
 @Component({
   selector: 'app-registration',
@@ -15,12 +15,9 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private appComponent: AppComponent,
+    private headerService: HeaderService,
     private authenticationService: AuthenticationService
-  ) {
-    this.appComponent.setLogoutButtonVisible(false);
-    this.appComponent.setRegistrationButtonVisible(false);
-  }
+  ) {}
 
   public registerUser(myForm: NgForm): void {
     console.log(`RegistrationComponent.registerUser()`);
@@ -36,25 +33,23 @@ export class RegistrationComponent implements OnInit {
       (response) => {
         this.user = response.data;
         console.log(`RegistrationComponent.registerUser()`, response);
-        this.appComponent.setMessageSucess(response.message);
+        this.headerService.setSucsessMessage(response.message);
       },
       (error) => {
         console.log(`RegistrationComponent.registerUser() Erros `, error);
-        this.appComponent.setMessageFailure(error.error.message);
+        this.headerService.setFailureMessage(error.error.message);
       }
     );
-    this.appComponent.setLogoutButtonVisible(false);
-    this.appComponent.setRegistrationButtonVisible(true);
+    this.headerService.calculateHeaderMenu(PageType.LOGIN_PAGE, null);
     this.router.navigate(['/login'], {
       queryParams: { action: 'new-registration' },
     });
   }
 
   cancelRegistrattion() {
-    this.appComponent.setMessageInfo('Registration Cancel');
+    this.headerService.setInfoMessage('Registration Cancel');
     console.log(`RegistrationComponent.cancelRegistrattion()`);
-    this.appComponent.setLogoutButtonVisible(false);
-    this.appComponent.setRegistrationButtonVisible(true);
+    this.headerService.calculateHeaderMenu(PageType.LOGIN_PAGE, null);
     this.router.navigate(['/login'], {
       queryParams: { action: 'cancel-registration' },
     });

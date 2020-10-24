@@ -10,6 +10,7 @@ import { AppServicesModule } from './app-services/app-services.module';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { LayoutModule } from './layout/layout.module';
+import { HeaderService } from './app-services/header.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,7 @@ import { LayoutModule } from './layout/layout.module';
     AppServicesModule,
     LayoutModule,
   ],
-  providers: [],
+  providers: [HeaderService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
