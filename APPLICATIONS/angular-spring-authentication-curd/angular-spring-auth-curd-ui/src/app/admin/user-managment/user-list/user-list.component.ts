@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/app-services/beans/user';
 import { UsersService } from '../../../app-services/users.service';
-import { HeaderService } from '../../../app-services/header.service';
+import { SecurityUtilService } from '../../../security/security-util.service';
+import { HeaderService, PageType } from '../../../app-services/header.service';
 
 @Component({
   selector: 'app-user-list',
@@ -13,7 +14,8 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private securityUtilService: SecurityUtilService
   ) {
     console.log(`UserListComponent.constructor()`);
   }
@@ -35,6 +37,11 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(`UserListComponent.ngOnInit()`);
+    let userContext = this.securityUtilService.getFromStorge();
+    this.headerService.calculateHeaderMenu(
+      PageType.USER_MGMT_PAGE,
+      userContext
+    );
     this.loadUsers();
   }
 

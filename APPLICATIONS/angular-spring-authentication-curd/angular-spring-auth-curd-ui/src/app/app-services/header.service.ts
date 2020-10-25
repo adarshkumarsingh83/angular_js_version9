@@ -108,14 +108,25 @@ export class HeaderService {
           this.setHomeVisible(false);
           this.setAdminVisible(true);
           this.setUserVisible(true);
+          this.setEmployeeMgmtVisible(false);
+          this.setUserMgmtVisible(false);
           this.setLogoutVisible(true);
+          this.setRegistrationVisible(false);
+          this.setContactUsVisible(true);
+        } else if (pageName == PageType.ADMIN_HOME_PAGE) {
+          this.setHomeVisible(true);
+          this.setAdminVisible(false);
+          this.setUserVisible(true);
+          this.setLogoutVisible(true);
+          this.setEmployeeMgmtVisible(true);
+          this.setUserMgmtVisible(true);
           this.setRegistrationVisible(false);
           this.setContactUsVisible(true);
         } else if (pageName == PageType.EMPLOYEE_MGMT_PAGE) {
           this.setHomeVisible(true);
           this.setAdminVisible(true);
           this.setUserVisible(true);
-          this.setEmployeeMgmtVisible(true);
+          this.setEmployeeMgmtVisible(false);
           this.setUserMgmtVisible(true);
           this.setLogoutVisible(true);
           this.setRegistrationVisible(false);
@@ -125,9 +136,18 @@ export class HeaderService {
           this.setAdminVisible(true);
           this.setUserVisible(false);
           this.setEmployeeMgmtVisible(true);
-          this.setUserMgmtVisible(true);
+          this.setUserMgmtVisible(false);
           this.setLogoutVisible(true);
           this.setRegistrationVisible(false);
+          this.setContactUsVisible(true);
+        } else if (pageName == PageType.USER_HOME_PAGE) {
+          this.setHomeVisible(true);
+          this.setAdminVisible(true);
+          this.setUserVisible(false);
+          this.setEmployeeMgmtVisible(false);
+          this.setUserMgmtVisible(false);
+          this.setRegistrationVisible(false);
+          this.setLogoutVisible(true);
           this.setContactUsVisible(true);
         }
       } else if (userContext.isUser) {

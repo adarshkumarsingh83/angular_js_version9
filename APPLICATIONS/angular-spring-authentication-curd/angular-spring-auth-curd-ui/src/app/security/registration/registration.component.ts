@@ -40,7 +40,6 @@ export class RegistrationComponent implements OnInit {
         this.headerService.setFailureMessage(error.error.message);
       }
     );
-    this.headerService.calculateHeaderMenu(PageType.LOGIN_PAGE, null);
     this.router.navigate(['/login'], {
       queryParams: { action: 'new-registration' },
     });
@@ -49,11 +48,12 @@ export class RegistrationComponent implements OnInit {
   cancelRegistrattion() {
     this.headerService.setInfoMessage('Registration Cancel');
     console.log(`RegistrationComponent.cancelRegistrattion()`);
-    this.headerService.calculateHeaderMenu(PageType.LOGIN_PAGE, null);
     this.router.navigate(['/login'], {
       queryParams: { action: 'cancel-registration' },
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.headerService.calculateHeaderMenu(PageType.REGISTRATION_PAGE, null);
+  }
 }

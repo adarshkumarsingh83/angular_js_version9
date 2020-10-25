@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SecurityUtilService } from '../../security/security-util.service';
-import { AppComponent } from '../../app.component';
-import { Router } from '@angular/router';
+import { HeaderService, PageType } from '../../app-services/header.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -10,31 +9,21 @@ import { Router } from '@angular/router';
 })
 export class AdminHomeComponent implements OnInit {
   userName: string;
-  message: string;
 
   constructor(
-    private router: Router,
-    private securityUtilService: SecurityUtilService,
-    private appComponent: AppComponent
+    private headerService: HeaderService,
+    private securityUtilService: SecurityUtilService
   ) {
     console.log(`AdminHomeComponent.constructor()`);
     const userContext = securityUtilService.getFromStorge();
     this.userName = userContext.userName.toUpperCase();
   }
 
-  public employees(): void {
-    console.log(`AdminHomeComponent.employees()`);
-    this.router.navigate(['/admin/employees-mgmt/employees'], {
-      queryParams: { action: 'employees-mgmt' },
-    });
+  ngOnInit(): void {
+    let userContext = this.securityUtilService.getFromStorge();
+    this.headerService.calculateHeaderMenu(
+      PageType.ADMIN_HOME_PAGE,
+      userContext
+    );
   }
-
-  public users(): void {
-    console.log(`AdminHomeComponent.users()`);
-    this.router.navigate(['/admin/users-mgmt/users'], {
-      queryParams: { action: 'users-mgmt' },
-    });
-  }
-
-  ngOnInit(): void {}
 }

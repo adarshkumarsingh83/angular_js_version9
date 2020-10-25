@@ -1,28 +1,31 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <button
-      type="button"
-      class="btn btn-outline-light"
-      (click)="home()"
-      *ngIf="homeVisiable"
-    >
-      Home
-    </button>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <button
           type="button"
-          class="btn btn-outline-light"
+          class="btn btn-outline-light btn_space"
+          (click)="home()"
+          *ngIf="homeVisiable"
+        >
+          HOME
+        </button>
+      </li>
+      <li class="nav-item active">
+        <button
+          type="button"
+          class="btn btn-outline-light btn_space"
           (click)="registration()"
           *ngIf="registrationVisiable"
         >
           New User
         </button>
       </li>
+
       <li class="nav-item active">
         <button
           type="button"
-          class="btn btn-outline-light"
+          class="btn btn-outline-light btn_space"
           (click)="adminHome()"
           *ngIf="adminVisiable"
         >
@@ -32,17 +35,19 @@
       <li class="nav-item">
         <button
           type="button"
-          class="btn btn-outline-light"
+          class="btn btn-outline-light btn_space"
           (click)="userHome()"
           *ngIf="userVisiable"
         >
           USER
         </button>
       </li>
+
       <li class="nav-item active">
         <button
           type="button"
-          class="btn btn-outline-light"
+          class="btn btn-outline-light btn_space"
+          (click)="employees()"
           *ngIf="employeMgmtVisable"
         >
           EMP-MGMT
@@ -51,7 +56,8 @@
       <li class="nav-item">
         <button
           type="button"
-          class="btn btn-outline-light"
+          class="btn btn-outline-light btn_space"
+          (click)="users()"
           *ngIf="userMgmtVisable"
         >
           USER-MGMT
@@ -60,7 +66,7 @@
       <li class="nav-item">
         <button
           type="button"
-          class="btn btn-outline-light"
+          class="btn btn-outline-light btn_space"
           *ngIf="contactUsVisiable"
         >
           Contact Us
@@ -69,7 +75,7 @@
     </ul>
     <button
       type="button"
-      class="btn btn-outline-light"
+      class="btn btn-outline-light btn_space"
       *ngIf="logoutVisiable"
       (click)="logout()"
     >
@@ -82,7 +88,10 @@
         placeholder="Search"
         aria-label="Search"
       />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      <button
+        class="btn btn-outline-success my-2 my-sm-0 btn_space"
+        type="submit"
+      >
         Search
       </button>
     </form>

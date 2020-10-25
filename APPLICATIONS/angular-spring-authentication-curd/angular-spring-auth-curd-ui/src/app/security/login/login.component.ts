@@ -91,6 +91,7 @@ export class LoginComponent implements OnInit {
         });
       }
     } else {
+      this.headerService.calculateHeaderMenu(PageType.LOGIN_PAGE, null);
       this.headerService.setFailureMessage('login failure');
       console.log('authentication false for login ', this.authentication);
       this.headerService.setFailureMessage('invalid credentials');
@@ -98,5 +99,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.headerService.calculateHeaderMenu(PageType.COMMON_HOME_PAGE, null);
+  }
 }

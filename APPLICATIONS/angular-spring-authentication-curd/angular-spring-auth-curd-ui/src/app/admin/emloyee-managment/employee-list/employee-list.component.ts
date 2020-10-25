@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../../app-services/employee.service';
 import { Employee } from 'src/app/app-services/beans/employee';
-import { HeaderService } from '../../../app-services/header.service';
+import { SecurityUtilService } from '../../../security/security-util.service';
+import { HeaderService, PageType } from '../../../app-services/header.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,8 +12,9 @@ import { HeaderService } from '../../../app-services/header.service';
 export class EmployeeListComponent implements OnInit {
   employeeList: Employee[];
   constructor(
+    private headerService: HeaderService,
     private employeeService: EmployeeService,
-    private headerService: HeaderService
+    private securityUtilService: SecurityUtilService
   ) {}
 
   public deleteEmployee(employeeId: number): void {
@@ -32,6 +34,11 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(`EmployeeListComponent.ngOnInit()`);
+    let userContext = this.securityUtilService.getFromStorge();
+    this.headerService.calculateHeaderMenu(
+      PageType.EMPLOYEE_MGMT_PAGE,
+      userContext
+    );
     this.loadEmployees();
   }
 

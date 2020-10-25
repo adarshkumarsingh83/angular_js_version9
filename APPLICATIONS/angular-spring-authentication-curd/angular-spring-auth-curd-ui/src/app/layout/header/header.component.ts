@@ -165,6 +165,20 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  public employees(): void {
+    console.log(`AdminHomeComponent.employees()`);
+    this.router.navigate(['/admin/employees-mgmt/employees'], {
+      queryParams: { action: 'employees-mgmt' },
+    });
+  }
+
+  public users(): void {
+    console.log(`AdminHomeComponent.users()`);
+    this.router.navigate(['/admin/users-mgmt/users'], {
+      queryParams: { action: 'users-mgmt' },
+    });
+  }
+
   public setSucessMessage(successMessage: string): void {
     if (successMessage != '') {
       this.flashMessagesService.show(successMessage, {
